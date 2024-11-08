@@ -52,12 +52,14 @@ h2 {
     margin-bottom: 1rem;
 }
 
+/* Grid for Projects */
 .projects {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Space between projects */
 }
 
+/* Styling for individual projects */
 .project {
     background: #fff;
     border: 1px solid #ddd;
@@ -65,8 +67,25 @@ h2 {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
+.project-image {
+    width: 100%; /* Largura máxima dentro do card */
+    max-width: 300px; /* Define um limite máximo de largura */
+    height: auto; /* Mantém as proporções originais */
+    margin: 0 auto 10px; /* Centraliza a imagem e adiciona espaçamento inferior */
+    display: block; /* Garante que a imagem seja tratada como um bloco */
+    border-radius: 5px; /* Cantos arredondados, opcional */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destacar a imagem */
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Links */
 .project a {
     display: inline-block;
     margin-top: 10px;
@@ -74,6 +93,27 @@ h2 {
     color: #007bff;
 }
 
+.technologies {
+    display: flex;
+    gap: 10px; /* Espaçamento entre os ícones */
+    justify-content: center; /* Centraliza os ícones horizontalmente */
+    margin-top: 10px; /* Espaço entre os ícones e o texto acima */
+}
+
+.technologies img {
+    width: 50px; /* Largura fixa para uniformidade */
+    height: 50px; /* Altura fixa para uniformidade */
+    object-fit: contain; /* Garante que a imagem não distorça */
+    transition: transform 0.3s ease-in-out; /* Adiciona transição suave */
+    border-radius: 5px; /* Adiciona cantos arredondados (opcional) */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Destaque com sombra */
+}
+
+.technologies img:hover {
+    transform: scale(1.2); /* Amplia levemente a imagem ao passar o mouse */
+}
+
+/* Skills section */
 .skills {
     display: flex;
     flex-wrap: wrap;
@@ -89,6 +129,7 @@ h2 {
     font-size: 1rem;
 }
 
+/* Footer */
 footer {
     text-align: center;
     padding: 1rem 0;
