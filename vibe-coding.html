@@ -60,19 +60,19 @@
 
   <section class="container" style="padding-top: 2rem; min-height: 60vh;">
     <article class="blog-post-content">
-      <h2 style="font-size: 2rem; margin-top: 0;">How I Build Software with AI in 2026: My Practical Framework for "Vibe Coding" and Harness Engineering</h2>
+      <h2 style="font-size: 2rem; margin-top: 0;">How I Build Software with AI in 2026: From Vibe Coding to Harness Engineering</h2>
       <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 2rem;">
         <span class="date" style="margin-bottom: 0;">April 17, 2026</span>
         <img src="https://hits.sh/emerson-diego.github.io/vibe-coding.html.svg?label=Visitas&color=007bff" alt="Visitas" style="height: 20px;"/>
       </div>
 
-      <p>I've been diving headfirst into so-called 'intuitive programming' [ou 'vibe coding'] and the reality hit me hard: the execution barrier has plummeted. Today, it is perfectly feasible to build a clone of a complex system in a few days using tools and models like Cursor (with Opus or Sonnet), Codex, or Antigravity. Code itself has become a commodity.</p>
+      <p><strong>AI didn’t just speed up coding; it changed where engineering discipline must live.</strong> I've been diving headfirst into so-called 'intuitive programming' [ou 'vibe coding'] and the reality hit me hard: the execution barrier has plummeted. Today, it is perfectly feasible to build a clone of a complex system in a few days using tools and models like Cursor (with Opus or Sonnet), Codex, or Antigravity. Code itself has become a commodity.</p>
 
       <p>In this process, I realized that the mental model of treating AI as an 'intern' — reading every single line of code it generates — simply doesn't work in practice. It's not scalable. However, to avoid low-quality results, I fundamentally changed my mental model: I stopped focusing solely on the prompt and started designing a control system.</p>
 
-      <p>Let's be honest: comprehensive documentation and rigorous testing have always been critical, but they were often the first things neglected by small teams in the name of speed. Today, the game has changed. When AI can generate thousands of lines of logic in seconds, this historically accepted technical debt becomes destructive. There is simply no excuse anymore for skipping robust tests and living documentation; they are the fundamental guardrails required to harness these tools effectively.</p>
+      <p>Let's be honest: comprehensive documentation and rigorous testing have always been critical, but they were often the first things neglected by small teams in the name of speed. Today, the game has changed. <strong>What used to be survivable sloppiness becomes catastrophic when an agent can generate thousands of lines in seconds.</strong> There is simply no excuse anymore for skipping robust tests and living documentation; they are the fundamental guardrails required to harness these tools effectively.</p>
 
-      <p>Below, I detail exactly how I manage my projects today, combining my personal approach to development with the practices of Harness Engineering and Specification-Driven Development.</p>
+      <p>Below, I detail exactly how I manage my projects today. This is not just an abstract philosophy, but a replicable operational model that combines my personal approach to development with the practices of Harness Engineering and Specification-Driven Development.</p>
 
       <div class="post-image">
         <figure>
@@ -85,40 +85,69 @@
       <p>Before even kicking off the project, my golden rule is to study the product's architecture. AI agents operating without clear boundaries will try to guess the path, and that inevitably leads to hallucinations.</p>
       <ul>
         <li><strong>Living Documentation:</strong> I continuously use the project's documentation to guide the entire workflow. This documentation acts as my single source of truth.</li>
-        <li><strong>The "Spec Pack":</strong> In traditional software engineering, we don't push anything to production without clear requirements. I do the exact same thing with AI. For every feature, I create a specification package containing the Product Intent (metrics and constraints) and the Low-Level Design, detailing the acceptance criteria and examples of API contracts or events. If the AI doesn't know exactly what is expected of it, my control system will have nothing to validate against.</li>
+        <li><strong>The "Spec Pack":</strong> In traditional software engineering, we don't push anything to production without clear requirements. I do the exact same thing with AI. For every feature, I create a specification package detailing the exact constraints before execution. If the AI doesn't know exactly what is expected of it, my control system will have nothing to validate against.</li>
       </ul>
+
+      <div style="background-color: #f8f9fa; border-left: 4px solid #007bff; padding: 1.5rem; margin: 1.5rem 0; border-radius: 4px;">
+        <h4 style="margin-top: 0; margin-bottom: 0.5rem;">Example: Spec Pack for an Auth Endpoint</h4>
+        <ul style="margin-bottom: 0; font-size: 0.95rem;">
+          <li><strong>Intent:</strong> Authenticate users via JWT and prevent brute-force attacks.</li>
+          <li><strong>Constraints:</strong> Must use Redis for rate limiting; latency under 50ms.</li>
+          <li><strong>Acceptance Criteria:</strong> Returns HTTP 429 when the limit is hit (5 attempts/min); includes 'Retry-After' header.</li>
+          <li><strong>Contract (I/O):</strong> Input: <code>{email, password}</code>. Output: <code>{token}</code> or standard error block.</li>
+          <li><strong>Edge Cases:</strong> Invalid email format (HTTP 400), correct credentials but locked account (HTTP 403).</li>
+        </ul>
+      </div>
 
       <h2>Step 2: Collaborative Planning</h2>
       <p>I have always worked with and appreciated the spiral development model, focusing strictly on one feature at a time. However, the real game-changer happens in the moment just before implementation, by utilizing the planning tool integrated into whichever harness is currently in use.</p>
       <ul>
-        <li><strong>Execution Plan:</strong> I never just show up and say, "create endpoint X." Using the harness's planning feature, I draft an explicit plan that defines: what needs to be done, how it should be done, what the constraints are, and how the outcome will be validated.</li>
-        <li><strong>Space for AI:</strong> After setting these initial rules, I leverage the tool's capabilities to let the AI analyze the plan and offer its own architectural suggestions. This collaborative planning takes advantage of the model's inferential capacity to anticipate issues before we waste tokens and time generating code.</li>
-        <li><strong>Feedforward Guides:</strong> Along with the plan structured by the tool, I provide instructions that structurally guide the AI before it takes action (project conventions, baseline scripts, etc.). This drastically increases the chances of it getting it right on the first try.</li>
+        <li><strong>Execution Plan:</strong> I never just show up and say, "create endpoint X." Before any execution, I explicitly write down the plan defining what needs to be done, how it should be done, the constraints, and how the outcome will be validated.</li>
+        <li><strong>Space for AI:</strong> Before I let the AI generate any code, I ask it to analyze the plan and offer architectural improvements. This collaborative phase leverages the model's inferential capacity to anticipate issues before we burn tokens and time.</li>
+        <li><strong>Feedforward Guides:</strong> Alongside the plan, I provide "Feedforward"—<strong>instructions that shape the agent's behavior before errors even happen</strong> (like project conventions and architectural templates). This drastically increases the chances of getting it right on the first try.</li>
       </ul>
 
       <h2>Step 3: Implementation and Fast Sensors (Keep Quality Left)</h2>
       <p>With the plan validated, the AI agent goes to work. However, my confidence doesn't stem from the fact that the AI is "smart," but rather from my network of automated Feedback Sensors.</p>
-      <p>I strictly follow the "Keep quality left" principle—meaning tests must run as early as possible in the cycle. To ensure my agent's repetition loop is incredibly fast, I rely on purely computational sensors.</p>
-      <p>As soon as the AI generates the code, it instantly hits linting tools, static type checking, and a rigorous battery of unit and integration tests. These sensors run in milliseconds or seconds. If the AI breaks a contract established in my Spec Pack from Step 1, it catches the error and attempts to correct itself automatically.</p>
+      <p>I strictly follow the "Keep quality left" principle—meaning tests must run as early as possible in the cycle. To ensure my agent's repetition loop is incredibly fast, I rely on purely computational sensors (linting, type-checking, contract tests, and focused unit/integration tests). Fast sensors exist to shorten the correction cycle, not just to "guarantee quality".</p>
+      <p>However, if the AI is writing the code, who checks the AI? <strong>Mutation tests act as the ultimate "sensor of sensors."</strong> By actively modifying the code and expecting tests to fail, I ensure my test suite genuinely catches AI hallucinations and logic drift, rather than just passing vacuously. If the AI breaks a contract from Step 1, these sensors catch the error and the agent attempts to correct itself automatically.</p>
 
       <h2>Step 4: The "Control Loop" (How I handle AI failures)</h2>
       <p>Let's be clear: AI fails, and the worse the model, the more it will fail. When the error is simple, the AI reads the test logs and fixes it autonomously. But when the agent gets stuck in a loop, makes low-confidence decisions, or produces that dreaded scrambled output, the problem becomes mine.</p>
       <p>That's where I step in as a true Harness Engineer. Instead of opening the file and simply patching the line of code the AI messed up, I close the Steering Loop:</p>
       <ul>
-        <li>If the AI didn't know how to implement something, I improve the examples in my specification documentation.</li>
-        <li>If the error slipped past my tests, I create a new sensor (a new automated test).</li>
-        <li>If the applied pattern is incorrect, I add a new architectural rule to my Feedforward guides.</li>
+        <li>If the spec was unclear, I improve the examples.</li>
+        <li>If the tests missed the bug, I add a new sensor.</li>
+        <li>If the architecture drifted, I update the feedforward rules.</li>
       </ul>
       <p>I continuously evolve the control system so that this specific error never depends on my manual intervention again in the future.</p>
 
+      <div style="background-color: #f8f9fa; border-left: 4px solid #dc3545; padding: 1.5rem; margin: 1.5rem 0; border-radius: 4px;">
+        <h4 style="margin-top: 0; margin-bottom: 0.5rem;">A Real Failure Case: The Connection Leak</h4>
+        <p style="margin-bottom: 0; font-size: 0.95rem;">Recently, an AI agent generated an excellent data extraction routine but reliably 'hallucinated' skipping the closure of the database connection pool on failed retries. My fast sensors (specifically, a mock integration test assessing connection bounds) caught the leak immediately and broke the build. Instead of simply opening the file and patching the <code>close()</code> command myself, I closed the Steering Loop: I updated my Feedforward Guides with a strict architectural rule stating exactly how database sessions must be handled using context managers. The agent learned the fundamental boundary permanently.</p>
+      </div>
+
       <h2>Step 5: The Delivery Spiral and Client Feedback</h2>
-      <p>Since I work in a spiral model, whenever an issue successfully passes through my network of automated sensors, I take the result directly to the client for rapid feedback.</p>
+      <p>Since I work in a spiral model, whenever an issue successfully passes through my network of automated sensors, I take the result directly to the client for rapid feedback. <strong>The client validates behavior and value; the sensors validate consistency and security.</strong></p>
       <p>If the client requests adjustments, the process immediately returns to my collaborative planning phase.</p>
-      <p>With the code functionally validated and integrated, I trigger slow and expensive sensors directly in the CI/CD pipeline, running load and performance tests according to need. Constantly running heavy tests would completely ruin the project's cost-benefit ratio and velocity.</p>
+      <p>Only when the code is fully validated do I offload the heavy lift to the CI/CD pipeline for load and performance testing. In short: <strong>fast sensors protect iteration speed; slow sensors protect release confidence.</strong></p>
+
+      <h2>The Limits of Vibe Coding</h2>
+      <p>While this workflow is incredibly powerful for scaffolding features rapidly, it has clear limits. The generative approach breaks down during delicate refactoring of legacy systems, when dealing with implicit undocumented business rules, or when resolving sensitive security architectures (managing secrets and broad permissions). In these areas, the risk is too high and human leverage remains absolute.</p>
+
+      <h2>A Minimum Viable Harness</h2>
+      <p>If you want to transition from "Shipper" to "Harness Engineer" today, you do not need an astronomically complex setup. You can start with a Minimum Viable Harness tomorrow:</p>
+      <ul>
+        <li><strong>Feature Spec:</strong> Write exactly what needs to be done and what absolutely cannot happen.</li>
+        <li><strong>Execution Plan:</strong> Force the AI to output exactly how it will code the solution before it writes a single line.</li>
+        <li><strong>Local Sensors:</strong> Enforce a linter, type-checker, and a test suite that runs automatically on every save.</li>
+        <li><strong>Stopping Rule:</strong> If the AI hallucinates the exact same error three times, stop the loop. Take control.</li>
+        <li><strong>Escalation Trigger:</strong> If a sensor fails and the AI cannot independently parse the log to fix it, it must escalate to you.</li>
+      </ul>
 
       <h2>The Bottom Line</h2>
       <p>I stopped being an AI-generated code reviewer. By studying the architecture upfront, creating collaborative plans, and drawing hard boundaries through fast computational sensors, I stepped up to orchestrate the behavior of the system.</p>
-      <p>'Vibe coding' provides me with incredible speed, but it's my workflow focused on Harness Engineering that ensures the quality of my deliveries.</p>
+      <p><strong>AI gives me leverage; harness engineering gives me control.</strong></p>
 
       <div class="references">
         <h3>References & Further Reading</h3>
