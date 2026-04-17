@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How I Build Software with AI in 2026 - Emerson Araújo</title>
+  <meta name="description" content="My Practical Framework for 'Vibe Coding' and Harness Engineering" />
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    .post-image {
+      margin: 2rem 0;
+      text-align: center;
+    }
+    .post-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .post-image figcaption {
+      margin-top: 0.5rem;
+      color: #777;
+      font-size: 0.9rem;
+    }
+    .references {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #eee;
+    }
+    .references ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .references li {
+      margin-bottom: 0.5rem;
+    }
+    .blog-post-content h2 {
+      margin-top: 2rem;
+    }
+    .blog-post-content ul {
+      margin-bottom: 1.5rem;
+      margin-left: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Emerson Araújo</h1>
+      <p>AI Software Engineer | NLP & MLOps Specialist | Agentic RAG Architect</p>
+      <nav>
+        <ul>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="index.html#about">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="container" style="padding-top: 2rem; min-height: 60vh;">
+    <article class="blog-post-content">
+      <h2 style="font-size: 2rem; margin-top: 0;">How I Build Software with AI in 2026: My Practical Framework for "Vibe Coding" and Harness Engineering</h2>
+      <span class="date">April 17, 2026</span>
+
+      <p>Recently, I’ve dived headfirst into the so-called "vibe coding," and reality hit me hard: the execution barrier has plummeted. Today, it’s perfectly feasible to build a clone of a complex system in a day or two using tools like Claude Code (which, by the way, has absolutely dominated the market and become the number one tool among engineers). The code itself has become a commodity.</p>
+      
+      <p>However, this brutal speed has created a new chasm in our profession: the divide between the "Shippers" (those focused solely on delivering fast) and the "Builders" (those focused on quality and architecture). Shippers are loving the speed, but they are generating mountains of "AI slop" (low-quality, AI-generated code) and technical debt in record time.</p>
+
+      <p>Because I consider myself a Builder, I realized that the mental model of treating AI like an "intern"—reading every single line of code it generates—simply breaks down in practice. It doesn't scale.</p>
+
+      <p>To avoid drowning in bad code, I fundamentally changed my mental model. I stopped focusing just on the prompt and started designing a control system. Below, I break down exactly how I am running my projects today, blending my personal development touch with the practices of Harness Engineering and Specs-Driven Development.</p>
+
+      <div class="post-image">
+        <figure>
+          <img src="images/spiral-cycle-architecture.png" alt="Software Development Architecture: Spiral Cycle & AI" />
+          <figcaption>Software Development Architecture: Spiral Cycle & AI</figcaption>
+        </figure>
+      </div>
+
+      <h2>Step 1: The Foundation (I never start with code)</h2>
+      <p>Before even kicking off the project, my golden rule is to study the product's architecture. AI agents operating without clear boundaries will try to guess the path, and that inevitably leads to hallucinations.</p>
+      <ul>
+        <li><strong>Living Documentation:</strong> I continuously use the project's documentation to guide the entire workflow. This documentation acts as my single source of truth.</li>
+        <li><strong>The "Spec Pack":</strong> In traditional software engineering, we don't push anything to production without clear requirements. I do the exact same thing with AI. For every feature, I create a specification package containing the Product Intent (metrics and constraints) and the Low-Level Design, detailing the acceptance criteria and examples of API contracts or events. If the AI doesn't know exactly what is expected of it, my control system will have nothing to validate against.</li>
+      </ul>
+
+      <h2>Step 2: Collaborative Planning (My secret in the Prompt)</h2>
+      <p>I abandoned the linear working model and adopted a spiral development cycle, focusing strictly on feature by feature. But the real game-changer happens in the exact moment before I tell the AI to implement an issue.</p>
+      <ul>
+        <li><strong>The Issue Plan:</strong> I never just drop in and say "create endpoint X." When crafting my prompts, I always put together an explicit plan stating: what needs to be done, how it should be done, what the constraints are, and how the result will be validated.</li>
+        <li><strong>Room for AI:</strong> After defining these rules, I make room for the AI to analyze the plan and offer its own architectural suggestions. This collaborative planning leverages the model's inferential capacity to anticipate problems before we burn tokens and time actually generating the code.</li>
+        <li><strong>Feedforward Guides:</strong> Alongside the plan, I provide instructions that structurally guide the AI before it acts (project conventions, base scripts, etc.). This absurdly increases the chances of it getting things right on the very first try.</li>
+      </ul>
+
+      <h2>Step 3: Implementation and Fast Sensors (Keep Quality Left)</h2>
+      <p>With the plan validated, the AI agent goes to work. However, my confidence doesn't stem from the fact that the AI is "smart," but rather from my network of automated Feedback Sensors.</p>
+      <p>I strictly follow the "Keep quality left" principle—meaning tests must run as early as possible in the cycle. To ensure my agent's repetition loop is incredibly fast, I rely on purely computational sensors.</p>
+      <p>As soon as the AI generates the code, it instantly hits linting tools, static type checking, and a rigorous battery of unit and integration tests. These sensors run in milliseconds or seconds. If the AI breaks a contract established in my Spec Pack from Step 1, it catches the error and attempts to correct itself automatically.</p>
+
+      <h2>Step 4: The "Steering Loop" (How I handle AI failures)</h2>
+      <p>Let's be clear: AI fails, and it fails often. When the error is simple, it reads the test log and fixes it on its own. But when the agent gets stuck in a loop, makes low-confidence decisions, or spits out the dreaded "AI slop," the problem escalates to me.</p>
+      <p>This is where I step in as a true Harness Engineer. Instead of going in, opening the file, and just patching the line of code the AI messed up, I close the Steering Loop.</p>
+      <ul>
+        <li>If the AI didn't know how to implement something, I improve the examples in my specifications documentation.</li>
+        <li>If the error slipped past my tests, I build a new sensor (a new automated test).</li>
+        <li>If it used the wrong pattern, I add a new architectural rule to my Feedforward guides.</li>
+      </ul>
+      <p>I continuously evolve the control system so that this specific error never depends on my manual intervention again in the future.</p>
+
+      <h2>Step 5: The Delivery Spiral and Customer Feedback</h2>
+      <p>Because I work in a spiral, every time an issue successfully passes through my network of automated sensors, I take the result straight to the client for rapid feedback.</p>
+      <p>If the client requests business adjustments, the feature loops right back into my collaborative planning phase.</p>
+      <p>Only when the code is approved, functionally validated, and integrated do I trigger the slow and expensive sensors—like Load and Performance Tests—directly in the CI/CD pipeline. Running heavy tests constantly would completely ruin the project's cost-efficiency and speed.</p>
+
+      <h2>The Bottom Line</h2>
+      <p>I stopped being an AI-generated code reviewer. By studying the architecture upfront, creating collaborative plans, and drawing hard boundaries through fast computational sensors, I stepped up to orchestrate the behavior of the system.</p>
+      <p>"Vibe coding" gives me the speed of the Shippers, but my Harness Engineering workflow guarantees the quality that my identity as a Builder demands.</p>
+
+      <div class="references">
+        <h3>References & Further Reading</h3>
+        <ul>
+          <li>AkitaOnRails: "37 dias de Imersão em Vibe Coding: Conclusão quanto a Modelos de Negócio"</li>
+          <li>Loiane Groner: "Harness Engineering: The Missing Layer in Specs-Driven AI Development"</li>
+          <li>The Pragmatic Engineer: "AI Tooling for Software Engineers in 2026"</li>
+          <li>The Pragmatic Engineer: "The impact of AI on software engineers in 2026: key trends"</li>
+          <li>Article: "Harness engineering for coding agent users"</li>
+        </ul>
+      </div>
+
+      <div class="comments-section">
+        <h3>Comentários</h3>
+        <script src="https://giscus.app/client.js"
+          data-repo="emerson-diego/emerson-diego.github.io"
+          data-repo-id="" 
+          data-category="Announcements"
+          data-category-id=""
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="light"
+          data-lang="pt"
+          crossorigin="anonymous"
+          async>
+        </script>
+        <p style="font-size: 0.8rem; color: #777; margin-top: 1rem;">(Configuração do Giscus pode ser necessária com data-repo-id e data-category-id específicos)</p>
+      </div>
+    </article>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Emerson Araújo. Built with passion and code.</p>
+  </footer>
+</body>
+</html>
