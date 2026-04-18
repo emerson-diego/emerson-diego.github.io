@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,43 +13,51 @@
       margin: 2rem 0;
       text-align: center;
     }
+
     .post-image img {
       max-width: 100%;
       height: auto;
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
+
     .post-image figcaption {
       margin-top: 0.5rem;
       color: #777;
       font-size: 0.9rem;
     }
+
     .references {
       margin-top: 3rem;
       padding-top: 2rem;
       border-top: 1px solid #eee;
     }
+
     .references ul {
       list-style-type: none;
       padding-left: 0;
     }
+
     .references li {
       margin-bottom: 0.5rem;
     }
+
     .blog-post-content h2 {
       margin-top: 2rem;
     }
+
     .blog-post-content ul {
       margin-bottom: 1.5rem;
       margin-left: 1.5rem;
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="container">
       <h1>Emerson Araújo</h1>
-      <p>AI Software Engineer | NLP & MLOps Specialist | Agentic RAG Architect</p>
+      <p>AI Software Engineer</p>
       <nav>
         <ul>
           <li><a href="blog.html">Blog</a></li>
@@ -60,114 +69,120 @@
 
   <section class="container" style="padding-top: 2rem; min-height: 60vh;">
     <article class="blog-post-content">
-      <h2 style="font-size: 2rem; margin-top: 0;">Como Eu Construo Software com IA em 2026: Do Vibe Coding à Engenharia de Harness</h2>
+      <h2 style="font-size: 2rem; margin-top: 0;">How I Build Software with AI in 2026: From Vibe Coding to Harness Engineering</h2>
       <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 2rem;">
         <span class="date" style="margin-bottom: 0;">April 17, 2026</span>
-        <img src="https://hits.sh/emerson-diego.github.io/vibe-coding.html.svg?label=Visitas&color=007bff" alt="Visitas" style="height: 20px;"/>
+        <img src="https://hits.sh/emerson-diego.github.io/vibe-coding.html.svg?label=Visits&color=007bff" alt="Visits"
+          style="height: 20px;" />
       </div>
 
-      <p><strong>A IA não só acelerou a escrita de código; ela deslocou a parte mais importante da engenharia para outro lugar.</strong> Tenho mergulhado na chamada "programação intuitiva" — ou <em>vibe coding</em> — e a sensação é clara: a barreira de execução caiu muito. Hoje dá para montar, em poucos dias, algo que antes levaria semanas de trabalho manual. O código em si ficou mais barato. O desafio, agora, é criar as condições para que ele saia certo.</p>
+      <p><strong>AI didn't just speed up coding; it shifted the most important part of engineering somewhere else.</strong> I've been diving into so-called "intuitive programming"—or <em>vibe coding</em>—and the feeling is clear: the execution barrier has plummeted. Today, it's possible to build something in a few days that used to take weeks of manual work. Code itself has become cheaper. The challenge, now, is creating the conditions to ensure it comes out right.</p>
 
-      <p>Nesse processo, precisei equilibrar velocidade com confiança no que estava sendo gerado. Percebi rápido que tratar a IA como uma "estagiária" — revisando linha por linha tudo o que ela escreve — simplesmente não escala. Aos poucos, fui trocando o foco: em vez de gastar toda a energia no prompt, comecei a desenhar um sistema de controle. Muito do que descrevo aqui veio dos artigos nas referências, mas também de tentativa, erro e ajustes que foram funcionando no dia a dia.</p>
+      <p>In this process, I had to balance speed with confidence in what was being generated. I quickly realized that treating AI like an "intern"—reviewing every single line it writes—simply doesn't scale. Gradually, I shifted my focus: instead of spending all my energy on the prompt, I started designing a control system. Much of what I describe here came from the articles in the references, but also from trial, error, and adjustments that worked in my day-to-day.</p>
 
-      <p>Sejamos honestos: documentação e testes sempre foram importantes, mas quase sempre eram as primeiras coisas sacrificadas quando o prazo apertava. Com IA, esse atalho cobra caro muito mais rápido. <strong>O que antes parecia um trade-off aceitável deixou de se sustentar.</strong> Testes robustos e documentação viva não são perfumaria; são os <em>guardrails</em> que tornam esse jeito de trabalhar viável.</p>
+      <p>Let's be honest: documentation and tests have always been important, but they were almost always the first things sacrificed when deadlines got tight. With AI, this shortcut exacts a heavy toll much faster. <strong>What used to seem like an acceptable trade-off is no longer sustainable.</strong> Robust tests and living documentation aren't nice-to-haves; they are the <em>guardrails</em> that make this way of working viable.</p>
 
-      <p>Abaixo está, de forma bem prática, o jeito como tenho tocado meus projetos hoje. Não vejo isso como teoria; para mim, é um modelo de trabalho que mistura minha experiência pessoal com práticas de Engenharia de Harness e de Desenvolvimento Orientado a Especificações (<em>Specification-Driven Development</em>). <em>(Para contextualizar, meu fluxo atual gira principalmente em torno de Cursor — com Opus ou Sonnet, até onde os limites deixam —, Codex e Antigravity).</em> Outra coisa que aprendi na prática é que o resultado varia bastante conforme o modelo escolhido e o quanto o harness conversa bem com ele. Cada modelo tem suas manias: lida melhor ou pior com contexto longo, segue instruções de um jeito diferente, usa ferramentas de outra forma. Quando esse encaixe está bom, a diferença aparece no resultado.</p>
+      <p>Below is, in a very practical way, how I've been running my projects today. I don't see this as theory; for me, it's a working model that blends my personal experience with practices from Harness Engineering and Specification-Driven Development. <em>(For context, my current workflow orbits mainly around Cursor—with Opus or Sonnet, as far as their limits allow—Codex, and Antigravity)</em>. Another thing I've learned in practice is that the result varies significantly depending on the chosen model and how well the harness talks to it. Each model has its quirks: it handles long context better or worse, follows instructions differently, and uses tools in other ways. When this fit is right, the difference shows in the final result.</p>
 
       <div class="post-image">
         <figure>
-          <img src="images/fluxo.jpg" alt="Ilustração complementar do fluxo de desenvolvimento" />
-          <figcaption>Ilustração complementar do fluxo de desenvolvimento</figcaption>
+          <img src="images/fluxo.jpg" alt="Complementary illustration of the development flow" />
+          <figcaption>Complementary illustration of the development flow</figcaption>
         </figure>
       </div>
 
-      <h2>Passo 1: A Base (Eu nunca começo pelo código)</h2>
-      <p>Antes de escrever qualquer linha, eu tento entender com clareza qual problema estou resolvendo: qual é o objetivo do produto, onde ele começa e termina e quais restrições realmente importam. A partir daí, monto uma arquitetura candidata — não como verdade final, mas como um rascunho sério do sistema. Ela me ajuda a enxergar o todo, deixa claros os componentes principais e me dá direção para começar, mesmo sabendo que parte dessa estrutura vai mudar no caminho.</p>
+      <h2>Step 1: The Foundation (I never start with code)</h2>
+      <p>Before writing any lines, I try to clearly understand what problem I'm solving: what the product's goal is, where it starts and ends, and which constraints actually matter. From there, I draft a candidate architecture—not as the final truth, but as a serious blueprint for the system. It helps me see the whole picture, clarifies the main components, and gives me a direction to start, even knowing that part of this structure will change along the way.</p>
       <ul>
-        <li><strong>Arquitetura Candidata:</strong> Antes de implementar, organizo o sistema em blocos, responsabilidades e fluxos principais. Isso reduz ambiguidades, antecipa pontos de risco e evita que o agente “invente” estrutura no meio do caminho.</li>
-        <li><strong>Documentação Viva:</strong> Uso continuamente a documentação do projeto para guiar todo o fluxo de trabalho. Ela funciona como minha única fonte de verdade, preserva contexto e serve de referência constante para decisões, validações e correções.</li>
+        <li><strong>Candidate Architecture:</strong> Before implementing, I organize the system into blocks, responsibilities, and main flows. This reduces ambiguities, anticipates risk points, and prevents the agent from "inventing" structure mid-way.</li>
+        <li><strong>Living Documentation:</strong> I continuously use the project's documentation to guide the entire workflow. It acts as my single source of truth, preserves context, and serves as a constant reference for decisions, validations, and corrections.</li>
       </ul>
 
-      <div style="background-color: #f8f9fa; border-left: 4px solid #007bff; padding: 1.5rem; margin: 1.5rem 0; border-radius: 4px;">
-        <p style="margin-top: 0; font-size: 0.95rem;"><strong>Exemplo:</strong> Abaixo está um exemplo de arquitetura candidata para um sistema RAG, desenhada no draw.io. O objetivo desse tipo de diagrama não é congelar a solução desde o início, mas tornar visíveis os componentes, os fluxos de dados e os pontos de integração antes da implementação.</p>
+      <div
+        style="background-color: #f8f9fa; border-left: 4px solid #007bff; padding: 1.5rem; margin: 1.5rem 0; border-radius: 4px;">
+        <p style="margin-top: 0; font-size: 0.95rem;"><strong>Example:</strong> Below is an example of a candidate architecture for a RAG system, drawn in draw.io. The goal of this kind of diagram isn't to freeze the solution from the start, but to make components, data flows, and integration points visible before implementation.</p>
         <div style="text-align: center; margin-top: 1rem;">
-          <img src="images/arquitetura_rag.png" alt="Exemplo de arquitetura candidata de um sistema RAG criada no draw.io" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+          <img src="images/arquitetura_rag.png"
+            alt="Example of candidate architecture for a RAG system created in draw.io"
+            style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
         </div>
       </div>
 
-      <h2>Passo 2: Planejamento Colaborativo</h2>
-      <p>Depois de entender o problema e rascunhar a arquitetura candidata, sigo em ciclos curtos, uma funcionalidade por vez. A diferença é que hoje eu quase nunca pulo direto para a implementação. Antes de pedir código, eu paro para planejar de verdade. É nesse momento que a IA deixa de ser só uma executora e passa a ajudar também no raciocínio.</p>
+      <h2>Step 2: Collaborative Planning</h2>
+      <p>After understanding the problem and sketching the candidate architecture, I move in short cycles, one feature at a time. The difference is that today I almost never jump straight into implementation. Before asking for code, I stop to really plan. This is when AI stops being just an executor and starts helping with reasoning as well.</p>
       <ul>
-        <li><strong>Pacote de Especificação (Spec Pack):</strong> Na engenharia de software tradicional, não se envia nada para produção sem requisitos claros; com IA, essa disciplina se torna ainda mais importante. Para cada funcionalidade, monto um pacote de especificações que define objetivo, restrições, critérios de aceite, contrato de entrada e saída e casos-limite. Se a IA não sabe exatamente o que se espera dela, ela preenche as lacunas com suposições — e meu sistema de controle perde até mesmo o que validar.</li>
+        <li><strong>The "Spec Pack":</strong> In traditional software engineering, nothing is pushed to production without clear requirements; with AI, this discipline becomes even more critical. For each feature, I assemble a specification package defining the goal, constraints, acceptance criteria, input/output contract, and edge cases. If the AI doesn't know exactly what is expected of it, it fills the gaps with assumptions—and my control system loses even what it is supposed to validate.</li>
       </ul>
 
-      <div style="background-color: #f8f9fa; border-left: 4px solid #007bff; padding: 1.5rem; margin: 1.5rem 0; border-radius: 4px;">
-        <h4 style="margin-top: 0; margin-bottom: 0.5rem;">Exemplo — Spec Pack: proteção de rotas RAG (OIDC + role)</h4>
+      <div
+        style="background-color: #f8f9fa; border-left: 4px solid #007bff; padding: 1.5rem; margin: 1.5rem 0; border-radius: 4px;">
+        <h4 style="margin-top: 0; margin-bottom: 0.5rem;">Example — Spec Pack: RAG route protection (OIDC + role)</h4>
         <ul style="margin-bottom: 0; font-size: 0.95rem;">
-          <li><strong>Objetivo:</strong> Garantir que apenas usuários autenticados com a <em>role</em> exigida possam chamar as rotas de pergunta, feedback e dados do usuário.</li>
-          <li><strong>Restrições:</strong> Validar JWT via JWKS do provedor; algoritmo RS256; <em>issuer</em> fixo; cliente público com PKCE no frontend; <em>role</em> obrigatória configurável por ambiente.</li>
-          <li><strong>Critérios de aceite:</strong> Ausência de <code>Authorization: Bearer</code> &rarr; HTTP 401 com mensagem clara; token inválido ou expirado &rarr; 401; token válido sem a <em>role</em> exigida &rarr; 403 com texto que cite a <em>role</em> esperada; com autenticação desligada em desenvolvimento, comportamento documentado e sem risco de ir para produção por engano.</li>
-          <li><strong>Contrato de I/O:</strong> Entrada: cabeçalho <code>Authorization: Bearer &lt;token&gt;</code>. Saída: contexto de usuário (<code>subject</code>, <code>claims</code>, <code>roles</code>) injetável nas rotas; erros no formato padrão da API.</li>
-          <li><strong>Casos-limite:</strong> Token sem <code>sub</code>; <code>aud</code> em string ou em lista; <code>roles</code> apenas em <code>realm_access</code> ou apenas em <code>resource_access</code> do cliente; desconexão do cliente durante o <em>stream</em>.</li>
+          <li><strong>Goal:</strong> Ensure only authenticated users with the required <em>role</em> can call the question, feedback, and user data routes.</li>
+          <li><strong>Constraints:</strong> Validate JWT via the provider's JWKS; RS256 algorithm; fixed <em>issuer</em>; public client with PKCE in the frontend; mandatory <em>role</em> configurable per environment.</li>
+          <li><strong>Acceptance criteria:</strong> Absence of <code>Authorization: Bearer</code> &rarr; HTTP 401 with a clear message; invalid or expired token &rarr; 401; valid token without the required <em>role</em> &rarr; 403 with text citing the expected <em>role</em>; with authentication disabled in development, behavior documented and zero risk of accidentally deploying to production.</li>
+          <li><strong>Contract (I/O):</strong> Input: <code>Authorization: Bearer &lt;token&gt;</code> header. Output: user context (<code>subject</code>, <code>claims</code>, <code>roles</code>) injectable into routes; errors in the standard API format.</li>
+          <li><strong>Edge cases:</strong> Token without <code>sub</code>; <code>aud</code> as a string or list; <code>roles</code> only in the client's <code>realm_access</code> or <code>resource_access</code>; client disconnection during the <em>stream</em>.</li>
         </ul>
       </div>
 
       <ul>
-        <li><strong>Plano de Execução:</strong> Eu nunca simplesmente digo: "crie o endpoint X". Antes de qualquer implementação, descrevo as etapas do trabalho, as restrições técnicas, os artefatos esperados e como o resultado vai ser validado. Essa conversa preliminar acontece no modo <em>plan</em> do agente de código, justamente para organizar o raciocínio antes de abrir a torneira da execução. O plano não serve só para orientar o trabalho; ele também deixa o processo auditável.</li>
-        <li><strong>Espaço para a IA:</strong> Antes de liberar a geração de código, peço que a IA revise o plano, aponte ambiguidades e sugira melhorias arquiteturais ou operacionais. É o momento de usar o modelo para pensar junto, antes de gastar tempo e tokens construindo a solução errada.</li>
-        <li><strong>Guias de Feedforward:</strong> Além do plano, forneço guias de <em>feedforward</em>: instruções dadas antes da execução para moldar o comportamento do agente desde o início. Aqui entram padrões de projeto, convenções de pastas, contratos obrigatórios e templates explícitos. Quando esses trilhos estão claros, a chance de o código sair certo logo na primeira tentativa aumenta bastante.</li>
+        <li><strong>Execution Plan:</strong> I never simply say: "create endpoint X". Before any implementation, I describe the work steps, technical constraints, expected artifacts, and how the result will be validated. This preliminary conversation happens in the code agent's <em>plan</em> mode, precisely to organize the reasoning before opening the execution tap. The plan doesn't just guide the work; it also makes the process auditable.</li>
+        <li><strong>Space for AI:</strong> Before unlocking code generation, I ask the AI to review the plan, point out ambiguities, and suggest architectural or operational improvements. This is the moment to use the model to think together, before spending time and tokens building the wrong solution.</li>
+        <li><strong>Feedforward Guides:</strong> Alongside the plan, I provide <em>feedforward</em> guides: instructions given before execution to shape the agent's behavior from the start. This includes design patterns, folder conventions, mandatory contracts, and explicit templates. When these guide rails are clear, the chance of the code coming out right on the first try increases dramatically.</li>
       </ul>
 
-      <h2>Passo 3: Implementação e Sensores Rápidos (Keep Quality Left)</h2>
-      <p>Com a arquitetura candidata desenhada e o plano validado, aí sim o agente entra em ação. Meu conforto, porém, não vem de achar que a IA vai acertar sozinha. Vem do conjunto de sensores que cerca a execução. O diagrama e o <em>Spec Pack</em> do passo anterior não estão ali para enfeitar o processo: eles viram pontos concretos de validação.</p>
-      <p>Eu trago a validação para o começo do fluxo. Para encurtar o ciclo de tentativa, erro e correção, priorizo sensores rápidos e objetivos — linters, checagem de tipos, contratos, testes unitários e validadores automáticos. Eles não estão ali para inflar métrica no fim do processo; estão ali para fazer o agente perceber cedo, localmente e com clareza quando saiu do trilho.</p>
-      <p>Mas há uma pergunta incômoda: se a IA também escreve os testes, como saber se esses testes realmente protegem o sistema? É aqui que entram os <strong>Testes Mutantes</strong>. Eu os trato como o verdadeiro "sensor dos sensores": ao introduzir alterações deliberadas na lógica, verifico se a suíte realmente falha quando deveria falhar. Assim, evito a falsa sensação de segurança produzida por testes superficiais que passam com 100% de sucesso sem validar o comportamento real.</p>
-      <p>Na prática, eu concentro mutação onde o custo do erro é alto e a lógica é mais ramificada — regras de decisão, políticas, integrações ou núcleos de processamento com muitos caminhos. Em vez de “mutar o repositório inteiro”, escolho um recorte do sistema com uma suíte de testes dedicada, rápida e determinística, capaz de validar o comportamento esperado sem depender de serviços lentos ou não reproduzíveis. A ferramenta de mutação roda sobre esse recorte para responder uma pergunta simples: se a semântica mudar de forma relevante, a suíte falha de verdade — ou só passa de aparência?</p>
-      <p>Na prática, quando o agente viola no terminal um contrato definido no Passo 1 ou no Passo 2, um desses sensores acusa a falha em segundos — muitas vezes em milissegundos — e o ciclo de correção recomeça com feedback claro, local e imediato. É isso que torna a velocidade sustentável: não a ausência de erros, mas a capacidade de detectá-los cedo demais para que se espalhem.</p>
+      <h2>Step 3: Implementation and Fast Sensors (Keep Quality Left)</h2>
+      <p>With the candidate architecture drawn and the plan validated, the agent finally springs into action. My comfort, however, doesn't come from assuming the AI will get it right on its own. It comes from the set of sensors surrounding the execution. The diagram and the <em>Spec Pack</em> from the previous step aren't there to decorate the process: they become concrete validation points.</p>
+      <p>I bring validation to the front of the flow. To shorten the trial, error, and correction cycle, I prioritize fast, objective sensors—linters, type-checking, contracts, unit tests, and automated validators. They aren't there to inflate metrics at the end of the process; they are there to make the agent notice early, locally, and clearly when it has derailed.</p>
+      <p>But there is an uncomfortable question: if the AI also writes the tests, how do we know these tests actually protect the system? This is where <strong>Mutation Testing</strong> comes in. I treat it as the true "sensor of sensors": by deliberately introducing changes to the logic, I verify if the suite actually fails when it should. This way, I avoid the false sense of security produced by superficial tests that pass with 100% success without validating the real behavior.</p>
+      <p>In practice, I concentrate mutation where the cost of error is high and the logic is highly branched—decision rules, policies, integrations, or processing cores with multiple paths. Instead of "mutating the whole repository," I choose a slice of the system with a dedicated, fast, and deterministic test suite, capable of validating the expected behavior without relying on slow or non-reproducible services. The mutation tool runs over this slice to answer a simple question: if the semantics change significantly, does the suite actually fail—or does it just pass for show?</p>
+      <p>In reality, when the agent violates a contract defined in Step 1 or 2 right in the terminal, one of these sensors catches the failure in seconds—often in milliseconds—and the correction cycle restarts with clear, local, and immediate feedback. This is what makes speed sustainable: not the absence of errors, but the ability to detect them way too early for them to spread.</p>
 
-      <h2>Passo 4: O "Ciclo de Controle" (Como lido com as falhas)</h2>
-      <p>E sim, os agentes continuam falhando. Mesmo os modelos mais fortes ainda erram, entram em loop, ignoram restrições e às vezes defendem a resposta errada com convicção. Quando isso acontece, eu tento não tratar o problema como um acidente isolado da geração. Na maioria das vezes, ele revela uma falha no meu processo de controle.</p>
-      <p>É aí que entra, de verdade, o papel do <strong>Engenheiro de Harness</strong>. Quando algo dá errado, resisto à tentação de corrigir só o sintoma no editor. Em vez de remendar a função quebrada, volto ao ambiente e ajusto o próprio sistema que orienta, restringe e valida o agente — o meu <em>Control Loop</em>.</p>
+      <h2>Step 4: The "Control Loop" (How I handle AI failures)</h2>
+      <p>And yes, agents still fail. Even the strongest models still make mistakes, get stuck in loops, ignore constraints, and sometimes defend the wrong answer with conviction. When this happens, I try not to treat the problem as an isolated generation accident. Most of the time, it reveals a flaw in my control process.</p>
+      <p>This is where the role of the <strong>Harness Engineer</strong> really kicks in. When something goes wrong, I resist the temptation to just correct the symptom in the editor. Instead of patching the broken function, I return to the environment and adjust the very system that guides, restricts, and validates the agent—my <em>Control Loop</em>.</p>
       <ul>
-        <li><strong>Se a especificação estava vaga</strong>, eu a torno mais concreta com exemplos melhores, casos-limite e critérios de aceite mais nítidos.</li>
-        <li><strong>Se os testes falharam em detectar o problema</strong>, eu adiciono ou fortaleço o sensor responsável para que a mesma classe de erro seja capturada mais cedo da próxima vez.</li>
-        <li><strong>Se a estrutura ou os padrões se desviaram</strong>, transformo a correção em regra persistente nos meus guias de <em>feedforward</em>, para que o comportamento esperado passe a fazer parte do trilho.</li>
+        <li><strong>If the specification was vague</strong>, I make it more concrete with better examples, edge cases, and sharper acceptance criteria.</li>
+        <li><strong>If the tests failed to detect the problem</strong>, I add or strengthen the responsible sensor so that the same class of error is caught earlier next time.</li>
+        <li><strong>If the structure or patterns drifted</strong>, I turn the correction into a persistent rule in my <em>feedforward</em> guides, so the expected behavior becomes part of the rails.</li>
       </ul>
 
-      <div style="background-color: #f8f9fa; border-left: 4px solid #dc3545; padding: 1.5rem; margin: 1.5rem 0; border-radius: 4px;">
-        <h4 style="margin-top: 0; margin-bottom: 0.5rem;">Um Caso Real de Falha: O Vazamento de Conexão</h4>
-        <p style="margin-bottom: 0; font-size: 0.95rem;">Em um caso recente, meu agente gerativo montou uma boa estrutura de importação para banco de dados, mas omitiu o fechamento correto das conexões quando ocorria falha durante retentativas com <em>pool</em>. Era um detalhe pequeno na aparência, mas grave o suficiente para causar exaustão de conexões e instabilidade futura. Os sensores locais detectaram o problema rapidamente.<br/><br/>
-        Em vez de abrir o editor e inserir manualmente um <code>.close()</code> no ponto quebrado, usei o <em>Control Loop</em>: atualizei meus guias de <em>feedforward</em> para exigir o uso de <em>context managers</em> em toda comunicação com I/O nesse contexto. Com isso, não corrigi apenas aquele erro; corrigi a forma como o agente passaria a abordar toda uma classe de problemas semelhantes.</p>
+      <div
+        style="background-color: #f8f9fa; border-left: 4px solid #dc3545; padding: 1.5rem; margin: 1.5rem 0; border-radius: 4px;">
+        <h4 style="margin-top: 0; margin-bottom: 0.5rem;">A Real Failure Case: The Connection Leak</h4>
+        <p style="margin-bottom: 0; font-size: 0.95rem;">In a recent case, my generative agent built a solid database import structure, but omitted correctly closing connections when a failure occurred during retries with <em>pools</em>. It seemed like a small detail, but it was grave enough to cause connection exhaustion and future instability. Local sensors detected the problem rapidly.<br /><br />
+          Instead of opening the editor and manually inserting a <code>.close()</code> at the broken spot, I used the <em>Control Loop</em>: I updated my <em>feedforward</em> guides to require the use of <em>context managers</em> for all I/O communication in that context. By doing that, I didn't just fix that single error; I corrected how the agent would approach an entire class of similar problems moving forward.</p>
       </div>
 
-      <h2>Passo 5: A Espiral de Entrega e o Feedback do Cliente</h2>
-      <p>Depois que a funcionalidade passa por especificação, sensores e correções, ela sai da bancada e vai para validação com o cliente. É nessa etapa que eu separo duas coisas que não devem ser confundidas: os sensores dizem se o software se mantém consistente; o cliente diz se ele está resolvendo o problema certo. Uma coisa não substitui a outra.</p>
-      <p>Na prática, trabalho em sprints curtas, com o cliente acompanhando o produto quase todos os dias. Em vez de esperar uma grande entrega no fim do ciclo, prefiro mostrar incrementos pequenos, colher feedback rápido e trazer esse retorno de volta para o planejamento seguinte. Isso reduz retrabalho e evita que a equipe passe tempo demais lapidando algo que, no fim, não resolve o problema certo.</p>
-      <p>Cada comentário do cliente volta para o sistema: às vezes como ajuste de escopo, às vezes como refinamento do <em>Spec Pack</em>, às vezes como novo critério de aceite. O feedback humano alimenta a próxima iteração do mesmo jeito que os sensores alimentam a correção técnica. É essa mistura de validação de negócio com validação computacional que sustenta a cadência.</p>
-      <p>Quando a funcionalidade amadurece nesse ciclo curto e passa com consistência pelas validações locais, só aí faz sentido acionar a camada mais pesada de verificação — testes end-to-end, carga, estresse e checks de infraestrutura na CI/CD. Em resumo: <strong>sensores rápidos sustentam a evolução diária; validações maiores na nuvem protegem a confiança da entrega em produção.</strong></p>
+      <h2>Step 5: The Delivery Spiral and Client Feedback</h2>
+      <p>After the feature passes through specification, sensors, and corrections, it leaves the workbench and heads to validation with the client. It is in this stage that I separate two things that shouldn't be confused: sensors say if the software remains consistent; the client says if it's solving the right problem. One does not replace the other.</p>
+      <p>In practice, I work in short sprints, with the client tracking the product almost every day. Instead of waiting for a massive delivery at the end of the cycle, I prefer showing small increments, harvesting quick feedback, and bringing that return straight back to the next planning phase. This reduces rework and prevents the team from spending too much time polishing something that, in the end, doesn't solve the right problem.</p>
+      <p>Each client comment loops back into the system: sometimes as a scope adjustment, sometimes as a <em>Spec Pack</em> refinement, sometimes as a new acceptance criteria. Human feedback feeds the next iteration the exact same way sensors feed technical correction. This mix of business validation with computational validation sustains the cadence.</p>
+      <p>When the feature matures in this short cycle and consistently passes local validations, only then does it make sense to trigger the heaviest layer of verification—end-to-end tests, load, stress, and infrastructure CI/CD checks. In summary: <strong>fast sensors sustain daily evolution; heavy validations in the cloud protect production delivery confidence.</strong></p>
 
-      <h2>Os Limites do "Vibe Coding"</h2>
-      <p>Seria ingenuidade achar que esse modelo resolve tudo. A IA atual acelera muito a execução, organiza ideias e produz versões iniciais surpreendentemente boas. Em contextos bem delimitados — com arquitetura visível, contratos claros, sensores rápidos e feedback frequente — o ganho de produtividade é real.</p>
-      <p>Mas isso muda bastante quando entramos em sistemas densos, legados e cheios de regra implícita. Em bases onde decisões importantes vivem mais na memória informal da equipe do que em artefatos confiáveis, onde a integração é frágil, a refatoração é arriscada e os requisitos estão espalhados em suposições históricas, o <em>vibe coding</em> perde força rápido. Nesses ambientes, o agente não encontra verdade suficiente para raciocinar com segurança; ele apenas preenche lacunas com inferências frágeis.</p>
-      <p>É aí que documentação de qualidade e testes fortes deixam de ser “boas práticas” e passam a ser infraestrutura essencial. Quanto mais contexto explícito existe — decisões registradas, contratos claros, exemplos reais, critérios de aceite e histórico vivo do sistema — maior a chance de o modelo produzir algo útil e seguro. E quanto melhor for a malha de testes, mais cedo conseguimos separar uma saída convincente de uma solução realmente correta.</p>
-      <p>Isso também muda o papel do bom profissional dentro da empresa. Conhecimento relevante não pode ficar retido na cabeça de uma pessoa ou preso em conversas informais; ele precisa circular pela equipe e virar artefato: documentação, testes, padrões, exemplos e guias. Hoje, esse compartilhamento não beneficia só pessoas — beneficia também os modelos. E isso aparece diretamente na qualidade do que a IA consegue gerar.</p>
-      <p>Em resumo: a IA amplia a capacidade de execução, mas não substitui julgamento técnico, responsabilidade arquitetural nem conhecimento institucional profundo. Quando esse conhecimento está bem distribuído e bem instrumentado, os modelos trabalham melhor. Quando não está, eles apenas escalam a desorganização existente.</p>
+      <h2>The Limits of "Vibe Coding"</h2>
+      <p>It would be naive to think this model solves everything. Current AI incredibly accelerates execution, organizes ideas, and produces surprisingly good initial versions. In clearly bounded contexts—with visible architecture, clear contracts, fast sensors, and frequent feedback—productivity gains are very real.</p>
+      <p>But this shifts drastically when we enter dense, legacy systems full of implicit rules. In codebases where crucial decisions live more in the team's informal memory than in reliable artifacts, where integration is fragile, refactoring is risky, and requirements are scattered across historical assumptions, <em>vibe coding</em> loses steam rapidly. In these environments, the agent doesn't find enough truth to reason securely; it merely fills in gaps with fragile inferences.</p>
+      <p>That's where high-quality documentation and robust tests cease to be "best practices" and become essential infrastructure. The more explicit context exists—recorded decisions, clear contracts, real examples, acceptance criteria, and a living system history—the higher the chances the model produces something useful and safe. And the better the test mesh, the sooner we can separate a convincing output from a genuinely correct solution.</p>
+      <p>This also alters the role of a good professional within the company. Relevant knowledge cannot remain trapped in someone's head or locked in informal chats; it needs to circulate through the team and become an artifact: documentation, tests, patterns, examples, and guides. Today, this sharing doesn't just benefit people—it also benefits the models. And this directly reflects on the quality of what the AI is able to generate.</p>
+      <p>In summary: AI amplifies execution capacity, but it doesn't replace technical judgment, architectural responsibility, or profound institutional knowledge. When this knowledge is well-distributed and well-instrumented, models work better. When it isn't, they only scale the pre-existing mess.</p>
 
-      <h2>Um Ambiente de Harness Mínimo Viável (MVH)</h2>
-      <p>Na prática, um harness mínimo viável pode ser resumido em poucos elementos:</p>
+      <h2>A Minimum Viable Harness (MVH)</h2>
+      <p>In practice, a minimum viable harness can be boiled down to a few core elements:</p>
       <ul>
-        <li><strong>Contexto Explícito:</strong> Defina objetivo, escopo, restrições e critérios de aceite antes de pedir execução.</li>
-        <li><strong>Arquitetura e Plano Visíveis:</strong> Discuta a solução no modo <em>plan</em>, explicite a arquitetura candidata e só depois avance para o código.</li>
-        <li><strong>Conhecimento Externalizado:</strong> Documentação, padrões, exemplos e decisões importantes precisam sair da cabeça das pessoas e virar artefato.</li>
-        <li><strong>Harness Ajustado ao Modelo:</strong> Escolha bem o modelo e calibre o harness para suas nuances de contexto, ferramentas, instruções e formato de saída.</li>
-        <li><strong>Sensores Rápidos:</strong> Rode linters, tipos, contratos e testes locais cedo, para encurtar o ciclo de correção.</li>
-        <li><strong>Regra de Parada:</strong> Se o agente não converge, pare, revise a especificação e ajuste os trilhos antes de insistir.</li>
+        <li><strong>Explicit Context:</strong> Define the objective, scope, constraints, and acceptance criteria before asking for execution.</li>
+        <li><strong>Visible Architecture and Plan:</strong> Discuss the solution in <em>plan</em> mode, lay out the candidate architecture, and only after that advance to the code.</li>
+        <li><strong>Externalized Knowledge:</strong> Documentation, patterns, examples, and critical decisions need to leave people's heads and become artifacts.</li>
+        <li><strong>Model-Tuned Harness:</strong> Pick the model wisely and calibrate the harness to its nuances surrounding context, tooling, instructions, and output formats.</li>
+        <li><strong>Fast Sensors:</strong> Fire off linters, types, contracts, and local tests early, to shorten the correction cycle.</li>
+        <li><strong>Stopping Rule:</strong> If the agent fails to converge, stop, review the specification, and realign the rails before trying again.</li>
       </ul>
 
-      <h2>The Bottom Line (Para Encerrar)</h2>
-      <p>No fim, parei de me colocar no papel de revisor manual de cada tropeço da máquina. Meu trabalho hoje é outro: montar o contexto em que ela opera — arquitetura visível, especificações claras, documentação viva, testes fortes, sensores rápidos e um harness compatível com o modelo certo. Quando isso está de pé, a IA deixa de ser barulho e vira força de execução.</p>
-      <p>Para mim, essa é a mudança central. A engenharia não saiu de cena; ela só mudou de endereço. Antes, boa parte da disciplina estava no ato de escrever cada linha. Agora, ela está principalmente na forma como planejamos, restringimos, validamos e iteramos junto com os agentes. Código pode até ser abundante. O difícil continua sendo transformar velocidade em confiabilidade.</p>
-      <p><strong>A Inteligência Artificial me dá velocidade. A Engenharia de Harness me dá direção. Quando as duas coisas andam juntas, o resultado não é só software mais rápido de produzir — é software melhor de operar, mais seguro de evoluir e muito menos dependente de improviso.</strong></p>
+      <h2>The Bottom Line</h2>
+      <p>In the end, I stopped casting myself as the manual reviewer for every single machine stumble. My job today is different: it's building the environment stringently around it—visible architecture, explicit specs, living documentation, strong tests, fast sensors, and a harness matched to the right model. When that's in place, AI ceases to be noise and becomes an execution powerhouse.</p>
+      <p>For me, this is the core shift. Engineering hasn't left the stage; it just relocated. Before, a huge chunk of the discipline lived in the act of writing every line. Now, it lives heavily in how we plan, restrict, validate, and iterate alongside agents. Code can be abundant. The hard part is still translating speed into reliability.</p>
+      <p><strong>Artificial Intelligence gives me speed. Harness Engineering gives me direction. When both walk together, the outcome isn't just software that's faster to build—it's software that's better to operate, safer to evolve, and immensely less dependent on improvisation.</strong></p>
 
       <div class="references">
         <h3>References & Further Reading</h3>
@@ -182,22 +197,13 @@
 
       <div class="comments-section">
         <h3>Comentários</h3>
-        <script src="https://giscus.app/client.js"
-          data-repo="emerson-diego/emerson-diego.github.io"
-          data-repo-id="" 
-          data-category="Announcements"
-          data-category-id=""
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="bottom"
-          data-theme="light"
-          data-lang="pt"
-          crossorigin="anonymous"
-          async>
-        </script>
-        <p style="font-size: 0.8rem; color: #777; margin-top: 1rem;">(Configuração do Giscus pode ser necessária com data-repo-id e data-category-id específicos)</p>
+        <script src="https://giscus.app/client.js" data-repo="emerson-diego/emerson-diego.github.io" data-repo-id=""
+          data-category="Announcements" data-category-id="" data-mapping="pathname" data-strict="0"
+          data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light"
+          data-lang="pt" crossorigin="anonymous" async>
+          </script>
+        <p style="font-size: 0.8rem; color: #777; margin-top: 1rem;">(Configuração do Giscus pode ser necessária com
+          data-repo-id e data-category-id específicos)</p>
       </div>
     </article>
   </section>
@@ -206,4 +212,5 @@
     <p>&copy; 2026 Emerson Araújo. Built with passion and code.</p>
   </footer>
 </body>
+
 </html>
