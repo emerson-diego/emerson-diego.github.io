@@ -104,7 +104,7 @@
 
       <div class="post-image">
         <figure>
-          <img src="images/fluxo.jpg" alt="Complementary illustration of the development flow" />
+          <img src="images/fluxo.png" alt="Complementary illustration of the development flow" />
           <figcaption>Complementary illustration of the development flow</figcaption>
         </figure>
       </div>
@@ -157,7 +157,8 @@
             question, feedback, and user data routes.</li>
           <li><strong>Constraints:</strong> Validate JWT via the provider's JWKS; RS256 algorithm; fixed
             <em>issuer</em>; public client with PKCE in the frontend; mandatory <em>role</em> configurable per
-            environment.</li>
+            environment.
+          </li>
           <li><strong>Acceptance criteria:</strong> Absence of <code>Authorization: Bearer</code> &rarr; HTTP 401 with a
             clear message; invalid or expired token &rarr; 401; valid token without the required <em>role</em> &rarr;
             403 with text citing the expected <em>role</em>; with authentication disabled in development, behavior
@@ -167,7 +168,8 @@
             in the standard API format.</li>
           <li><strong>Edge cases:</strong> Token without <code>sub</code>; <code>aud</code> as a string or list;
             <code>roles</code> only in the client's <code>realm_access</code> or <code>resource_access</code>; client
-            disconnection during the <em>stream</em>.</li>
+            disconnection during the <em>stream</em>.
+          </li>
         </ul>
       </div>
 
@@ -218,14 +220,16 @@
       <p>This is where the role of the <strong>Harness Engineer</strong> really kicks in. When something goes wrong, I
         resist the temptation to just correct the symptom in the editor. Instead of patching the broken function, I
         return to the environment and adjust the very system that guides, restricts, and validates the agent—my
-        <em>Control Loop</em>.</p>
+        <em>Control Loop</em>.
+      </p>
       <ul>
         <li><strong>If the specification was vague</strong>, I make it more concrete with better examples, edge cases,
           and sharper acceptance criteria.</li>
         <li><strong>If the tests failed to detect the problem</strong>, I add or strengthen the responsible sensor so
           that the same class of error is caught earlier next time.</li>
         <li><strong>If the structure or patterns drifted</strong>, I turn the correction into a persistent rule in my
-          <em>feedforward</em> guides, so the expected behavior becomes part of the rails.</li>
+          <em>feedforward</em> guides, so the expected behavior becomes part of the rails.
+        </li>
       </ul>
 
       <div
@@ -238,7 +242,8 @@
           Instead of opening the editor and manually inserting a <code>.close()</code> at the broken spot, I used the
           <em>Control Loop</em>: I updated my <em>feedforward</em> guides to require the use of <em>context
             managers</em> for all I/O communication in that context. By doing that, I didn't just fix that single error;
-          I corrected how the agent would approach an entire class of similar problems moving forward.</p>
+          I corrected how the agent would approach an entire class of similar problems moving forward.
+        </p>
       </div>
 
       <h2>Step 5: The Delivery Spiral and Client Feedback</h2>
@@ -311,7 +316,11 @@
           to evolve, and immensely less dependent on improvisation.</strong></p>
 
       <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #eaeaea;" />
-      <p><em><strong>A final thought:</strong> The methodology I've outlined above is a snapshot of how I currently build with coding agents today. I'm deeply passionate about this space, and because the AI landscape shifts at breakneck speed, I am constantly tweaking, adapting, and refining my own harness. There are no definitive answers yet—only better systems. How are you adapting your own workflows to keep up with generative code? Drop a comment below, I’d love to read about your experiences and keep the discussion going!</em></p>
+      <p><em><strong>A final thought:</strong> The methodology I've outlined above is a snapshot of how I currently
+          build with coding agents today. I'm deeply passionate about this space, and because the AI landscape shifts at
+          breakneck speed, I am constantly tweaking, adapting, and refining my own harness. There are no definitive
+          answers yet—only better systems. How are you adapting your own workflows to keep up with generative code? Drop
+          a comment below, I’d love to read about your experiences and keep the discussion going!</em></p>
 
       <div class="references">
         <h3>References & Further Reading</h3>
