@@ -388,7 +388,7 @@
                         <strong>Multiple Solutions:</strong> Never accept the first suggestion blindly. Use AI to surface and contrast 2 to 3 architectural designs (e.g., event-driven vs. synchronous processing, deterministic code vs. LLM heuristics).
                     </li>
                     <li>
-                        <strong>Trade-off Analysis:</strong> Weigh latency, infrastructure cost, maintainability, and the <strong>cost of future change</strong> (Grady Booch). The final decision always rests with the human engineer.
+                        <strong>Trade-off Analysis:</strong> Weigh latency, infrastructure cost, maintainability, and the cost of future change — as Grady Booch emphasized in his foundational work on architecture, modular decomposition exists primarily to control the cost and cognitive complexity of software evolution. The final decision always rests with the human engineer.
                     </li>
                 </ul>
 
@@ -459,15 +459,23 @@
                     This shift isn't about adopting cooler tools; it is a fundamental break in how engineering discipline is enforced, echoed by veteran voices across the industry.
                 </p>
                 <p>
-                    In mid-2026, <strong>Uncle Bob (Robert C. Martin)</strong> provoked widespread debate by stating:
+                    In July 2026, <strong>Uncle Bob (Robert C. Martin)</strong> sparked widespread debate across the engineering community when he posted:
                 </p>
                 <blockquote>
-                    “My current strategy is to not read any of the code written by my agents [...] I test and constrain it so thoroughly that I don't have to pray.”
+                    “My current strategy is to not read any of the code written by my agents.”
                     <br />
-                    <small>— Uncle Bob (<a href="https://x.com/unclebobmartin" target="_blank" rel="noopener">Robert C. Martin on X</a>; analysis on <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>)</small>
+                    <small>— Robert C. Martin (<a href="https://x.com/unclebobmartin" target="_blank" rel="noopener">Post on X, July 23, 2026</a>; analysis on <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>)</small>
                 </blockquote>
                 <p>
-                    Clean code, Uncle Bob explained, was never about worshiping syntax for its own sake: it was designed to get syntax out of the way so engineers could focus on the real job — <em>thinking and deciding</em>. This perspective aligns with <strong>Fabio Akita's</strong> economic observation that when the marginal cost of fixing code approaches zero, bureaucratic manual review loops become software's costliest friction, while <strong>DHH</strong> warned that unassisted human review of critical code will soon be regarded as negligent compared to automated invariant verification.
+                    When pressed on how system correctness could possibly be guaranteed without manual review, he clarified his reasoning in a companion post:
+                </p>
+                <blockquote>
+                    “I don't read the code AI produces, and I test and constrain it so thoroughly that I don't have to pray.”
+                    <br />
+                    <small>— Robert C. Martin (<a href="https://x.com/unclebobmartin" target="_blank" rel="noopener">Post on X, July 22, 2026</a>)</small>
+                </blockquote>
+                <p>
+                    Clean code, Uncle Bob explained, was never about worshiping syntax for its own sake: it was designed to get syntax out of the way so engineers could focus on the real job — <em>thinking and deciding</em>. This perspective aligns with <strong>Fabio Akita's</strong> economic observation that when the marginal cost of fixing code approaches zero, bureaucratic manual review loops become software's costliest friction (<a href="https://akitaonrails.com" target="_blank" rel="noopener">AkitaOnRails / X, Sept 2026</a>), while <strong>DHH</strong> warned that unassisted human review of critical code will soon be regarded as negligent compared to automated invariant verification (<a href="https://x.com/dhh" target="_blank" rel="noopener">DHH on X, Sept 2026</a>).
                 </p>
 
                 <h3>The Reading Spectrum: Where to Read vs. Where to Automate</h3>
@@ -476,7 +484,7 @@
                 </p>
                 <ul>
                     <li>
-                        <strong>The Semantic Core (Line-by-Line Scrutiny Mandated):</strong> Business rules, state transition invariants, public API contracts, data migrations, and critical security boundaries. Here, delegating without line-by-line comprehension is engineering malpractice. Furthermore, during early architecture exploration, reading code closely is how the developer masters unfamiliar libraries and expands their technical repertoire.
+                        <strong>The Semantic Core (Line-by-Line Scrutiny Paired with Automated Invariants):</strong> Business rules, state transition invariants, public API contracts, data migrations, and critical security boundaries. Here, delegating without line-by-line comprehension is engineering malpractice. Crucially, as DHH warned, human eyes tire and miss subtle concurrency bugs: in the semantic core, deep human comprehension is <em>combined with</em> automated invariant tests, property-based testing, and schema validation.
                     </li>
                     <li>
                         <strong>The Syntactic Perimeter (Extreme Constraints Replace Reading):</strong> Repetitive boilerplate, DTO transformations, adapter plumbing, and synthetic test suites. Reading thousands of lines of mechanical plumbing provides a false sense of security — human eyes tire quickly. Here, Uncle Bob and DHH's model shines: we enforce strict typing, mutation tests, linter assertions, and negative constitutional rules, letting the harness prove correctness deterministically.
@@ -577,7 +585,7 @@ Not users of this repo: judges, plaintiffs, lawyers…
 
                 <h3>Stack Dogma vs. Explicit Constraints</h3>
                 <p>
-                    Historically, organizations dogmatically standardized on single technology stacks to amortize steep human learning curves and hiring frictions. In an era where coding agents navigate diverse programming ecosystems with equal fluency, framework dogma loses its justification. A technology stack is not a corporate totem; it is an engineering response to tangible operational constraints (hardware access, memory boundaries, concurrency, and latency).
+                    Historically, organizations dogmatically standardized on single technology stacks to amortize steep human learning curves and hiring frictions. In an era where coding agents navigate diverse programming ecosystems with equal fluency, framework dogma loses its justification. As Yaniv Bernstein (2026) argued regarding the convergence of framework primitives, and Himanshu Mistry (2026) observed regarding product value, end users never care about tech stack tribalism — they care about latency, correctness, and maintainability. A technology stack is not a corporate totem; it is an engineering response to tangible operational constraints (hardware access, memory boundaries, concurrency, and cold-start latency).
                 </p>
                 <p>
                     This makes <span class="path">tech-stack.md</span> vital: it is not a declaration of preference, but an <strong>enforceable contract of architectural constraints</strong>. By defining both permitted tooling and explicit prohibitions, we anchor the agent to a coherent technical perimeter, preventing stochastic framework drift across independent sessions.
@@ -654,12 +662,11 @@ Write **only** within the root of this repository…</code></pre>
                     <strong>decides when</strong> to open a change, <strong>in what order</strong> to execute
                     propose/apply/archive, and <strong>whether</strong> the human must type
                     <span class="path">/opsx-*</span> is <span class="path">AGENTS.md</span>.
-                    While implemented here with specialized repository skills, <span class="path">AGENTS.md</span>
-                    has evolved into an industry-wide, tool-agnostic governance format — natively recognized and ingested
-                    by modern agentic runtimes including <strong>Claude Code</strong>, <strong>GitHub Copilot CLI</strong>,
-                    <strong>OpenAI Codex/Aider</strong>, <strong>Windsurf</strong>, and <strong>Google Antigravity</strong>.
-                    Placing operational instructions at the repository root guarantees that your engineering policies remain
-                    portable, regardless of which client or developer executes the workflow.
+                    While individual tools often introduce their own configuration files (such as <span class="path">CLAUDE.md</span>
+                    in Claude Code or tool-specific system prompts in Aider), <span class="path">AGENTS.md</span>
+                    has rapidly coalesced as the open, community-wide root convention for repository-level agent governance.
+                    It is easily imported, aliased, or ingested across runtimes including Claude Code, Cursor, Windsurf,
+                    Copilot CLI, and Google Antigravity, ensuring your architectural standing orders travel with the codebase.
                 </p>
                 <p>
                     In our repository, the agent follows skills in <span class="path">.cursor/skills/openspec-*</span>
@@ -676,10 +683,10 @@ Write **only** within the root of this repository…</code></pre>
 
                 <h3>Context Decay &amp; The Economics of Delta Specs</h3>
                 <p>
-                    The root cause of agent degradation across long sessions is a well-documented phenomenon: <strong>Context Decay</strong>. As conversational turns, intermediate compiler traces, and sprawling code diffs accumulate, token history entropy dilutes the original system instructions (*instruction-following drift*). Attention dispersion causes the model to silently drop constitutional constraints and hallucinate agreements made earlier in the session.
+                    The root cause of agent degradation across long sessions is a well-documented empirical phenomenon: <strong>Context Decay</strong>. As conversational turns, intermediate compiler traces, and sprawling code diffs accumulate, expanded token windows lead to positional attention degradation and system instruction dilution (the "Lost in the Middle" effect documented by Liu et al., 2023). Under bloated conversation histories, models suffer from instruction-following drift, silently dropping constitutional constraints and hallucinating agreements made earlier in the session.
                 </p>
                 <p>
-                    On-disk specifications solve this by serving as an immutable, persistent memory anchor outside the volatile chat window. But how specifications are packaged is equally critical. In monolithic specification frameworks, dumping hundreds of pages of global system documentation into the prompt on every turn overwhelms the model's context budget, driving reasoning into low-attention zones. In our workflow, OpenSpec achieves <strong>delta economy</strong>: task artifacts (<span class="path">proposal.md</span>, <span class="path">specs/&lt;cap&gt;/spec.md</span> deltas) average around <strong>~250 focused lines</strong> of active capability diffs. By injecting only the active change contract alongside the three constitutional documents, the agent operates in the highest-fidelity attention zone of its context window.
+                    On-disk specifications solve this by serving as an immutable, persistent memory anchor outside the volatile chat window. In our daily workflow, OpenSpec achieves <strong>delta economy</strong>: task artifacts (<span class="path">proposal.md</span>, <span class="path">specs/&lt;cap&gt;/spec.md</span> deltas) typically average around <strong>~250 focused lines</strong> of active capability requirements, compared to monolithic specification suites that dump thousands of lines of global project documentation into the prompt on every turn. By injecting only the active change contract alongside the three constitutional documents, the prompt remains focused within the model's highest-retention attention window.
                 </p>
 
                 <h3>One Request = Complete Lifecycle</h3>
@@ -740,14 +747,14 @@ When the user asks to commit, invoke the semantic-commit skill
 (safe staging, ignoring `.env`, messages passed via HEREDOC).</code></pre>
                 <p class="caption">Excerpt from AGENTS.md — mandatory format + dedicated commit procedure.</p>
 
-                <h3>Empirical Impact: Before vs. After the Architectural Harness</h3>
+                <h3>Empirical Observations: Workflow Shifts (Observed Tendencies)</h3>
                 <p>
-                    These constraints were not adopted out of theoretical purity, but to eliminate measurable friction in our production service. Over months of running a multi-model classifier with shared GPUs, our operational metrics shifted dramatically:
+                    These shifts reflect informal empirical observations recorded over ~3 months of active development on our production classifier, rather than a formal controlled benchmark:
                 </p>
                 <table>
                     <thead>
                         <tr>
-                            <th>Operational Metric</th>
+                            <th>Workflow Area</th>
                             <th>Before (Vibe Coding / Ad-Hoc Prompts)</th>
                             <th>After (Constitution + AGENTS.md + OpenSpec)</th>
                         </tr>
@@ -756,26 +763,26 @@ When the user asks to commit, invoke the semantic-commit skill
                         <tr>
                             <td><strong>Unauthorized Dependencies</strong></td>
                             <td>2–3 extraneous packages proposed per sprint (<span class="path">requests</span>, <span class="path">date-fns</span>)</td>
-                            <td><strong>0</strong> (suppressed entirely by the <em>Do Not Use</em> constitutional table)</td>
+                            <td><strong>Rare / Suppressed</strong> (0 unvetted packages merged, filtered by <em>Do Not Use</em>)</td>
                         </tr>
                         <tr>
                             <td><strong>Architectural Drift &amp; Rework</strong></td>
                             <td>~4 manual rollback / re-prompt cycles per non-trivial capability</td>
-                            <td><strong>0–1</strong> (misalignments intercepted at the Human Gate before code generation)</td>
+                            <td><strong>Significant Reduction</strong> (0–1 early corrections caught at the Human Gate)</td>
                         </tr>
                         <tr>
                             <td><strong>Commit &amp; Secret Hygiene</strong></td>
                             <td>Frequent untyped commit logs; accidental staging of local files</td>
-                            <td><strong>100%</strong> Conventional Commits; zero secret leaks via automated <span class="path">semantic-commit</span></td>
+                            <td><strong>Consistent Adherence</strong> (Conventional Commits; zero secret leaks committed)</td>
                         </tr>
                         <tr>
                             <td><strong>Session Context Degradation</strong></td>
-                            <td>Sessions abandoned every ~10 turns due to instruction amnesia</td>
-                            <td>Single conversations execute full lifecycle (explore &rarr; propose &rarr; apply &rarr; archive)</td>
+                            <td>Sessions frequently abandoned after ~10 turns due to instruction amnesia</td>
+                            <td><strong>Chained Lifecycles</strong> (explore &rarr; archive in single sessions; complex edge cases still split)</td>
                         </tr>
                     </tbody>
                 </table>
-                <p class="caption">Observed shifts in development velocity and repository hygiene across our production pipeline.</p>
+                <p class="caption">Observed tendencies in repository hygiene and developer friction across our service pipeline.</p>
 
                 <p>
                     Orchestration summarized: I state my intent; <span class="path">AGENTS.md</span> determines whether to open a change, in what sequence to trigger OpenSpec skills, whether to execute in the same conversation, how to branch in git, and when to archive. OpenSpec is the artifact engine; AGENTS is the conductor.
@@ -788,7 +795,7 @@ When the user asks to commit, invoke the semantic-commit skill
                     A confession before diving into mechanics: if you are anything like me, your engineering instincts probably rebel against the premise that <em>"truth belongs in the specification, not in the code."</em> Every seasoned developer has been burned by stale design documents, aspirational UML diagrams, and bureaucratic waterfall specs that drifted into fiction the second code touched production. For decades, our cardinal rule was simple: code is the only source of truth. If you share that prejudice, welcome to the club — I felt the exact same skepticism.
                 </p>
                 <p>
-                    Yet, I decided to give OpenSpec a serious chance in a live production service. What made it click — and what completely dismantled my skepticism — is the orchestration layer: when driven seamlessly by <span class="path">AGENTS.md</span>, the traditional friction and bureaucracy of specification-driven development completely dissolve. You never manually fill out tedious markdown templates or memorize obscure CLI commands; the agent conducts the propose/apply/archive lifecycle autonomously behind the scenes in response to natural-language prompts. You inherit the airtight architectural contracts of formal specifications, while the administrative tax is entirely absorbed by the agent.
+                    Yet, I decided to give OpenSpec a serious chance in a live production service. What made it click is the orchestration layer: when driven seamlessly by <span class="path">AGENTS.md</span>, the traditional friction of specification-driven development is largely mitigated. You never manually fill out tedious markdown templates or memorize obscure CLI commands; the agent conducts the propose/apply/archive lifecycle behind the scenes in response to natural-language prompts. You inherit the architectural contracts of formal specifications, while the administrative overhead is absorbed by the agent.
                 </p>
                 <p>
                     The distinction bears repeating, as it is where many developers get confused. OpenSpec
@@ -797,12 +804,18 @@ When the user asks to commit, invoke the semantic-commit skill
                     A change does not accidentally rewrite the project's mission — unless the change genuinely invalidates
                     that foundation, in which case <span class="path">AGENTS.md</span> mandates updating the constitution immediately.
                 </p>
+
+                <h3>Spec-to-Code Drift: Keeping Living Specs Honest</h3>
+                <p>
+                    A legitimate objection remains: what prevents archived specifications from decaying into stale documentation over time (<strong>Spec Drift</strong>)? In OpenSpec, specifications under <span class="path">openspec/specs/</span> are not read-only archives; they represent the baseline contracts for all subsequent changes. Any future modification to a capability must be proposed as a delta (<span class="path">MODIFIED</span> or <span class="path">REMOVED</span>) against that active baseline spec. If an engineer bypasses OpenSpec and edits production code directly, the pull request violates repository policy: undocumented behavior is treated as architectural debt and rejected during review.
+                </p>
+
                 <h3>The Greenfield vs. Brownfield Dilemma (OpenSpec’s Real Superpower)</h3>
                 <p>
                     Most tutorials on Spec-Driven Development assume a sanitized, fictional reality: a brand-new <em>greenfield</em> repository where an engineer sits down and drafts pristine constitutional docs and complete formal specifications before typing the first <span class="path">git commit</span>. The real enterprise world is overwhelmingly <strong>brownfield</strong>: massive, undocumented legacy codebases with hundreds of thousands of lines running in production. If SDD required mapping every legacy edge case before you could instruct an agent to fix a bug or add an endpoint, the barrier to entry would be economically dead on arrival.
                 </p>
                 <p>
-                    This is where OpenSpec reveals its true pragmatic genius as a <strong>Brownfield-First</strong> architecture. You do not need to document the past all at once. OpenSpec operates strictly on <strong>delta specifications</strong> (<span class="path">ADDED</span>, <span class="path">MODIFIED</span>, <span class="path">REMOVED</span> requirements). You only specify the discrete delta of the active task at hand. As each change completes and merges, the <span class="path">archive</span> step automatically incorporates those delta requirements into the repository's permanent, living core specifications under <span class="path">openspec/specs/</span>. Through this organic, incremental ratchet, your legacy system's formal architectural specification is built piece by piece, sprint by sprint, solely from the territory your team actually touches.
+                    This was indispensable in our typed classifier service, which was decidedly <strong>brownfield</strong>: an existing production system combining Julia algorithms, Python HTTP endpoints, pre-existing datalake schemas, and legacy inference scripts. If we had been forced to write an exhaustive upfront specification for thousands of lines of legacy code, SDD would have been abandoned on day one. Instead, OpenSpec acts as a <strong>Brownfield-First</strong> architecture: you do not need to document the past all at once. OpenSpec operates strictly on <strong>delta specifications</strong> (<span class="path">ADDED</span>, <span class="path">MODIFIED</span>, <span class="path">REMOVED</span> requirements). We applied OpenSpec solely to the delta of new capabilities (the HTTP gateway, idle GPU unloading, multi-model routing), allowing formal core specifications under <span class="path">openspec/specs/</span> to organically encircle the legacy system sprint by sprint, solely from the territory our team actually touched.
                 </p>
                 <p>
                     Note: this article itself is documentation without an OpenSpec change. The filter in
@@ -898,15 +911,16 @@ When the user asks to commit, invoke the semantic-commit skill
             <section>
                 <h2>References &amp; Connections</h2>
                 <ul>
-                    <li>Brooks, F. P. (1986). <em>No Silver Bullet — Essence and Accident in Software Engineering</em>. IEEE Computer, 19(4), 10–19.</li>
-                    <li>Booch, G. (1994). <em>Object-Oriented Analysis and Design with Applications</em> (2nd ed.). Addison-Wesley. (Foundational treatment of architectural trade-offs, modularity, and the economics of software change).</li>
-                    <li>Martin, R. C. (Uncle Bob, 2026). <a href="https://x.com/unclebobmartin" target="_blank" rel="noopener"><em>Reflections on AI-generated code, extreme constraints, and automated harnesses</em></a> (Discussions on X; analysis on <a href="https://alt-hn.vercel.app/item/49074693" target="_blank" rel="noopener">Hacker News</a> and <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>).</li>
-                    <li>Akita, F. (2026). <a href="https://akitaonrails.com" target="_blank" rel="noopener"><em>The Economics of Modern Software Delivery: Deploying faster when fixing bugs is cheap</em></a> (AkitaOnRails / X).</li>
-                    <li>Hansson, D. H. (DHH, 2026). <a href="https://x.com/dhh" target="_blank" rel="noopener"><em>Automated Auditing vs. Unassisted Human Code Review for Critical Systems</em></a> (Post on X).</li>
-                    <li>Cherny, B. (2026). <a href="https://x.com/bcherny" target="_blank" rel="noopener"><em>Discussions on “coding is solved”, Claude Code, and the shifting engineering bottleneck</em></a> (Anthropic / Claude Code).</li>
+                    <li>Brooks, F. P. (1987). <em>No Silver Bullet: Essence and Accidents of Software Engineering</em>. IEEE Computer, 20(4), 10–19.</li>
+                    <li>Booch, G. (1994). <em>Object-Oriented Analysis and Design with Applications</em> (2nd ed.). Addison-Wesley. (Foundational treatment of modular decomposition to control cognitive complexity and the cost of change).</li>
+                    <li>Liu, N. F., Lin, K., Hewitt, J., Paranjape, A., Bevilacqua, M., Petroni, F., &amp; Liang, P. (2023). <em>Lost in the Middle: How Language Models Use Long Contexts</em>. Transactions of the Association for Computational Linguistics, 12, 157–173.</li>
+                    <li>Martin, R. C. [Uncle Bob]. (2026, July 22–23). Public discussion on AI coding agents, test harnesses, and extreme constraints [Posts on X]. Analysis on <a href="https://alt-hn.vercel.app/item/49074693" target="_blank" rel="noopener">Hacker News</a> and <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>.</li>
+                    <li>Akita, F. (2026, September 22). On deployment velocity and the collapsing cost of fixing bugs [Post on X / <a href="https://akitaonrails.com" target="_blank" rel="noopener">AkitaOnRails</a>].</li>
+                    <li>Hansson, D. H. [DHH]. (2026, September 25). On automated code review and critical systems [Post on X].</li>
+                    <li>Cherny, B. (2026). Discussions on “coding is solved”, Claude Code, and the shifting engineering bottleneck [Posts on X].</li>
                     <li>Bernstein, Y. (2026). <a href="https://ivibeco.de/blog/your-favourite-framework-doesnt-matter-anymore" target="_blank" rel="noopener"><em>“Your Favourite Framework Doesn't Matter Anymore”</em></a>.</li>
                     <li>Mistry, H. (2026). <a href="https://www.linkedin.com/pulse/your-tech-stack-doesnt-matter-users-have-never-once-asked-mistry-rfeif" target="_blank" rel="noopener"><em>“Your Tech Stack Doesn't Matter. Your Users Have Never Once Asked”</em></a>.</li>
-                    <li>Everett, P., &amp; Ng, A. (2026). <a href="https://www.youtube.com/watch?v=hy8UstR2NEg&amp;t=455s" target="_blank" rel="noopener"><em>Full Course: Spec-Driven Development with Coding Agents</em></a>. DeepLearning.AI &amp; JetBrains. (Foundations of Spec-Driven Development, Project Constitution, and human-in-the-loop task orchestration).</li>
+                    <li>Everett, P., &amp; Ng, A. (2026). <a href="https://www.youtube.com/watch?v=hy8UstR2NEg&amp;t=455s" target="_blank" rel="noopener"><em>Spec-Driven Development with Coding Agents</em></a>. DeepLearning.AI &amp; JetBrains.</li>
                 </ul>
             </section>
         </article>
