@@ -256,6 +256,13 @@
 
             <section>
                 <p>
+                    <strong>What is original in this article:</strong> not a new tool or a new specification language, but a concrete operating model that binds a
+                    project constitution to <span class="path">AGENTS.md</span> as the orchestration layer for an OpenSpec change lifecycle, with a deliberate
+                    <strong>Human Gate</strong> for consequential actions and a <strong>negative contract</strong> — the stack's explicit <em>Do Not Use</em>
+                    table — to constrain dependency and architecture drift. OpenSpec, <span class="path">AGENTS.md</span>, and the cited practices are external
+                    building blocks; the contribution here is their repository-specific composition, along with the observed trade-offs and evidence from using it.
+                </p>
+                <p>
                     A while ago, Andrej Karpathy coined the term <em>vibe coding</em> for that
                     habit of casually firing prompts, accepting whatever the tool spits back,
                     and moving along as long as it "compiles." That works for throwaway prototypes.
@@ -881,7 +888,45 @@ When the user asks to commit, invoke the semantic-commit skill
             </section>
 
             <section>
-                <h2>6. Limitations, Costs, and Observed Failure Modes</h2>
+                <h2>6. Security: Policy Is Not Enforcement</h2>
+                <p>
+                    Everything in <span class="path">AGENTS.md</span>, skills, and repository rules is guidance that the agent may follow;
+                    none of it is a security boundary the model cannot cross. Security therefore needs layers that do not depend on the
+                    agent's cooperation.
+                </p>
+                <ul>
+                    <li>
+                        <strong>Instruction files are an attack surface:</strong> Treat <span class="path">AGENTS.md</span>, skills, and rules like code.
+                        Review every change and protect them with ownership controls such as <span class="path">CODEOWNERS</span> on
+                        <span class="path">AGENTS.md</span>, <span class="path">.cursor/</span>, and <span class="path">docs/constitution/</span>.
+                        A cloned repository, shared skill, or malicious change to one of these files can steer an agent's behavior.
+                    </li>
+                    <li>
+                        <strong>Indirect prompt injection:</strong> Issue bodies, pull requests, web pages, dependency READMEs, and logs may contain
+                        attacker-controlled instructions. Simon Willison's <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/" target="_blank" rel="noopener">"lethal trifecta"</a>
+                        names the dangerous combination of private-data access, exposure to untrusted content, and a channel for external communication.
+                        Avoid combining all three capabilities in one session when the task does not require them.
+                    </li>
+                    <li>
+                        <strong>Enforce, do not merely request:</strong> "Write only inside the repository root" is policy. Enforcement comes from
+                        a container or OS sandbox, scoped tokens, secrets kept out of the environment, restricted network egress, and secret scanning
+                        in pre-commit hooks and CI. <a href="https://github.com/akitaonrails/ai-jail" target="_blank" rel="noopener"><em>ai-jail</em></a>
+                        is one example of an OS-level sandbox for coding agents; it is a useful layer, not a claim of perfect isolation.
+                    </li>
+                    <li>
+                        <strong>Supply chain:</strong> The <em>Do Not Use</em> table reduces unwanted package drift, but it is not dependency security.
+                        Use a lockfile, review new dependencies, pin or constrain versions appropriately, and run vulnerability and license checks in CI.
+                    </li>
+                    <li>
+                        <strong>Data egress:</strong> Define in the constitution what data may enter an agent's context and which providers are acceptable.
+                        For services handling sensitive judicial material, exclude personal data and credentials from prompts, prefer fixtures over real
+                        records, and make model-provider decisions explicit.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>7. Limitations, Costs, and Observed Failure Modes</h2>
                 <p>
                     No engineering methodology is free of trade-offs. This harness can reduce the disorder and context loss associated with chaotic vibe coding,
                     but it cannot eliminate them; several operational frictions and failure modes must be honestly managed:
@@ -919,7 +964,7 @@ When the user asks to commit, invoke the semantic-commit skill
             </section>
 
             <section>
-                <h2>7. What This Changed in Practice</h2>
+                <h2>8. What This Changed in Practice</h2>
                 <p>
                     In our typed classifier (System One HTTP gateway, GPU-backed decider, automated test battery, idle unload),
                     the agent no longer "picks stacks" because the stack is written in stone. It no longer pulls in unrelated
@@ -936,7 +981,7 @@ When the user asks to commit, invoke the semantic-commit skill
             </section>
 
             <section>
-                <h2>8. Method and Evidence</h2>
+                <h2>9. Method and Evidence</h2>
                 <p>
                     My preferred way of working is deliberately <strong>spiral</strong>: plan enough to make the next decision responsibly, implement a coherent slice,
                     test it, observe the result, collect feedback, and then plan the next slice. Each loop should reduce uncertainty and improve the shared model of the system.
@@ -995,6 +1040,8 @@ When the user asks to commit, invoke the semantic-commit skill
                     <li>Huang, R. L., Reyna, A., Lerner, S., Xia, H., &amp; Hempel, B. (2025). <a href="https://people.cs.uchicago.edu/~brianhempel/Professional%20Software%20Developers%20Don%E2%80%99t%20Vibe%2C%20They%20Control-%20AI%20Agent%20Use%20for%20Coding%20in%202025%20%28preprint%20arxiv%20v1%29.pdf" target="_blank" rel="noopener"><em>Professional Software Developers Don't Vibe, They Control: AI Agent Use for Coding in 2025</em></a>. Preprint. (Field observations N=13; qualitative survey N=99.)</li>
                     <li>Martin, R. C. [Uncle Bob]. (2026, July 22–23). <a href="https://x.com/unclebobmartin/status/2080257779395154409" target="_blank" rel="noopener"><em>“My current strategy is to not read any of the code written by my agents”</em></a> and related posts on X. Discussions on <a href="https://alt-hn.vercel.app/item/49074693" target="_blank" rel="noopener">Hacker News</a> and analysis on <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>.</li>
                     <li>Akita, F. (2026, September 22). <a href="https://master--akitaonrails-official.netlify.app/en/2026/09/22/stop-making-excuses-and-ship-more-the-premise-changed/" target="_blank" rel="noopener"><em>Stop Making Excuses and Ship More! With AI, the Premise Changed. Get It.</em></a> (Contains the quoted argument about faster deployment and cheaper fixes.)</li>
+                    <li>Willison, S. (2025, June 16). <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/" target="_blank" rel="noopener"><em>The lethal trifecta for AI agents: private data, untrusted content, and external communication</em></a>. (A threat-modeling frame for indirect prompt injection and data exfiltration.)</li>
+                    <li>Akita, F. (2026). <a href="https://github.com/akitaonrails/ai-jail" target="_blank" rel="noopener"><em>ai-jail</em></a>. (OS-level sandbox for coding agents; useful defense-in-depth layer with stated residual risks.)</li>
                     <li>Hansson, D. H. [DHH]. (2026, September 25). <a href="https://x.com/dhh/status/2104542267281146357" target="_blank" rel="noopener"><em>“It'll soon be seen as deeply irresponsible to have critical code reviewed by human eyes alone”</em></a> [Post on X].</li>
                     <li>Cherny, B. (2026). <a href="https://www.youtube.com/watch?v=We7BZVKbCVw" target="_blank" rel="noopener"><em>Head of Claude Code: What happens after coding is solved</em></a> (interview on the changing engineering bottleneck).</li>
                     <li>Bernstein, Y. (2026). <a href="https://ivibeco.de/blog/your-favourite-framework-doesnt-matter-anymore" target="_blank" rel="noopener"><em>“Your Favourite Framework Doesn't Matter Anymore”</em></a>.</li>
