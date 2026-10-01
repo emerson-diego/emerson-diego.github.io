@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Beyond Vibe Coding — Project Constitution, AGENTS.md, and OpenSpec</title>
+    <style>
+        :root {
+            --fg: #1a1a1a;
+            --muted: #555;
+            --bg: #f7f4ef;
+            --card: #fffdf9;
+            --line: #d4cfc4;
+            --accent: #0b3d2e;
+            --code-bg: #eeeae2;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            color: var(--fg);
+            background:
+                radial-gradient(ellipse at top left, #efe8dc 0%, transparent 55%),
+                var(--bg);
+            font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+            line-height: 1.65;
+            font-size: 1.125rem;
+        }
+
+        .wrap {
+            max-width: 56rem;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem;
+        }
+
+        header {
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 1.75rem;
+            margin-bottom: 2.25rem;
+        }
+
+        .eyebrow {
+            font-family: ui-sans-serif, system-ui, sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin: 0 0 0.75rem;
+        }
+
+        h1 {
+            font-size: clamp(1.75rem, 4vw, 2.35rem);
+            line-height: 1.2;
+            font-weight: 700;
+            margin: 0 0 0.75rem;
+            color: var(--accent);
+        }
+
+        .dek {
+            margin: 0;
+            color: var(--muted);
+            font-size: 1.05rem;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            margin: 2.5rem 0 0.85rem;
+            color: var(--accent);
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin: 1.75rem 0 0.5rem;
+        }
+
+        h4 {
+            font-size: 1rem;
+            margin: 1.25rem 0 0.35rem;
+            color: var(--accent);
+        }
+
+        p,
+        li {
+            max-width: 76ch;
+        }
+
+        p {
+            margin: 0 0 1rem;
+        }
+
+        ul,
+        ol {
+            padding-left: 1.25rem;
+            margin: 0 0 1.15rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        a {
+            color: var(--accent);
+        }
+
+        code,
+        .path {
+            font-family: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+            font-size: 0.86em;
+            background: var(--code-bg);
+            padding: 0.1em 0.35em;
+            border-radius: 3px;
+        }
+
+        pre {
+            background: #1e2420;
+            color: #e8efe9;
+            padding: 1rem 1.1rem;
+            overflow-x: auto;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            line-height: 1.45;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+
+        pre.sample {
+            background: #2a322c;
+            border-left: 3px solid var(--accent);
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .caption {
+            font-family: ui-sans-serif, system-ui, sans-serif;
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin: -0.5rem 0 1.25rem;
+        }
+
+        blockquote {
+            margin: 1.25rem 0;
+            padding: 0.25rem 0 0.25rem 1rem;
+            border-left: 3px solid var(--accent);
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .box {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 1.15rem 1.25rem;
+            margin: 1.35rem 0 1.6rem;
+        }
+
+        .box p:last-child {
+            margin-bottom: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        th,
+        td {
+            border: 1px solid var(--line);
+            padding: 0.55rem 0.65rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #ebe6dc;
+            font-family: ui-sans-serif, system-ui, sans-serif;
+            font-size: 0.8rem;
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .diagram-container {
+            margin: 1.5rem 0 2rem;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 1.25rem 0.75rem;
+            overflow-x: auto;
+        }
+
+        .diagram-container svg {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <p class="eyebrow">Workshop notes · typed classifier</p>
+            <h1>Beyond Vibe Coding</h1>
+            <p class="dek">
+                How I started directing coding agents using a project constitution,
+                <span class="path">AGENTS.md</span>, OpenSpec, and skills — instead of
+                hoping the model would magically guess what I meant.
+            </p>
+        </header>
+
+        <article>
+            <section>
+                <p>
+                    A while ago, Andrej Karpathy coined the term <em>vibe coding</em> for that
+                    habit of casually firing prompts, accepting whatever the tool spits back,
+                    and moving along as long as it "compiles." That works for throwaway prototypes.
+                    In a production service with shared GPUs, strict HTTP contracts, and downstream
+                    datalake clients, vibe turns into compounding debt: the agent invents stacks,
+                    inflates scope, writes outside the repository, and forgets agreements made yesterday.
+                </p>
+                <p>
+                    This illusion clashed with one of the most heated debates in the industry: the controversy
+                    surrounding <strong>Boris Cherny</strong> (Anthropic engineer and creator of Claude Code)
+                    and the provocative phrase <em>“coding is solved.”</em> The developer community reacted strongly,
+                    yet the core argument is undeniable: the mechanical emission of syntax has ceased to be
+                    software engineering's primary bottleneck. If generating code has become cheap and instantaneous,
+                    the center of gravity has shifted toward what truly sustains a system — <strong>architecture</strong>,
+                    <strong>scale</strong>, <strong>complex debugging</strong>, and <strong>defining precisely what to build</strong>.
+                </p>
+                <p>
+                    What changed in my everyday practice wasn't "using more AI." It was
+                    <strong>writing the project's permanent memory</strong> in the exact place the agent is
+                    forced to look, transforming change workflows into a repeatable pipeline.
+                    Without this, every chat session restarts from scratch — and the model happily
+                    fills the vacuum with overconfident guesswork.
+                </p>
+            </section>
+
+            <section id="ai-development-workflow">
+                <h2>The Methodology Cycle: The Engineer as Pilot and Architect</h2>
+
+                <div class="box">
+                    <p>
+                        <strong>Workflow Summary:</strong> AI-assisted software development does not mean blindly delegating solutions. It means operating as a critical architect and pilot through an iterative 4-stage lifecycle: <strong>Understand the Problem &rarr; Evaluate Candidate Architectures &rarr; Loop (Implement &amp; Learn &rarr; Validate) &rarr; Deliver</strong>. The velocity and efficacy of this workflow are directly proportional to the engineer's technical depth — and the implementation loop itself becomes an active engine for continuous learning and repertoire expansion.
+                    </p>
+                </div>
+
+                <div class="diagram-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 270" width="100%" height="auto" role="img" aria-label="AI-Assisted Methodology Cycle Diagram">
+                        <defs>
+                            <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 1 L 10 5 L 0 9 z" fill="#0b3d2e" />
+                            </marker>
+                            <marker id="arrow-loop" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 1 L 10 5 L 0 9 z" fill="#b45309" />
+                            </marker>
+                            <filter id="soft-shadow" x="-5%" y="-5%" width="110%" height="115%">
+                                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.06"/>
+                            </filter>
+                        </defs>
+
+                        <!-- Step 1 -->
+                        <g transform="translate(15, 60)">
+                            <rect width="145" height="120" rx="8" fill="#fffdf9" stroke="#d4cfc4" stroke-width="1.5" filter="url(#soft-shadow)"/>
+                            <rect width="145" height="4" rx="2" fill="#0b3d2e"/>
+                            <text x="72" y="32" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="18">🎯</text>
+                            <text x="72" y="54" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="700" font-size="11.5" fill="#0b3d2e">1. Understand Problem</text>
+                            <text x="72" y="75" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10.5" fill="#555">Business rules,</text>
+                            <text x="72" y="90" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10.5" fill="#555">boundaries &amp; value</text>
+                        </g>
+
+                        <!-- Arrow 1 -> 2 -->
+                        <line x1="160" y1="120" x2="185" y2="120" stroke="#0b3d2e" stroke-width="2" marker-end="url(#arrow)"/>
+
+                        <!-- Step 2 -->
+                        <g transform="translate(185, 60)">
+                            <rect width="145" height="120" rx="8" fill="#fffdf9" stroke="#d4cfc4" stroke-width="1.5" filter="url(#soft-shadow)"/>
+                            <rect width="145" height="4" rx="2" fill="#0b3d2e"/>
+                            <text x="72" y="32" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="18">🏛️</text>
+                            <text x="72" y="54" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="700" font-size="11.5" fill="#0b3d2e">2. Evaluate Architectures</text>
+                            <text x="72" y="75" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10.5" fill="#555">Compare options,</text>
+                            <text x="72" y="90" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10.5" fill="#555">trade-offs &amp; limits</text>
+                        </g>
+
+                        <!-- Arrow 2 -> 3 -->
+                        <line x1="330" y1="120" x2="355" y2="120" stroke="#0b3d2e" stroke-width="2" marker-end="url(#arrow)"/>
+
+                        <!-- Subgraph LOOP -->
+                        <g transform="translate(355, 18)">
+                            <rect width="240" height="235" rx="10" fill="#f4efe6" stroke="#0b3d2e" stroke-width="1.2" stroke-dasharray="4,4"/>
+                            <text x="120" y="24" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="700" font-size="10.5" fill="#0b3d2e" letter-spacing="0.05em">🔁 CONTINUOUS EXECUTION LOOP</text>
+                            
+                            <!-- Step 3A -->
+                            <g transform="translate(15, 38)">
+                                <rect width="210" height="66" rx="6" fill="#fffdf9" stroke="#d4cfc4" stroke-width="1.2" filter="url(#soft-shadow)"/>
+                                <text x="18" y="23" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="700" font-size="11.5" fill="#0b3d2e">⚙️ 3. Implement &amp; Learn</text>
+                                <text x="18" y="42" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10" fill="#555">Atomic generation + active</text>
+                                <text x="18" y="55" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10" fill="#555">learning with the agent</text>
+                            </g>
+
+                            <!-- Internal arrow to Validate -->
+                            <line x1="100" y1="104" x2="100" y2="132" stroke="#0b3d2e" stroke-width="2" marker-end="url(#arrow)"/>
+
+                            <!-- Step 3B -->
+                            <g transform="translate(15, 134)">
+                                <rect width="210" height="66" rx="6" fill="#fffdf9" stroke="#d4cfc4" stroke-width="1.2" filter="url(#soft-shadow)"/>
+                                <text x="18" y="23" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="700" font-size="11.5" fill="#0b3d2e">🧪 Validate</text>
+                                <text x="18" y="42" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10" fill="#555">Automated tests, typing,</text>
+                                <text x="18" y="55" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10" fill="#555">linters &amp; edge cases</text>
+                            </g>
+
+                            <!-- Return arrow: Adjustments / Failures -->
+                            <path d="M 175 134 C 200 128, 200 110, 175 104" fill="none" stroke="#b45309" stroke-width="1.8" stroke-dasharray="3,3" marker-end="url(#arrow-loop)"/>
+                            <text x="206" y="121" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="8.5" font-weight="600" fill="#b45309">Adjust / Fix</text>
+                        </g>
+
+                        <!-- Arrow 3 -> 4 (Criteria Met) -->
+                        <path d="M 595 174 L 624 174 L 624 120 L 640 120" fill="none" stroke="#0b3d2e" stroke-width="2" marker-end="url(#arrow)"/>
+                        <text x="618" y="104" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="9" font-weight="600" fill="#0b3d2e">Criteria</text>
+                        <text x="618" y="115" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="9" font-weight="600" fill="#0b3d2e">Met</text>
+
+                        <!-- Step 4 -->
+                        <g transform="translate(640, 60)">
+                            <rect width="125" height="120" rx="8" fill="#fffdf9" stroke="#d4cfc4" stroke-width="1.5" filter="url(#soft-shadow)"/>
+                            <rect width="125" height="4" rx="2" fill="#0b3d2e"/>
+                            <text x="62" y="32" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="18">🚀</text>
+                            <text x="62" y="54" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="700" font-size="12" fill="#0b3d2e">4. Deliver</text>
+                            <text x="62" y="75" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10.5" fill="#555">Pull Request,</text>
+                            <text x="62" y="90" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="10.5" fill="#555">docs &amp; alignment</text>
+                        </g>
+                    </svg>
+                </div>
+
+                <h3>Breakdown of the 4 Stages</h3>
+
+                <h4>1. Understand the Problem</h4>
+                <ul>
+                    <li>
+                        <strong>Before typing any prompt:</strong> thoroughly define functional requirements, use cases, boundaries, and business constraints (<em>"The hardest single part of building a software system is deciding precisely what to build"</em> — Fred Brooks).
+                    </li>
+                    <li>
+                        <strong>Without problem clarity:</strong> AI will simply produce plausible-sounding answers for the wrong problem, automating waste at unprecedented speed.
+                    </li>
+                </ul>
+
+                <h4>2. Evaluate Candidate Architectures</h4>
+                <ul>
+                    <li>
+                        <strong>Multiple Solutions:</strong> Never accept the first suggestion blindly. Use AI to surface and contrast 2 to 3 architectural designs (e.g., event-driven vs. synchronous processing, deterministic code vs. LLM heuristics).
+                    </li>
+                    <li>
+                        <strong>Trade-off Analysis:</strong> Weigh latency, infrastructure cost, maintainability, and the <strong>cost of future change</strong> (Grady Booch). The final decision always rests with the human engineer.
+                    </li>
+                </ul>
+
+                <h4>3. Loop: Implement &amp; Learn &rarr; Validate (Continuous Execution)</h4>
+                <ul>
+                    <li>
+                        <strong>Atomic Modular Implementation:</strong> Avoid asking for entire systems in one prompt. Decompose architecture into modular tasks, requesting clean, focused, and strongly typed code.
+                    </li>
+                    <li>
+                        <strong>Active Learning During Implementation:</strong>
+                        <ul>
+                            <li><strong>Overcome "blind copy-pasting":</strong> Treat AI as a senior pair programmer. Do not accept code snippets without understanding them line by line.</li>
+                            <li><strong>Challenge patterns and decisions:</strong> Whenever the agent suggests a library, modern native feature, or non-trivial pattern, ask <em>why</em> it chose it over classical alternatives.</li>
+                            <li><strong>Knowledge Feedback Loop:</strong> Implementing with AI becomes the fastest way to stay technically current, expanding your mastery of the language and framework in real time.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Immediate and Rigorous Validation:</strong>
+                        <ul>
+                            <li>Run unit and integration tests before proceeding to the next unit.</li>
+                            <li>Verify linters, static typing, and actively probe edge cases models commonly overlook.</li>
+                            <li>On failure, feed back the error with complete context and iterate in the loop until fully compliant.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>4. Deliver</h4>
+                <ul>
+                    <li>
+                        <strong>Communication and Handoff:</strong> Document architectural decisions, explain rationales, and generate self-explanatory Pull Requests with verified acceptance criteria.
+                    </li>
+                </ul>
+
+                <h3>The Velocity Catalyst: An Up-to-Date Technical Repertoire</h3>
+                <blockquote>
+                    For this workflow to be fast, staying technically current is non-negotiable.
+                </blockquote>
+                <p>
+                    Artificial intelligence amplifies execution capacity, but it cannot replace the developer's foundational knowledge:
+                </p>
+                <ol>
+                    <li>
+                        <strong>Surgical Prompting:</strong> Engineers who know modern tools, libraries, and language primitives formulate crisp instructions, eliminating round-trips.
+                    </li>
+                    <li>
+                        <strong>Hallucination Detection:</strong> Only technically updated professionals quickly spot obsolete patterns, deprecated APIs, or fragile architectural choices proposed by the model.
+                    </li>
+                    <li>
+                        <strong>Decision Velocity:</strong> Deep familiarity with the ecosystem allows discarding unviable architectures in minutes, avoiding days trapped in sterile implementation loops.
+                    </li>
+                    <li>
+                        <strong>Vertical Anchoring (T-Shaped Profile):</strong> An AI agent's broad horizontal coverage only translates into robust software when anchored by the engineer's deep vertical expertise.
+                    </li>
+                </ol>
+
+                <h3>Supporting Tools &amp; Automations</h3>
+                <ul>
+                    <li>
+                        <strong>Reusability via Skills and Slash Commands:</strong> Standardized prompts for frequent workflows (generating semantic commits via <span class="path">git diff</span>, documenting PRs, or filing backlog cards). Skills reduce stochastic variance and guarantee consistency.
+                    </li>
+                    <li>
+                        <strong>Automated Code Review:</strong> Using CodeRabbit, specialized reviewer agents, and linters as an automated second line of defense to audit bugs, performance bottlenecks, and security flaws before final delivery.
+                    </li>
+                </ul>
+
+                <div class="box">
+                    <p>
+                        <strong>The Engineering Shift: From Reading Code to Imposing Extreme Constraints.</strong> This shift isn't about adopting cooler tools; it is a fundamental break in how engineering discipline is enforced, echoed by veteran voices across the industry:
+                    </p>
+                    
+                    <p>
+                        In July 2026, <strong>Uncle Bob (Robert C. Martin)</strong> — author of <em>Clean Code</em>, whose entire career championed readability and meticulous human review — sparked a massive debate across the community (surpassing 5 million impressions and triggering extensive discussion on <a href="https://alt-hn.vercel.app/item/49074693" target="_blank" rel="noopener">Hacker News</a>) by declaring:
+                    </p>
+                    <blockquote>
+                        “My current strategy is to not read any of the code written by my agents.”
+                        <br />
+                        <small>— Uncle Bob (<a href="https://x.com/unclebobmartin/status/2080257779395154409" target="_blank" rel="noopener">July 23, 2026, on X</a>)</small>
+                    </blockquote>
+                    <p>
+                        When questioned on how he ensured system integrity without reading code or tests line by line, he doubled down:
+                    </p>
+                    <blockquote>
+                        “Neither. I don't read the code AI produces, and I test and constrain it so thoroughly that I don't have to pray.”
+                        <br />
+                        <small>— Uncle Bob (<a href="https://x.com/unclebobmartin/status/2080257779395154409" target="_blank" rel="noopener">July 22, 2026, on X</a>; analysis on <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>)</small>
+                    </blockquote>
+                    <p>
+                        Instead of manually inspecting character by character, Uncle Bob substituted manual review with <em>extreme constraints</em>: dense test suites written and validated by agents, Gherkin behavioral specs, mutation testing, coverage analysis, and targeted spot-checks on QA procedures.
+                    </p>
+                    <p>
+                        Faced with continued bewilderment over how the father of <em>Clean Code</em> no longer read code, he dismantled the apparent contradiction:
+                    </p>
+                    <blockquote>
+                        “People seem shocked that the author of Clean Code doesn't read code anymore. But that should not be surprising. Why did I write Clean Code? What is the goal of keeping code clean? To get it out of the way of the real job — thinking.”
+                        <br />
+                        <small>— Uncle Bob (<a href="https://x.com/unclebobmartin/status/2105647907705868659" target="_blank" rel="noopener">on X</a>)</small>
+                    </blockquote>
+                    <p>
+                        Clean code was never about fetishizing lines of text; it was always about <strong>removing syntax noise to clear cognitive bandwidth for the real work of engineering: thinking and making decisions</strong>.
+                    </p>
+
+                    <p>
+                        This economic reality was captured by <strong>Fabio Akita</strong> in September 2026:
+                    </p>
+                    <blockquote>
+                        “It's better to deploy faster because fixing it later became fast and cheap.”
+                        <br />
+                        <small>— Fabio Akita (<a href="https://x.com/AkitaOnRails" target="_blank" rel="noopener">September 22, 2026, on X</a>; essay on <a href="https://akitaonrails.com" target="_blank" rel="noopener">AkitaOnRails</a>)</small>
+                    </blockquote>
+                    <p>
+                        Akita's argument dismantles the classic bottleneck: because agents dramatically collapsed the cost and time of implementing and patching bugs, dragging out slow, bureaucratic review processes has become the most expensive and irrational friction in modern engineering.
+                    </p>
+
+                    <p>
+                        Just three days later, <strong>DHH (David Heinemeier Hansson)</strong> completed the equation: to deploy frequently without jeopardizing critical systems, the answer is not human sluggishness, but automated auditing:
+                    </p>
+                    <blockquote>
+                        “It'll soon be seen as deeply irresponsible to have critical code reviewed by human eyes alone.”
+                        <br />
+                        <small>— DHH (<a href="https://x.com/dhh/status/2104542267281146357" target="_blank" rel="noopener">September 25, 2026, on X</a>)</small>
+                    </blockquote>
+                    <p>
+                        The convergence between Uncle Bob's extreme constraints, Akita's economic pragmatism, and DHH's warning points to a single truth: <strong>engineering with AI is not about typing or reading faster; it is about designing an uncompromising harness</strong>. If fixing code is cheap, if human eyes tire, and if critical code demands safety, the engineer's role is to draw architectural boundaries, enforce constraints, and let agents execute rapidly within that protected perimeter.
+                    </p>
+                </div>
+
+                <div class="box">
+                    <p>
+                        To operate this lifecycle frictionlessly without relying on manual memory every single session, the repository itself must supply the stable foundation. This is where the three core pillars of this article enter: the <strong>Constitution</strong>, <strong>AGENTS.md</strong>, and <strong>OpenSpec</strong>.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>1. Constitution Before Features</h2>
+                <p>
+                    In Spec-Driven Development, the idea of a
+                    <strong>project constitution</strong> is straightforward: three stable
+                    documents that are not the feature spec of the week. In our repository,
+                    they live in <span class="path">docs/constitution/</span>. The table below
+                    serves as the map; what matters is what <em>cannot be missing</em> from each.
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>File</th>
+                            <th>Question it answers</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="path">mission.md</span></td>
+                            <td>Why this exists, who uses it, what is in scope, and what is strictly out of scope</td>
+                        </tr>
+                        <tr>
+                            <td><span class="path">tech-stack.md</span></td>
+                            <td>Stack, virtual environments, GPU/CPU constraints, testing rules — and what <em>not</em> to use</td>
+                        </tr>
+                        <tr>
+                            <td><span class="path">roadmap.md</span></td>
+                            <td>Current phase vs. what comes next (macro view; details belong to change specs)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>What Must Be in the Mission</h3>
+                <p>
+                    A mission without named users turns into empty marketing. The agent needs to know
+                    <strong>whom</strong> it is building for — and in this service, users are technical roles,
+                    not end-user citizens. An actual excerpt from our <span class="path">docs/constitution/mission.md</span>:
+                </p>
+                <pre class="sample"><code>## Users
+
+| Who | Role |
+|---|---|
+| **Datalake Scanner** | Primary HTTP client… |
+| **GPU Operator / Owner** | Starts, stops, and monitors gateway + decider… |
+
+Not users of this repo: judges, plaintiffs, lawyers…
+
+## Out of Scope
+
+- MinIO, external case management systems, raw chunk scanners
+- Production threshold heuristics for prompt injection…</code></pre>
+                <p class="caption">Example: named technical roles + explicit out-of-scope declarations.</p>
+                <ul>
+                    <li><strong>Why</strong> — the core problem that justifies the repository's existence.</li>
+                    <li><strong>Users</strong> — who consumes and who operates the system; who is explicitly <em>not</em> a user.</li>
+                    <li><strong>Scope</strong> — what this specific codebase is responsible for delivering.</li>
+                    <li><strong>Out of Scope</strong> — the list that kills hallucinations. Without it, the agent will "complete" your product single-handedly.</li>
+                </ul>
+
+                <h3>What Must Be in the Tech Stack</h3>
+                <p>
+                    A tech stack document is not an installation tutorial. It is a technical contract — especially
+                    the <strong>Do Not Use</strong> table. From <span class="path">docs/constitution/tech-stack.md</span>:
+                </p>
+                <pre class="sample"><code>## Do Not Use
+
+| Avoid | Use Instead |
+|---|---|
+| `pip` / Poetry / Conda | **uv** + `.venv` / `.venv-julia` |
+| Both LLMs inside the same process | HTTP Gateway + dedicated backends |
+| vLLM, Ollama, llama.cpp… | `decider.serve` (+ Julia adapter) |
+| MinIO, boto, Airflow, case client… | Managed upstream in the datalake |
+| Writing outside repository root | Paths restricted under classifier root |</code></pre>
+                <p class="caption">Example: stack constraints structured as avoid &rarr; use instead.</p>
+                <ul>
+                    <li><strong>Runtime &amp; Dependencies</strong> — language versions, uv, virtual environments (and why there are two).</li>
+                    <li><strong>Service Roles</strong> — gateway / decider / Julia; CPU vs. GPU allocation.</li>
+                    <li><strong>Launch &amp; Testing</strong> — execution scripts, Docker compose, smoke and quality test suites.</li>
+                    <li><strong>Do Not Use</strong> — the single section that most effectively suppresses unwanted agent creativity.</li>
+                    <li><strong>Process</strong> — OpenSpec defaults, natural language conventions, and where constitution vs. change specs reside.</li>
+                </ul>
+
+                <div class="box">
+                    <p>
+                        <strong>The Death of Stack Dogma: Choosing by Constraints, Not Faith.</strong> In 2026, the industry finally confronted an open secret: tech stacks aren't corporate totems, but pragmatic responses to real-world limits and trade-offs.
+                    </p>
+                    <p>
+                        In March 2026, <strong>Yaniv Bernstein</strong> published <a href="https://ivibeco.de/blog/your-favourite-framework-doesnt-matter-anymore" target="_blank" rel="noopener"><em>“Your Favourite Framework Doesn't Matter Anymore”</em></a>, arguing that framework wars (React vs. Vue vs. Svelte) have lost relevance because core abstractions converged; true value lies in understanding the domain and making solid architectural choices. In August 2026, <strong>Himanshu Mistry</strong> framed the same reality from a business perspective in <a href="https://www.linkedin.com/pulse/your-tech-stack-doesnt-matter-users-have-never-once-asked-mistry-rfeif" target="_blank" rel="noopener"><em>“Your Tech Stack Doesn't Matter. Your Users Have Never Once Asked”</em></a>: end users never ask if a backend runs on Node, Go, or Python — they care about whether the product solves their problem with proper latency and maintainability.
+                    </p>
+                    <p>
+                        The most iconic demonstration of this mindset came from <strong>DHH</strong> at Rails World 2026: the creator of Ruby on Rails revealed that HEY's new high-throughput backend was being rewritten in <strong>Rust</strong>. The decision shattered the dogmatic inertia of <em>“we are a Rails shop, therefore everything must be Rails.”</em> The real engineering question became: <em>“which tool best satisfies this specific set of concurrency, memory, and latency constraints?”</em>.
+                    </p>
+                    <p>
+                        AI has accelerated this transition. Previously, dogmatically standardizing on a single company stack was necessary to amortize steep human learning curves and hiring friction. With coding agents capable of seamlessly switching between ecosystems, standardization is only justified when backed by tangible operational reasons (shared infrastructure, JVM observability, reduced production risk). This is why <span class="path">tech-stack.md</span> in our constitution is so essential: it is not a declaration of love for a framework, but an <strong>explicit contract of engineering constraints</strong> that keeps the agent grounded and prevents stochastic stack churn across conversations.
+                    </p>
+                </div>
+
+                <h3>What Must Be in the Roadmap</h3>
+                <p>
+                    Keep it short and macro. From <span class="path">docs/constitution/roadmap.md</span>:
+                </p>
+                <pre class="sample"><code>## Shipped
+- HTTP System One service (`decider.serve`)
+- Multi-model gateway…
+- Idle unload for GPU decider (gateway, default 10 min)
+
+## Now
+- Operate routing preferentially through gateway when idle unload is active…
+
+## Later (when requested)
+- …
+
+## Not on this repository's roadmap
+- Datalake domain (chunk parsing, regex tokenizers…)</code></pre>
+                <p class="caption">Example: milestones in four distinct buckets without turning into a Jira backlog.</p>
+                <ul>
+                    <li><strong>Shipped / Now / Later</strong> — phases, not an unmanageable ticket list.</li>
+                    <li><strong>Not in this repository</strong> — the temporal mirror of our out-of-scope definition.</li>
+                    <li>Every material deliverable becomes an OpenSpec change; the roadmap merely tracks the phase.</li>
+                </ul>
+
+                <div class="box">
+                    <p>
+                        The constitution does not replace a feature specification. It is the bedrock. A feature spec
+                        describes <em>one</em> discrete change. If that change alters the mission, stack, or phase,
+                        we update the constitution document immediately — we do not wait for change archival.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>2. AGENTS.md: Standing Orders</h2>
+                <p>
+                    In agentic IDEs (Cursor and peers), <span class="path">AGENTS.md</span> acts as repository-level
+                    instructions: loaded into the context window frequently, much like military standing orders.
+                    It is not documentation for humans to browse; it is an
+                    <strong>operational policy for the language model</strong>.
+                </p>
+                <p>In our setup, it performs critical jobs that vibe coding completely ignores. From the file itself:</p>
+                <pre class="sample"><code>## Constitution (Alignment Source)
+
+- **Why, users, in-scope vs. out-of-scope** — `mission.md`
+- **Stack, venvs, GPU/CPU, dependencies, forbidden tools, test recipes** — `tech-stack.md`
+- **Current phase vs. what comes next** — `roadmap.md`
+
+## Workspace Boundaries
+
+Write **only** within the root of this repository…</code></pre>
+                <p class="caption">Example from AGENTS.md — branch-specific constitution pointers + workspace boundaries.</p>
+                <ul>
+                    <li>Points directly to the constitution by branch/role.</li>
+                    <li>Orchestrates OpenSpec — the central topic of the next section.</li>
+                    <li>Constrains workspace boundaries (forbidding writes to <span class="path">/tmp</span> or user home directories).</li>
+                    <li>Mandates Conventional Commits whenever commits are requested.</li>
+                </ul>
+                <p>
+                    Rules and skills complete the picture. A rule is a concise constraint or preference. A skill
+                    is an executable procedure: "when asked for a semantic commit, perform X." The strength of skills
+                    lies in <em>progressive disclosure</em> — extensive procedural instructions only load into the prompt
+                    when triggered, keeping base context lean.
+                </p>
+            </section>
+
+            <section>
+                <h2>3. How AGENTS.md Orchestrates OpenSpec</h2>
+                <p>
+                    OpenSpec, by itself, is just a CLI and a schema of artifacts. What
+                    <strong>decides when</strong> to open a change, <strong>in what order</strong> to execute
+                    propose/apply/archive, and <strong>whether</strong> the human must type
+                    <span class="path">/opsx-*</span> is <span class="path">AGENTS.md</span>.
+                    In our repository, the rule is explicit: the agent follows skills in
+                    <span class="path">.cursor/skills/openspec-*</span> <em>without requiring</em> slash commands.
+                    I express intent in plain language ("implement the idle unload"); the agents file translates
+                    that into an orderly pipeline.
+                </p>
+
+                <h3>When to Use OpenSpec vs. Skip It</h3>
+                <p>
+                    Material changes (code, dependencies, Docker, API contracts, runtime behavior, docs impacting deployment)
+                    &rarr; OpenSpec. Conceptual questions without modifying files, trivial typos, or explicitly stating
+                    "no OpenSpec / just answer" &rarr; skip. This filter keeps trivial chats from generating overhead.
+                </p>
+
+                <h3>One Request = Complete Lifecycle</h3>
+                <p>
+                    <span class="path">AGENTS.md</span> binds the sequence together. The agent does not pause mid-stream
+                    waiting for the human to remember the next command:
+                </p>
+                <ol>
+                    <li><strong>Explore</strong> (<span class="path">openspec-explore</span>) — only if the request is ambiguous or carries non-trivial trade-offs.</li>
+                    <li><strong>Propose</strong> (<span class="path">openspec-propose</span>) — creates the change and artifacts (<span class="path">proposal</span>, specs delta, <span class="path">design</span>, <span class="path">tasks</span>).</li>
+                    <li><strong>Apply</strong> (<span class="path">openspec-apply-change</span>) — if the initial prompt already authorized implementation ("build", "implement", "fix"), continues in the <em>same conversation</em> after the proposal. If I asked for planning only ("propose", "spec only"), it halts there.</li>
+                    <li><strong>Update</strong> (<span class="path">openspec-update-change</span>) — if applying revealed that the plan was misaligned or incomplete.</li>
+                    <li><strong>Sync &amp; Archive</strong> — when tasks are completed and changes validated; archives within the same conversation without requiring manual slash commands.</li>
+                </ol>
+                <p>
+                    In practice: skills define <em>how</em> to interact with the OpenSpec CLI;
+                    <span class="path">AGENTS.md</span> defines <em>when</em> to chain them together and what constitutes human authorization.
+                </p>
+
+                <h3>The Human Gate (The Only Formal Brake)</h3>
+                <p>
+                    Before applying changes, the agent outputs a concise 3–6 line summary: change name, what changes, non-goals,
+                    and next steps. A prompt that already requested implementation serves as a go-ahead. High-risk operations
+                    (public APIs, schema migrations, destructive actions) pause for explicit human confirmation. Without this
+                    clause in <span class="path">AGENTS.md</span>, models either run blind or beg for permission on every single task cell.
+                </p>
+
+                <h3>Git Branching Per Change, Bound to Apply</h3>
+                <p>
+                    The same file enforces: at the beginning of apply, check out branch
+                    <span class="path">change/&lt;name&gt;</span> from <span class="path">develop</span> (or <span class="path">main</span>);
+                    after validation, merge; delete the local branch; <em>only then</em> archive. Exceptions (documentation-only changes,
+                    explicit requests without branches) must be declared in the gate. Commits remain on demand; when requested,
+                    the semantic commit skill formats Conventional Commits safely.
+                </p>
+
+                <h3>Constitution Injection Mid-Pipeline</h3>
+                <p>
+                    Before proposing (or picking a stack without OpenSpec), the agent must read the three constitution files.
+                    The feature spec describes the change; the constitution describes the project. Furthermore,
+                    <span class="path">openspec/config.yaml</span> injects these files into OpenSpec's
+                    <span class="path">context</span> — ensuring propose/apply cycles never lose sight of mission and stack constraints.
+                </p>
+
+                <h3>Semantic Commits (Enforced in AGENTS.md)</h3>
+                <p>
+                    A one-line mention in "Conventions" wasn't enough. <span class="path">AGENTS.md</span> dedicates a formal section:
+                    all repository commits <strong>must</strong> follow Conventional Commits. Excerpt:
+                </p>
+                <pre class="sample"><code>### Commits (Conventional Commits)
+
+Every commit in this repository **must** adhere to Conventional Commits:
+
+type(scope)?: imperative short description
+
+Types: feat, fix, docs, test, refactor, chore, perf, style.
+When the user asks to commit, invoke the commit-semantico skill
+(safe staging, ignoring `.env`, messages passed via HEREDOC).</code></pre>
+                <p class="caption">Excerpt from AGENTS.md — mandatory format + dedicated commit procedure.</p>
+
+                <div class="box">
+                    <p>
+                        Orchestration summarized: I state my intent; <span class="path">AGENTS.md</span> determines whether to open a change, in what sequence to trigger OpenSpec skills, whether to execute in the same conversation, how to branch in git, and when to archive. OpenSpec is the artifact engine; AGENTS is the conductor.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>4. OpenSpec: The Change, Not the Entire Project</h2>
+                <p>
+                    The distinction bears repeating, as it is where many developers get confused. OpenSpec
+                    (<span class="path">spec-driven</span> schema) is the unit of <em>delivery</em>: proposal,
+                    delta requirements, design, tasks, and archived specs. The constitution is the permanent ground.
+                    A change does not accidentally rewrite the project's mission — unless the change genuinely invalidates
+                    that foundation, in which case <span class="path">AGENTS.md</span> mandates updating the constitution immediately.
+                </p>
+                <p>
+                    Note: this article itself is documentation without an OpenSpec change. The filter in
+                    <span class="path">AGENTS.md</span> ("skip OpenSpec for docs-only conversations") exists specifically
+                    to avoid bureaucratizing non-material changes.
+                </p>
+            </section>
+
+            <section>
+                <h2>5. Skills Worth Their Weight in Gold</h2>
+                <p>
+                    Two skills I use without thinking: semantic commit (status review, diff audit, <span class="path">.env</span> denylist,
+                    message formatting, HEREDOC execution) and Jira subtask creation under parent epics. OpenSpec provides its own
+                    package (<span class="path">openspec-propose</span>, <span class="path">apply</span>, <span class="path">archive</span>)
+                    — and once again, what decides to chain this package is <span class="path">AGENTS.md</span>, not my memory to type slash commands.
+                </p>
+                <blockquote>
+                    Improvisation in code is sometimes desirable. Improvisation in the delivery process almost never is.
+                </blockquote>
+            </section>
+
+            <section>
+                <h2>6. Policy Versus Jail</h2>
+                <p>
+                    Fabio Akita released <em>ai-jail</em>: an OS-level sandbox for CLI agents so home folders and credentials
+                    are not left at the mercy of arbitrary processes. That represents filesystem-level enforcement. What we have in
+                    <span class="path">AGENTS.md</span> is policy — guidelines the model is expected to obey. Both layers complement
+                    each other; in our service, running inside Cursor with paths like <span class="path">/opt/huggingface</span>,
+                    the priority was getting the operational policy right. OS jails remain essential for developers running autonomous CLI agents with home folders full of tokens.
+                </p>
+            </section>
+
+            <section>
+                <h2>7. What This Changed in Practice</h2>
+                <p>
+                    In our typed classifier (System One HTTP gateway, GPU-backed decider, automated test battery, idle unload),
+                    the agent no longer "picks stacks" because the stack is written in stone. It no longer pulls in unrelated
+                    legacy clients because the mission explicitly forbids it. It never commits <span class="path">.env</span>
+                    files because skills and gitignore guard the gates. Whenever the process slips (such as applying without a branch),
+                    the rule in <span class="path">AGENTS.md</span> is immediately sharpened — the document is living infrastructure, not decoration.
+                </p>
+                <p>
+                    I still prompt with "build", "implement", "fix". The difference is that behind those prompts lies solid ground:
+                    a project constitution, change contracts orchestrated by AGENTS, gates, and skills. Vibe coding still exists — but
+                    now the vibe is <em>directed</em>, never adrift.
+                </p>
+            </section>
+
+            <section>
+                <h2>Mental Map</h2>
+                <pre><code>constitution (mission / stack / roadmap)
+        │
+        ▼
+   AGENTS.md ──► decides whether to open OpenSpec
+        │         chains explore→propose→apply→archive
+        │         human gate + git change/… branch
+        │
+        ├── skills openspec-*  (how to speak with the CLI)
+        └── skills other       (commit, Jira, …)
+                │
+                ▼
+         change OpenSpec ──► core specifications (archive)</code></pre>
+            </section>
+
+            <section>
+                <h2>References &amp; Connections</h2>
+                <ul>
+                    <li>Brooks, F. P. (1986). <em>No Silver Bullet — Essence and Accident in Software Engineering</em>.</li>
+                    <li>Booch, G. <em>Software Architecture Concepts &amp; The Cost of Change</em>.</li>
+                    <li>Martin, R. C. (Uncle Bob, 2026). <a href="https://x.com/unclebobmartin/status/2080257779395154409" target="_blank" rel="noopener"><em>“My current strategy is to not read any of the code written by my agents”</em></a> (Post on X, July 23, 2026; discussion on <a href="https://alt-hn.vercel.app/item/49074693" target="_blank" rel="noopener">Hacker News</a>).</li>
+                    <li>Martin, R. C. (Uncle Bob, 2026). <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener"><em>“I don't read the code AI produces, and I test and constrain it so thoroughly that I don't have to pray”</em></a>.</li>
+                    <li>Martin, R. C. (Uncle Bob, 2026). <a href="https://x.com/unclebobmartin/status/2105647907705868659" target="_blank" rel="noopener"><em>“What is the goal of keeping code clean? To get it out of the way of the real job — thinking”</em></a> (Post on X).</li>
+                    <li>Akita, F. (2026). <em>“It's better to deploy faster because fixing it later became fast and cheap”</em> (<a href="https://x.com/AkitaOnRails" target="_blank" rel="noopener">Post on X</a> and essay on <a href="https://akitaonrails.com" target="_blank" rel="noopener">AkitaOnRails</a>, September 22, 2026).</li>
+                    <li>Hansson, D. H. (DHH, 2026). <a href="https://x.com/dhh/status/2104542267281146357" target="_blank" rel="noopener"><em>“It'll soon be seen as deeply irresponsible to have critical code reviewed by human eyes alone”</em></a> (Post on X, September 25, 2026).</li>
+                    <li>Cherny, B. (2026). <a href="https://x.com/bcherny" target="_blank" rel="noopener"><em>Discussions on “coding is solved”, Claude Code, and the shifting engineering bottleneck</em></a> (Anthropic / Claude Code, on X).</li>
+                    <li>Bernstein, Y. (2026). <a href="https://ivibeco.de/blog/your-favourite-framework-doesnt-matter-anymore" target="_blank" rel="noopener"><em>“Your Favourite Framework Doesn't Matter Anymore”</em></a>.</li>
+                    <li>Mistry, H. (2026). <a href="https://www.linkedin.com/pulse/your-tech-stack-doesnt-matter-users-have-never-once-asked-mistry-rfeif" target="_blank" rel="noopener"><em>“Your Tech Stack Doesn't Matter. Your Users Have Never Once Asked”</em></a>.</li>
+                    <li>Hansson, D. H. (DHH, 2026). <a href="https://badarau.net/blog/dhh-rails-world-2026-keynote/" target="_blank" rel="noopener"><em>Keynote Rails World 2026: Rewriting critical backend systems in Rust and pragmatic stack choices</em></a>.</li>
+                    <li>Software Engineering in the Era of AI: Decision-Making, Architecture, and T-Shaped Depth.</li>
+                    <li>AI Engineering Workflows: Skills, Rules, MCP, and Process Automation.</li>
+                    <li>Software Engineering and Systems Design: Trade-offs in Practice.</li>
+                </ul>
+            </section>
+        </article>
+
+        <footer>
+            <p>
+                Living artifacts of this workflow:
+                <span class="path">docs/constitution/</span>,
+                <span class="path">AGENTS.md</span>,
+                <span class="path">openspec/</span>,
+                <span class="path">.cursor/skills/</span>.
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>
