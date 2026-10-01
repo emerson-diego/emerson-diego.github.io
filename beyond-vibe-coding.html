@@ -266,7 +266,7 @@
                 <p>
                     This illusion clashed with one of the most heated debates in the industry: the controversy
                     surrounding <strong>Boris Cherny</strong> (Anthropic engineer and creator of Claude Code)
-                    and the provocative phrase <em>“coding is solved.”</em> The developer community reacted strongly,
+                    and the provocative phrase <a href="https://www.youtube.com/watch?v=We7BZVKbCVw" target="_blank" rel="noopener"><em>“coding is solved.”</em></a> The developer community reacted strongly,
                     yet the core argument is undeniable: the mechanical emission of syntax has ceased to be
                     software engineering's primary bottleneck. If generating code has become cheap and instantaneous,
                     the center of gravity has shifted toward what truly sustains a system — <strong>architecture</strong>,
@@ -493,7 +493,7 @@
                     <small>— Robert C. Martin (<a href="https://x.com/unclebobmartin/status/2080257779395154409" target="_blank" rel="noopener">Post on X, July 23, 2026</a>; analysis on <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>)</small>
                 </blockquote>
                 <p>
-                    A broader interpretation of Clean Code is that it should keep accidental complexity out of the way so engineers can focus on <em>thinking and deciding</em>. This perspective is compatible with a broader economic argument made by <strong>Fabio Akita</strong>: when the marginal cost of fixing code approaches zero, bureaucratic manual review loops may become software's costliest friction (see the related source in the references). DHH's statement supports the narrower claim that human-only review of critical code may be insufficient; the need to combine human comprehension with automated invariant checks is my engineering conclusion (<a href="https://x.com/dhh/status/2104542267281146357" target="_blank" rel="noopener">DHH on X, Sept 2026</a>).
+                    A broader interpretation of Clean Code is that it should keep accidental complexity out of the way so engineers can focus on <em>thinking and deciding</em>. This perspective is compatible with a broader economic argument made by <a href="https://master--akitaonrails-official.netlify.app/en/2026/09/22/stop-making-excuses-and-ship-more-the-premise-changed/" target="_blank" rel="noopener"><strong>Fabio Akita</strong></a>: when the marginal cost of fixing code approaches zero, bureaucratic manual review loops may become software's costliest friction. DHH's statement supports the narrower claim that human-only review of critical code may be insufficient; the need to combine human comprehension with automated invariant checks is my engineering conclusion (<a href="https://x.com/dhh/status/2104542267281146357" target="_blank" rel="noopener">DHH on X, Sept 2026</a>).
                 </p>
 
                 <h3>The Reading Spectrum: Where to Read vs. Where to Automate</h3>
@@ -741,8 +741,9 @@ Write **only** within the root of this repository…</code></pre>
                 <p>
                     Before applying changes, the agent outputs a concise 3–6 line summary: change name, what changes, non-goals,
                     and next steps. A prompt that already requested implementation serves as a go-ahead. High-risk operations
-                    (public APIs, schema migrations, destructive actions) pause for explicit human confirmation. Without this
-                    clause in <span class="path">AGENTS.md</span>, models either run blind or beg for permission on every single task cell.
+                    (public APIs, schema migrations, destructive actions) pause for explicit human confirmation. This convention is intended
+                    to keep ordinary authorized work moving while making high-risk actions visible; without it, the workflow has less guidance
+                    about when to proceed and when to ask for a decision.
                 </p>
 
                 <h3>Git Branching Per Change, Bound to Apply</h3>
@@ -882,7 +883,8 @@ When the user asks to commit, invoke the semantic-commit skill
             <section>
                 <h2>6. Limitations, Costs, and Observed Failure Modes</h2>
                 <p>
-                    No engineering methodology is free of trade-offs. While this harness eliminates chaotic vibe coding, several operational frictions and failure modes must be honestly managed:
+                    No engineering methodology is free of trade-offs. This harness can reduce the disorder and context loss associated with chaotic vibe coding,
+                    but it cannot eliminate them; several operational frictions and failure modes must be honestly managed:
                 </p>
                 <ul>
                     <li>
@@ -901,6 +903,22 @@ When the user asks to commit, invoke the semantic-commit skill
             </section>
 
             <section>
+                <h2>Mental Map</h2>
+                <pre><code>constitution (mission / stack / roadmap)
+        │
+        ▼
+   AGENTS.md ──► decides whether to open OpenSpec
+        │         chains explore→propose→apply→archive
+        │         human gate + git change/… branch
+        │
+        ├── skills openspec-*  (how to speak with the CLI)
+        └── skills other       (commit, Jira, …)
+                │
+                ▼
+         change OpenSpec ──► core specifications (archive)</code></pre>
+            </section>
+
+            <section>
                 <h2>7. What This Changed in Practice</h2>
                 <p>
                     In our typed classifier (System One HTTP gateway, GPU-backed decider, automated test battery, idle unload),
@@ -910,6 +928,15 @@ When the user asks to commit, invoke the semantic-commit skill
                     and staging checks. Whenever the process slips (such as applying without a branch),
                     the rule in <span class="path">AGENTS.md</span> is immediately sharpened — the document is living infrastructure, not decoration.
                 </p>
+                <p>
+                    The practical change is therefore not that the agent became infallible. It is that the repository now gives each
+                    change a durable context, a bounded contract, a repeatable route through validation, and a visible place to record
+                    what was learned. The engineer spends less time re-establishing context and more time deciding what deserves to change.
+                </p>
+            </section>
+
+            <section>
+                <h2>8. Method and Evidence</h2>
                 <p>
                     My preferred way of working is deliberately <strong>spiral</strong>: plan enough to make the next decision responsibly, implement a coherent slice,
                     test it, observe the result, collect feedback, and then plan the next slice. Each loop should reduce uncertainty and improve the shared model of the system.
@@ -951,22 +978,6 @@ When the user asks to commit, invoke the semantic-commit skill
             </section>
 
             <section>
-                <h2>Mental Map</h2>
-                <pre><code>constitution (mission / stack / roadmap)
-        │
-        ▼
-   AGENTS.md ──► decides whether to open OpenSpec
-        │         chains explore→propose→apply→archive
-        │         human gate + git change/… branch
-        │
-        ├── skills openspec-*  (how to speak with the CLI)
-        └── skills other       (commit, Jira, …)
-                │
-                ▼
-         change OpenSpec ──► core specifications (archive)</code></pre>
-            </section>
-
-            <section>
                 <h2>References &amp; Connections</h2>
                 <ul>
                     <li>Brooks, F. P. (1987). <em>No Silver Bullet: Essence and Accidents of Software Engineering</em>. IEEE Computer, 20(4), 10–19.</li>
@@ -983,9 +994,9 @@ When the user asks to commit, invoke the semantic-commit skill
                     <li>OpenAI. (2026). <a href="https://openai.com/index/separating-signal-from-noise-coding-evaluations/" target="_blank" rel="noopener"><em>Separating signal from noise in coding evaluations</em></a>. (Audit documenting task-quality issues and later revisions affecting SWE-Bench Pro comparisons.)</li>
                     <li>Huang, R. L., Reyna, A., Lerner, S., Xia, H., &amp; Hempel, B. (2025). <a href="https://people.cs.uchicago.edu/~brianhempel/Professional%20Software%20Developers%20Don%E2%80%99t%20Vibe%2C%20They%20Control-%20AI%20Agent%20Use%20for%20Coding%20in%202025%20%28preprint%20arxiv%20v1%29.pdf" target="_blank" rel="noopener"><em>Professional Software Developers Don't Vibe, They Control: AI Agent Use for Coding in 2025</em></a>. Preprint. (Field observations N=13; qualitative survey N=99.)</li>
                     <li>Martin, R. C. [Uncle Bob]. (2026, July 22–23). <a href="https://x.com/unclebobmartin/status/2080257779395154409" target="_blank" rel="noopener"><em>“My current strategy is to not read any of the code written by my agents”</em></a> and related posts on X. Discussions on <a href="https://alt-hn.vercel.app/item/49074693" target="_blank" rel="noopener">Hacker News</a> and analysis on <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>.</li>
-                    <li>Akita, F. (2026, September 22). <a href="https://x.com/AkitaOnRails" target="_blank" rel="noopener"><em>“It's better to deploy faster because fixing it later became fast and cheap”</em></a> [Post on X / <a href="https://akitaonrails.com" target="_blank" rel="noopener">AkitaOnRails</a>].</li>
+                    <li>Akita, F. (2026, September 22). <a href="https://master--akitaonrails-official.netlify.app/en/2026/09/22/stop-making-excuses-and-ship-more-the-premise-changed/" target="_blank" rel="noopener"><em>Stop Making Excuses and Ship More! With AI, the Premise Changed. Get It.</em></a> (Contains the quoted argument about faster deployment and cheaper fixes.)</li>
                     <li>Hansson, D. H. [DHH]. (2026, September 25). <a href="https://x.com/dhh/status/2104542267281146357" target="_blank" rel="noopener"><em>“It'll soon be seen as deeply irresponsible to have critical code reviewed by human eyes alone”</em></a> [Post on X].</li>
-                    <li>Cherny, B. (2026). <a href="https://x.com/bcherny" target="_blank" rel="noopener"><em>Discussions on “coding is solved”, Claude Code, and the shifting engineering bottleneck</em></a> (Anthropic / Claude Code, on X).</li>
+                    <li>Cherny, B. (2026). <a href="https://www.youtube.com/watch?v=We7BZVKbCVw" target="_blank" rel="noopener"><em>Head of Claude Code: What happens after coding is solved</em></a> (interview on the changing engineering bottleneck).</li>
                     <li>Bernstein, Y. (2026). <a href="https://ivibeco.de/blog/your-favourite-framework-doesnt-matter-anymore" target="_blank" rel="noopener"><em>“Your Favourite Framework Doesn't Matter Anymore”</em></a>.</li>
                     <li>Mistry, H. (2026). <a href="https://www.linkedin.com/pulse/your-tech-stack-doesnt-matter-users-have-never-once-asked-mistry-rfeif" target="_blank" rel="noopener"><em>“Your Tech Stack Doesn't Matter. Your Users Have Never Once Asked”</em></a>.</li>
                     <li>Everett, P., &amp; Ng, A. (2026). <a href="https://www.youtube.com/watch?v=hy8UstR2NEg&amp;t=455s" target="_blank" rel="noopener"><em>Full Course: Spec-Driven Development with Coding Agents</em></a>. DeepLearning.AI &amp; JetBrains. (Foundations of Spec-Driven Development, Project Constitution at 7:35, and human-in-the-loop task orchestration).</li>
