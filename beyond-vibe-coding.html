@@ -223,6 +223,15 @@
             height: auto;
         }
 
+        .validation-checks {
+            display: block;
+            margin-top: 0.65rem;
+        }
+
+        .validation-checks li {
+            display: list-item;
+        }
+
         .diagram-container img {
             display: block;
             margin: 0 auto;
@@ -423,8 +432,8 @@
                         </ul>
                     </li>
                     <li>
-                        <strong>Immediate and Layered Validation:</strong> Testing is not a final ceremony in this workflow; it is the feedback loop that allows the agent and engineer to converge safely. I value automated tests for fast, repeatable regression detection, and manual validation for the aspects that cannot be fully captured by assertions.
-                        <ul>
+                        <p><strong>Immediate and Layered Validation:</strong> Testing is not a final ceremony in this workflow; it is the feedback loop that allows the agent and engineer to converge safely. I value automated tests for fast, repeatable regression detection, and manual validation for the aspects that cannot be fully captured by assertions.</p>
+                        <ul class="validation-checks">
                             <li>Run unit and integration tests before proceeding to the next unit.</li>
                             <li>Run end-to-end (E2E) tests at capability boundaries, covering the real path through the relevant services, APIs, persistence, and external contracts.</li>
                             <li>Verify linters, static typing, and actively probe edge cases models commonly overlook.</li>
@@ -500,7 +509,14 @@
                     <small>— Robert C. Martin (<a href="https://x.com/unclebobmartin/status/2080257779395154409" target="_blank" rel="noopener">Post on X, July 23, 2026</a>; analysis on <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>)</small>
                 </blockquote>
                 <p>
-                    A broader interpretation of Clean Code is that it should keep accidental complexity out of the way so engineers can focus on <em>thinking and deciding</em>. This perspective is compatible with a broader economic argument made by <a href="https://master--akitaonrails-official.netlify.app/en/2026/09/22/stop-making-excuses-and-ship-more-the-premise-changed/" target="_blank" rel="noopener"><strong>Fabio Akita</strong></a>: when the marginal cost of fixing code approaches zero, bureaucratic manual review loops may become software's costliest friction. DHH's statement supports the narrower claim that human-only review of critical code may be insufficient; the need to combine human comprehension with automated invariant checks is my engineering conclusion (<a href="https://x.com/dhh/status/2104542267281146357" target="_blank" rel="noopener">DHH on X, Sept 2026</a>).
+                    A broader interpretation of Clean Code is that it should keep accidental complexity out of the way so engineers can focus on <em>thinking and deciding</em>. This perspective is compatible with a broader economic argument made by <a href="https://www.akitaonrails.com/en/2026/09/22/stop-making-excuses-and-ship-more-the-premise-changed/" target="_blank" rel="noopener"><strong>Fabio Akita</strong></a>: when the marginal cost of fixing code approaches zero, bureaucratic manual review loops may become software's costliest friction. DHH's statement supports the narrower claim that human-only review of critical code may be insufficient; the need to combine human comprehension with automated invariant checks is my engineering conclusion (<a href="https://x.com/dhh/status/2104542267281146357" target="_blank" rel="noopener">DHH on X, Sept 2026</a>).
+                </p>
+                <p>
+                    Akita's argument is narrower than "ship anything": he conditions faster deployment on tests, CI for every change,
+                    staging, feature flags, observability, and fast rollback. He also raises the bar for payments and health or
+                    physical-safety systems, already-run database migrations, and public libraries or packages. Finally, he presents
+                    evidence from projects he owns and operates alone. I therefore treat his position as a context-dependent
+                    operational claim, not as a universal license to reduce review.
                 </p>
 
                 <h3>The Reading Spectrum: Where to Read vs. Where to Automate</h3>
@@ -829,6 +845,22 @@ When the user asks to commit, invoke the semantic-commit skill
             </section>
 
             <section>
+                <h2>Mental Map</h2>
+                <pre><code>constitution (mission / stack / roadmap)
+        │
+        ▼
+   AGENTS.md ──► decides whether to open OpenSpec
+        │         chains explore→propose→apply→archive
+        │         human gate + git change/… branch
+        │
+        ├── skills openspec-*  (how to speak with the CLI)
+        └── skills other       (commit, Jira, …)
+                │
+                ▼
+         change OpenSpec ──► core specifications (archive)</code></pre>
+            </section>
+
+            <section>
                 <h2>4. OpenSpec: The Change, Not the Entire Project</h2>
                 <p>
                     A confession before diving into mechanics: if you are anything like me, your engineering instincts probably rebel against the premise that <em>"truth belongs in the specification, not in the code."</em> Every seasoned developer has been burned by stale design documents, aspirational UML diagrams, and bureaucratic waterfall specs that drifted into fiction the second code touched production. For decades, our cardinal rule was simple: code is the only source of truth. If you share that prejudice, welcome to the club — I felt the exact same skepticism.
@@ -948,22 +980,6 @@ When the user asks to commit, invoke the semantic-commit skill
             </section>
 
             <section>
-                <h2>Mental Map</h2>
-                <pre><code>constitution (mission / stack / roadmap)
-        │
-        ▼
-   AGENTS.md ──► decides whether to open OpenSpec
-        │         chains explore→propose→apply→archive
-        │         human gate + git change/… branch
-        │
-        ├── skills openspec-*  (how to speak with the CLI)
-        └── skills other       (commit, Jira, …)
-                │
-                ▼
-         change OpenSpec ──► core specifications (archive)</code></pre>
-            </section>
-
-            <section>
                 <h2>8. What This Changed in Practice</h2>
                 <p>
                     In our typed classifier (System One HTTP gateway, GPU-backed decider, automated test battery, idle unload),
@@ -972,11 +988,6 @@ When the user asks to commit, invoke the semantic-commit skill
                     files were committed in the observed workflow; this was reinforced by skills, <span class="path">.gitignore</span>,
                     and staging checks. Whenever the process slips (such as applying without a branch),
                     the rule in <span class="path">AGENTS.md</span> is immediately sharpened — the document is living infrastructure, not decoration.
-                </p>
-                <p>
-                    The practical change is therefore not that the agent became infallible. It is that the repository now gives each
-                    change a durable context, a bounded contract, a repeatable route through validation, and a visible place to record
-                    what was learned. The engineer spends less time re-establishing context and more time deciding what deserves to change.
                 </p>
             </section>
 
@@ -1016,9 +1027,11 @@ When the user asks to commit, invoke the semantic-commit skill
                     still owns the model of the system, the acceptance criteria, and the decision to ship.
                 </p>
                 <p>
-                    I still prompt with "build", "implement", "fix". The difference is that behind those prompts lies solid ground:
-                    a project constitution, change contracts orchestrated by AGENTS, gates, and skills. Vibe coding still exists — but
-                    now the vibe is <em>directed</em>, never adrift.
+                    I still prompt with "build", "implement", "fix". The practical change is not that the agent became infallible:
+                    behind those prompts lies solid ground — durable repository context, bounded change contracts, a repeatable route
+                    through validation, and a visible place to record what was learned. The engineer spends less time re-establishing
+                    context and more time deciding what deserves to change. Vibe coding still exists — but now the vibe is
+                    <em>directed</em>, never adrift.
                 </p>
             </section>
 
@@ -1039,7 +1052,7 @@ When the user asks to commit, invoke the semantic-commit skill
                     <li>OpenAI. (2026). <a href="https://openai.com/index/separating-signal-from-noise-coding-evaluations/" target="_blank" rel="noopener"><em>Separating signal from noise in coding evaluations</em></a>. (Audit documenting task-quality issues and later revisions affecting SWE-Bench Pro comparisons.)</li>
                     <li>Huang, R. L., Reyna, A., Lerner, S., Xia, H., &amp; Hempel, B. (2025). <a href="https://people.cs.uchicago.edu/~brianhempel/Professional%20Software%20Developers%20Don%E2%80%99t%20Vibe%2C%20They%20Control-%20AI%20Agent%20Use%20for%20Coding%20in%202025%20%28preprint%20arxiv%20v1%29.pdf" target="_blank" rel="noopener"><em>Professional Software Developers Don't Vibe, They Control: AI Agent Use for Coding in 2025</em></a>. Preprint. (Field observations N=13; qualitative survey N=99.)</li>
                     <li>Martin, R. C. [Uncle Bob]. (2026, July 22–23). <a href="https://x.com/unclebobmartin/status/2080257779395154409" target="_blank" rel="noopener"><em>“My current strategy is to not read any of the code written by my agents”</em></a> and related posts on X. Discussions on <a href="https://alt-hn.vercel.app/item/49074693" target="_blank" rel="noopener">Hacker News</a> and analysis on <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>.</li>
-                    <li>Akita, F. (2026, September 22). <a href="https://master--akitaonrails-official.netlify.app/en/2026/09/22/stop-making-excuses-and-ship-more-the-premise-changed/" target="_blank" rel="noopener"><em>Stop Making Excuses and Ship More! With AI, the Premise Changed. Get It.</em></a> (Contains the quoted argument about faster deployment and cheaper fixes.)</li>
+                    <li>Akita, F. (2026, September 22). <a href="https://www.akitaonrails.com/en/2026/09/22/stop-making-excuses-and-ship-more-the-premise-changed/" target="_blank" rel="noopener"><em>Stop Making Excuses and Ship More! With AI, the Premise Changed. Get It.</em></a> (Faster deployment conditioned on tests, CI, staging, observability, rollback, and appropriate scope.)</li>
                     <li>Willison, S. (2025, June 16). <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/" target="_blank" rel="noopener"><em>The lethal trifecta for AI agents: private data, untrusted content, and external communication</em></a>. (A threat-modeling frame for indirect prompt injection and data exfiltration.)</li>
                     <li>Akita, F. (2026). <a href="https://github.com/akitaonrails/ai-jail" target="_blank" rel="noopener"><em>ai-jail</em></a>. (OS-level sandbox for coding agents; useful defense-in-depth layer with stated residual risks.)</li>
                     <li>Hansson, D. H. [DHH]. (2026, September 25). <a href="https://x.com/dhh/status/2104542267281146357" target="_blank" rel="noopener"><em>“It'll soon be seen as deeply irresponsible to have critical code reviewed by human eyes alone”</em></a> [Post on X].</li>
