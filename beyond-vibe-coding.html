@@ -283,7 +283,7 @@
                     fills the vacuum with overconfident guesswork.
                 </p>
                 <p>
-                    In this workflow, <strong>Cursor</strong> has delivered the best return on investment of any AI coding tool I have used. The reason is not that it eliminates the need for engineering judgment or produces flawless code; it makes repository-aware agent work practical by bringing project context, rules, skills, editing, and validation into the same loop. The tool is only the multiplier. The durable advantage comes from the constitution, the workflow, and the engineer's ability to evaluate the result.
+                    In my experience, <strong>Cursor</strong> has delivered the best return on investment of any AI coding tool I have used. This is a personal, non-sponsored assessment rather than a controlled comparison or a claim that Cursor is universally superior. Its value for me is that it makes repository-aware agent work practical by bringing project context, rules, skills, editing, and validation into the same loop. The tool is only the multiplier; the durable advantage comes from the constitution, the workflow, and the engineer's ability to evaluate the result.
                 </p>
             </section>
 
@@ -292,14 +292,6 @@
 
                 <p>
                     <strong>Workflow Summary:</strong> AI-assisted software development does not mean blindly delegating solutions. It means operating as a critical architect and pilot through an iterative 4-stage lifecycle: <strong>Understand the Problem &rarr; Evaluate Candidate Architectures &rarr; Loop (Implement &amp; Learn &rarr; Validate) &rarr; Deliver</strong>. The velocity and efficacy of this workflow are directly proportional to the engineer's technical depth — and the implementation loop itself becomes an active engine for continuous learning and repertoire expansion.
-                </p>
-
-                <p>
-                    My preferred way of working is deliberately <strong>spiral</strong>: plan enough to make the next decision responsibly, implement a coherent slice, test it, observe the result, collect feedback, and then plan the next slice. Each loop should reduce uncertainty and improve the shared model of the system. This echoes the risk-driven spirit of Boehm's Spiral Model and the Agile emphasis on working software, collaboration, and responding to change — but the loop here is a practical engineering habit, not a claim that every project should adopt a formal process framework.
-                </p>
-
-                <p>
-                    For the same reason, I avoid <strong>Big Design Up Front</strong>. That does not mean avoiding architecture or making decisions impulsively. The constitution, constraints, interfaces, and high-risk invariants deserve deliberate design before implementation; speculative flexibility, exhaustive feature design, and abstractions for hypothetical futures do not. I prefer an evolutionary design that starts with a sound boundary, validates it against real feedback, and becomes more detailed as evidence accumulates. This is close to YAGNI and evolutionary design: build what the current change requires, keep the design simple, and refactor when new evidence justifies it.
                 </p>
 
                 <div class="diagram-container">
@@ -393,7 +385,7 @@
                 <h4>1. Understand the Problem</h4>
                 <ul>
                     <li>
-                        <strong>Before typing any prompt:</strong> thoroughly define functional requirements, use cases, boundaries, and business constraints (<em>"The hardest single part of building a software system is deciding precisely what to build"</em> — Fred Brooks).
+                        <strong>Before typing a substantial implementation prompt:</strong> define enough of the functional requirements, use cases, boundaries, and business constraints to choose the next responsible step (<em>"The hardest single part of building a software system is deciding precisely what to build"</em> — Fred Brooks).
                     </li>
                     <li>
                         <strong>Without problem clarity:</strong> AI will simply produce plausible-sounding answers for the wrong problem, automating waste at unprecedented speed.
@@ -472,43 +464,33 @@
                 <h3>Supporting Tools &amp; Automations</h3>
                 <ul>
                     <li>
-                        <strong>Reusability via Skills and Slash Commands:</strong> Standardized prompts for frequent workflows (generating semantic commits via <span class="path">git diff</span>, documenting PRs, or filing backlog cards). Skills reduce stochastic variance and guarantee consistency.
+                        <strong>Reusability via Skills and Slash Commands:</strong> Standardized prompts for frequent workflows (generating semantic commits via <span class="path">git diff</span>, documenting PRs, or filing backlog cards). Skills reduce avoidable variance and make the intended procedure inspectable.
                     </li>
                     <li>
                         <strong>Automated Code Review:</strong> Using CodeRabbit, specialized reviewer agents, and linters as an automated second line of defense to audit bugs, performance bottlenecks, and security flaws before final delivery.
                     </li>
                 </ul>
 
-                <h3>Evidence, Not Just Anecdote</h3>
-                <p>
-                    My Cursor assessment is a report about this workflow, not a universal productivity claim. The evidence is mixed and highly sensitive to task distribution, repository familiarity, tool configuration, and the quality bar. In a 2025 randomized controlled trial, METR studied 16 experienced open-source developers completing 246 real tasks and found that early-2025 AI tools increased completion time by 19% in that setting, despite developers expecting a speedup. The result does not prove that AI slows every developer; it does show why personal ROI should be measured rather than assumed.
-                </p>
-                <p>
-                    Evaluation also changes when the definition of success becomes more realistic. A 2026 METR study found that roughly half of AI-generated pull requests that passed the SWE-bench Verified automated grader would not have been merged by repository maintainers. SWE-bench Pro reaches a similar caution from another direction: on longer-horizon, multi-file software tasks, the best systems in its initial evaluation scored around 25% Pass@1. These results do not make agents useless. They show that passing tests is not the same as being mergeable, and that autonomous success depends heavily on elicitation, feedback, code quality, and repository conventions.
-                </p>
-                <p>
-                    This is consistent with a qualitative 2025 study of professional developers: experienced practitioners reported value from coding agents while retaining control over design and implementation because they remained responsible for quality attributes. That is the position of this article as well. The agent can multiply execution, but the engineer still owns the model of the system, the acceptance criteria, and the decision to ship.
-                </p>
-
                 <h3>The Engineering Shift: From Reading Code to Imposing Extreme Constraints</h3>
                 <p>
                     This shift isn't about adopting cooler tools; it is a fundamental break in how engineering discipline is enforced, echoed by veteran voices across the industry.
                 </p>
                 <p>
-                    In July 2026, <strong>Uncle Bob (Robert C. Martin)</strong> sparked widespread debate across the engineering community when he posted:
-                </p>
-                <blockquote>
-                    “My current strategy is to not read any of the code written by my agents.”
-                    <br />
-                    <small>— Robert C. Martin (<a href="https://x.com/unclebobmartin" target="_blank" rel="noopener">Post on X, July 23, 2026</a>; analysis on <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>)</small>
-                </blockquote>
-                <p>
-                    In another post that month, he summarized the reasoning behind that position:
+                    In July 2026, <strong>Uncle Bob (Robert C. Martin)</strong> sparked widespread debate across the engineering community. The sequence matters:
+                    on July 22, he summarized the position this way:
                 </p>
                 <blockquote>
                     “I don't read the code AI produces, and I test and constrain it so thoroughly that I don't have to pray.”
                     <br />
                     <small>— Robert C. Martin (post on X, July 22, 2026; quoted and discussed in <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>)</small>
+                </blockquote>
+                <p>
+                    The following day, he expressed the same strategy more provocatively:
+                </p>
+                <blockquote>
+                    “My current strategy is to not read any of the code written by my agents.”
+                    <br />
+                    <small>— Robert C. Martin (<a href="https://x.com/unclebobmartin/status/2080257779395154409" target="_blank" rel="noopener">Post on X, July 23, 2026</a>; analysis on <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>)</small>
                 </blockquote>
                 <p>
                     A broader interpretation of Clean Code is that it should keep accidental complexity out of the way so engineers can focus on <em>thinking and deciding</em>. This perspective is compatible with a broader economic argument made by <strong>Fabio Akita</strong>: when the marginal cost of fixing code approaches zero, bureaucratic manual review loops may become software's costliest friction (see the related source in the references). DHH's statement supports the narrower claim that human-only review of critical code may be insufficient; the need to combine human comprehension with automated invariant checks is my engineering conclusion (<a href="https://x.com/dhh/status/2104542267281146357" target="_blank" rel="noopener">DHH on X, Sept 2026</a>).
@@ -565,6 +547,12 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <p>
+                    To make the pattern reusable, this site also includes a small <a href="examples/agent-governance/README.md">sanitized public example</a>
+                    containing a project constitution and an <span class="path">AGENTS.md</span>. It is a teaching fixture, not a copy of the production
+                    repository: adapt the boundaries, commands, tests, and approval rules to the runtime and risk profile of your own system.
+                </p>
 
                 <h3>What Must Be in the Mission</h3>
                 <p>
@@ -771,7 +759,7 @@ Write **only** within the root of this repository…</code></pre>
                     Before proposing (or picking a stack without OpenSpec), the agent must read the three constitution files.
                     The feature spec describes the change; the constitution describes the project. Furthermore,
                     <span class="path">openspec/config.yaml</span> injects these files into OpenSpec's
-                    <span class="path">context</span> — ensuring propose/apply cycles never lose sight of mission and stack constraints.
+                    <span class="path">context</span> — keeping mission and stack constraints available to propose/apply cycles.
                 </p>
 
                 <h3>Semantic Commits (Enforced in AGENTS.md)</h3>
@@ -806,7 +794,7 @@ When the user asks to commit, invoke the semantic-commit skill
                         <tr>
                             <td><strong>Unauthorized Dependencies</strong></td>
                             <td>2–3 extraneous packages proposed per sprint (<span class="path">requests</span>, <span class="path">date-fns</span>)</td>
-                            <td><strong>Rare / Suppressed</strong> (no unvetted packages merged in the observed period, filtered by <em>Do Not Use</em>)</td>
+                            <td><strong>Rare / Suppressed</strong> (unvetted proposals were filtered before merge by <em>Do Not Use</em>; the post-policy proposal denominator was not logged consistently, so no proposal-rate claim is made)</td>
                         </tr>
                         <tr>
                             <td><strong>Architectural Drift &amp; Rework</strong></td>
@@ -838,7 +826,7 @@ When the user asks to commit, invoke the semantic-commit skill
                     A confession before diving into mechanics: if you are anything like me, your engineering instincts probably rebel against the premise that <em>"truth belongs in the specification, not in the code."</em> Every seasoned developer has been burned by stale design documents, aspirational UML diagrams, and bureaucratic waterfall specs that drifted into fiction the second code touched production. For decades, our cardinal rule was simple: code is the only source of truth. If you share that prejudice, welcome to the club — I felt the exact same skepticism.
                 </p>
                 <p>
-                    Yet, I decided to give OpenSpec a serious chance in a live production service. What made it click is the orchestration layer: when driven seamlessly by <span class="path">AGENTS.md</span>, the traditional friction of specification-driven development is largely mitigated. You never manually fill out tedious markdown templates or memorize obscure CLI commands; the agent conducts the propose/apply/archive lifecycle behind the scenes in response to natural-language prompts. You inherit the architectural contracts of formal specifications, while the administrative overhead is absorbed by the agent.
+                    Yet, I decided to give OpenSpec a serious chance in a live production service. What made it click is the orchestration layer: when driven seamlessly by <span class="path">AGENTS.md</span>, the traditional friction of specification-driven development is largely mitigated. In this workflow, I do not manually fill out every markdown template or memorize obscure CLI commands; the agent conducts the propose/apply/archive lifecycle behind the scenes in response to natural-language prompts. I inherit the architectural contracts of formal specifications, while much of the administrative overhead is absorbed by the agent.
                 </p>
                 <p>
                     The distinction bears repeating, as it is where many developers get confused. OpenSpec
@@ -923,6 +911,39 @@ When the user asks to commit, invoke the semantic-commit skill
                     the rule in <span class="path">AGENTS.md</span> is immediately sharpened — the document is living infrastructure, not decoration.
                 </p>
                 <p>
+                    My preferred way of working is deliberately <strong>spiral</strong>: plan enough to make the next decision responsibly, implement a coherent slice,
+                    test it, observe the result, collect feedback, and then plan the next slice. Each loop should reduce uncertainty and improve the shared model of the system.
+                    This echoes the risk-driven spirit of Boehm's Spiral Model and the Agile emphasis on working software, collaboration, and responding to change — but the loop
+                    here is a practical engineering habit, not a claim that every project should adopt a formal process framework.
+                </p>
+                <p>
+                    For the same reason, I avoid <strong>Big Design Up Front</strong>. That does not mean avoiding architecture or making decisions impulsively. The constitution,
+                    constraints, interfaces, and high-risk invariants deserve deliberate design before implementation; speculative flexibility, exhaustive feature design, and
+                    abstractions for hypothetical futures do not. I prefer an evolutionary design that starts with a sound boundary, validates it against real feedback, and becomes
+                    more detailed as evidence accumulates. This is close to YAGNI and evolutionary design: build what the current change requires, keep the design simple, and
+                    refactor when new evidence justifies it.
+                </p>
+                <h3>Evidence, Not Just Anecdote</h3>
+                <p>
+                    My Cursor assessment is a report about this workflow, not a universal productivity claim, and it is not sponsored by Cursor. The evidence is mixed and highly
+                    sensitive to task distribution, repository familiarity, tool configuration, and the quality bar. In a 2025 randomized controlled trial, METR studied 16 experienced
+                    open-source developers completing 246 real tasks and found that early-2025 AI tools increased completion time by 19% in that setting, despite developers expecting
+                    a speedup. The result does not prove that AI slows every developer; it shows why personal ROI should be measured rather than assumed.
+                </p>
+                <p>
+                    Evaluation also changes when the definition of success becomes more realistic. In a 2026 METR note, four maintainers from three repositories reviewed 296 AI-generated
+                    pull requests; roughly half of the test-passing SWE-bench Verified patches would not have been merged by maintainers. The study is a benchmark-to-maintainer comparison,
+                    not a direct productivity trial, and it did not allow agent iteration after feedback. SWE-Bench Pro's initial 2025 release reported frontier performance below 25% Pass@1,
+                    with GPT-5 at 23.3%, on long-horizon multi-file tasks. Later audits and benchmark revisions make that number a historical release snapshot, not a timeless estimate of
+                    model capability. These results show why passing tests is not the same as being mergeable, and why autonomous success depends on elicitation, feedback, code quality,
+                    and repository conventions.
+                </p>
+                <p>
+                    This is consistent with a qualitative 2025 study of professional developers: experienced practitioners reported value from coding agents while retaining control over design
+                    and implementation because they remained responsible for quality attributes. That is the position of this article as well. The agent can multiply execution, but the engineer
+                    still owns the model of the system, the acceptance criteria, and the decision to ship.
+                </p>
+                <p>
                     I still prompt with "build", "implement", "fix". The difference is that behind those prompts lies solid ground:
                     a project constitution, change contracts orchestrated by AGENTS, gates, and skills. Vibe coding still exists — but
                     now the vibe is <em>directed</em>, never adrift.
@@ -958,9 +979,10 @@ When the user asks to commit, invoke the semantic-commit skill
                     <li>Laban, P., Hayashi, H., Zhou, Y., &amp; Neville, J. (2025). <em>LLMs Get Lost In Multi-Turn Conversation</em>. arXiv:2505.06120; published as an ICLR 2026 conference paper. (Evidence for reduced reliability in multi-turn, underspecified conversations.)</li>
                     <li>Becker, J., Rush, N., Barnes, B., &amp; Rein, D. (2025). <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/" target="_blank" rel="noopener"><em>Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity</em></a>. METR. (Randomized controlled trial; 16 developers and 246 real tasks.)</li>
                     <li>Whitfill, P., Wu, C., Becker, J., &amp; Rush, N. (2026). <a href="https://metr.org/notes/2026-03-10-many-swe-bench-passing-prs-would-not-be-merged-into-main/" target="_blank" rel="noopener"><em>Many SWE-bench-Passing PRs Would Not Be Merged into Main</em></a>. METR research note. (Maintainer review as a complement to automated grading.)</li>
-                    <li>Scale AI Research Team. (2025). <a href="https://arxiv.org/abs/2509.16941" target="_blank" rel="noopener"><em>SWE-Bench Pro: Can AI Agents Solve Long-Horizon Software Engineering Tasks?</em></a>. arXiv:2509.16941. (Long-horizon, multi-file software engineering benchmark.)</li>
+                    <li>Scale AI Research Team. (2025). <a href="https://labs.scale.com/papers/swe_bench_pro" target="_blank" rel="noopener"><em>SWE-Bench Pro: Can AI Agents Solve Long-Horizon Software Engineering Tasks?</em></a>. arXiv:2509.16941. (Initial release: GPT-5 at 23.3% Pass@1 on the public evaluation.)</li>
+                    <li>OpenAI. (2026). <a href="https://openai.com/index/separating-signal-from-noise-coding-evaluations/" target="_blank" rel="noopener"><em>Separating signal from noise in coding evaluations</em></a>. (Audit documenting task-quality issues and later revisions affecting SWE-Bench Pro comparisons.)</li>
                     <li>Huang, R. L., Reyna, A., Lerner, S., Xia, H., &amp; Hempel, B. (2025). <a href="https://people.cs.uchicago.edu/~brianhempel/Professional%20Software%20Developers%20Don%E2%80%99t%20Vibe%2C%20They%20Control-%20AI%20Agent%20Use%20for%20Coding%20in%202025%20%28preprint%20arxiv%20v1%29.pdf" target="_blank" rel="noopener"><em>Professional Software Developers Don't Vibe, They Control: AI Agent Use for Coding in 2025</em></a>. Preprint. (Field observations N=13; qualitative survey N=99.)</li>
-                    <li>Martin, R. C. [Uncle Bob]. (2026, July 23). <a href="https://x.com/unclebobmartin/status/2080257779395154409" target="_blank" rel="noopener"><em>“My current strategy is to not read any of the code written by my agents”</em></a> [Post on X]. Discussions on <a href="https://alt-hn.vercel.app/item/49074693" target="_blank" rel="noopener">Hacker News</a> and analysis on <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>.</li>
+                    <li>Martin, R. C. [Uncle Bob]. (2026, July 22–23). <a href="https://x.com/unclebobmartin/status/2080257779395154409" target="_blank" rel="noopener"><em>“My current strategy is to not read any of the code written by my agents”</em></a> and related posts on X. Discussions on <a href="https://alt-hn.vercel.app/item/49074693" target="_blank" rel="noopener">Hacker News</a> and analysis on <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>.</li>
                     <li>Akita, F. (2026, September 22). <a href="https://x.com/AkitaOnRails" target="_blank" rel="noopener"><em>“It's better to deploy faster because fixing it later became fast and cheap”</em></a> [Post on X / <a href="https://akitaonrails.com" target="_blank" rel="noopener">AkitaOnRails</a>].</li>
                     <li>Hansson, D. H. [DHH]. (2026, September 25). <a href="https://x.com/dhh/status/2104542267281146357" target="_blank" rel="noopener"><em>“It'll soon be seen as deeply irresponsible to have critical code reviewed by human eyes alone”</em></a> [Post on X].</li>
                     <li>Cherny, B. (2026). <a href="https://x.com/bcherny" target="_blank" rel="noopener"><em>Discussions on “coding is solved”, Claude Code, and the shifting engineering bottleneck</em></a> (Anthropic / Claude Code, on X).</li>
