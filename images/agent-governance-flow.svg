@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" role="img" aria-labelledby="title desc">
+  <title id="title">Agent governance flow</title>
+  <desc id="desc">The project constitution defines stable boundaries, AGENTS.md orchestrates the workflow, and OpenSpec defines the contract for each material change.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0b3d2e" />
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#1a1a1a" flood-opacity="0.10" />
+    </filter>
+  </defs>
+  <rect width="960" height="430" rx="12" fill="#fffdf9" />
+  <text x="480" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="700" fill="#0b3d2e">Three layers, one governed change workflow</text>
+
+  <rect x="40" y="82" width="250" height="220" rx="10" fill="#eef5f1" stroke="#0b3d2e" stroke-width="2" filter="url(#shadow)" />
+  <text x="165" y="119" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#0b3d2e">Constitution</text>
+  <text x="165" y="148" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" fill="#1a1a1a">Permanent project context</text>
+  <text x="72" y="194" font-family="ui-monospace, monospace" font-size="14" fill="#1a1a1a">mission.md</text>
+  <text x="72" y="224" font-family="ui-monospace, monospace" font-size="14" fill="#1a1a1a">tech-stack.md</text>
+  <text x="72" y="254" font-family="ui-monospace, monospace" font-size="14" fill="#1a1a1a">roadmap.md</text>
+  <text x="165" y="282" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#555">why / boundaries / direction</text>
+
+  <line x1="290" y1="192" x2="350" y2="192" stroke="#0b3d2e" stroke-width="3" marker-end="url(#arrow)" />
+
+  <rect x="350" y="82" width="260" height="220" rx="10" fill="#f5f0e8" stroke="#b45309" stroke-width="2" filter="url(#shadow)" />
+  <text x="480" y="119" text-anchor="middle" font-family="ui-monospace, monospace" font-size="21" font-weight="700" fill="#0b3d2e">AGENTS.md</text>
+  <text x="480" y="148" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" fill="#1a1a1a">Operational conductor</text>
+  <text x="382" y="194" font-family="system-ui, sans-serif" font-size="14" fill="#1a1a1a">decides when to specify</text>
+  <text x="382" y="224" font-family="system-ui, sans-serif" font-size="14" fill="#1a1a1a">chains the skills</text>
+  <text x="382" y="254" font-family="system-ui, sans-serif" font-size="14" fill="#1a1a1a">enforces gates and boundaries</text>
+  <text x="480" y="282" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#555">when / how / authorization</text>
+
+  <line x1="610" y1="192" x2="670" y2="192" stroke="#0b3d2e" stroke-width="3" marker-end="url(#arrow)" />
+
+  <rect x="670" y="82" width="250" height="220" rx="10" fill="#edf3f5" stroke="#356a73" stroke-width="2" filter="url(#shadow)" />
+  <text x="795" y="119" text-anchor="middle" font-family="ui-monospace, monospace" font-size="21" font-weight="700" fill="#0b3d2e">OpenSpec</text>
+  <text x="795" y="148" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" fill="#1a1a1a">Change-scoped contract</text>
+  <text x="795" y="194" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#1a1a1a">propose</text>
+  <text x="795" y="224" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#1a1a1a">apply + validate</text>
+  <text x="795" y="254" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#1a1a1a">sync + archive</text>
+  <text x="795" y="282" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#555">what changes now</text>
+
+  <text x="480" y="348" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#555">The archived change becomes part of the next baseline</text>
+  <path d="M 795 320 C 795 405, 165 405, 165 320" fill="none" stroke="#0b3d2e" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#arrow)" />
+</svg>
