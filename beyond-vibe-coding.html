@@ -32,9 +32,9 @@
         }
 
         .wrap {
-            max-width: 56rem;
+            max-width: 52rem;
             margin: 0 auto;
-            padding: 3rem 2rem 5rem;
+            padding: 3rem 1.75rem 5rem;
         }
 
         header {
@@ -43,52 +43,54 @@
             margin-bottom: 2.25rem;
         }
 
-        .eyebrow {
-            font-family: ui-sans-serif, system-ui, sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin: 0 0 0.75rem;
-        }
-
         h1 {
             font-size: clamp(1.75rem, 4vw, 2.35rem);
             line-height: 1.2;
             font-weight: 700;
             margin: 0 0 0.75rem;
             color: var(--accent);
+            text-align: left;
         }
 
         .dek {
             margin: 0;
             color: var(--muted);
             font-size: 1.05rem;
+            text-align: justify;
+            text-justify: inter-word;
+            text-align-last: left;
+            hyphens: none;
+            -webkit-hyphens: none;
         }
 
         h2 {
             font-size: 1.35rem;
             margin: 2.5rem 0 0.85rem;
             color: var(--accent);
+            text-align: left;
         }
 
         h3 {
             font-size: 1.1rem;
             margin: 1.75rem 0 0.5rem;
+            text-align: left;
         }
 
         h4 {
             font-size: 1rem;
             margin: 1.25rem 0 0.35rem;
             color: var(--accent);
+            text-align: left;
         }
 
         p,
         li {
-            max-width: 76ch;
             text-align: justify;
             text-justify: inter-word;
-            hyphens: auto;
+            text-align-last: left;
+            hyphens: none;
+            -webkit-hyphens: none;
+            word-break: normal;
         }
 
         p {
@@ -97,12 +99,12 @@
 
         ul,
         ol {
-            padding-left: 1.25rem;
+            padding-left: 1.5rem;
             margin: 0 0 1.15rem;
         }
 
         li {
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.45rem;
         }
 
         a {
@@ -150,24 +152,27 @@
         }
 
         blockquote {
-            margin: 1.25rem 0;
-            padding: 0.25rem 0 0.25rem 1rem;
+            margin: 1.35rem 0;
+            padding: 0.5rem 0 0.5rem 1.15rem;
             border-left: 3px solid var(--accent);
             color: var(--muted);
             font-style: italic;
+            text-align: justify;
+            text-justify: inter-word;
+            text-align-last: left;
+            hyphens: none;
+            -webkit-hyphens: none;
         }
 
-        .box {
-            background: var(--card);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 1.15rem 1.25rem;
-            margin: 1.35rem 0 1.6rem;
+        blockquote small {
+            display: block;
+            margin-top: 0.45rem;
+            font-style: normal;
+            font-family: ui-sans-serif, system-ui, sans-serif;
+            font-size: 0.82rem;
+            text-align: left;
         }
 
-        .box p:last-child {
-            margin-bottom: 0;
-        }
 
         table {
             width: 100%;
@@ -251,6 +256,9 @@
                     <strong>scale</strong>, <strong>complex debugging</strong>, and <strong>defining precisely what to build</strong>.
                 </p>
                 <p>
+                    When syntax generation is essentially commoditized, the central failure mode is no longer a syntax error, but a semantic divergence between the architect's mental model and the model's probabilistic assumptions — a breakdown in <strong>Intent Fidelity</strong>. In Spec-Driven Development, our relationship with AI shifts fundamentally: the engineer authoritatively specifies the formal intent, domain constraints, and input/output contracts in Markdown, while the coding agent operates as a <strong>semantic compiler</strong>, translating high-level contracts into executable code. If the intent at the input is ambiguous or unanchored, the semantic compiler will flawlessly compile the wrong system at terrifying speed.
+                </p>
+                <p>
                     What changed in my everyday practice wasn't "using more AI." It was
                     <strong>writing the project's permanent memory</strong> in the exact place the agent is
                     forced to look, transforming change workflows into a repeatable pipeline.
@@ -262,11 +270,9 @@
             <section id="ai-development-workflow">
                 <h2>The Methodology Cycle: The Engineer as Pilot and Architect</h2>
 
-                <div class="box">
-                    <p>
-                        <strong>Workflow Summary:</strong> AI-assisted software development does not mean blindly delegating solutions. It means operating as a critical architect and pilot through an iterative 4-stage lifecycle: <strong>Understand the Problem &rarr; Evaluate Candidate Architectures &rarr; Loop (Implement &amp; Learn &rarr; Validate) &rarr; Deliver</strong>. The velocity and efficacy of this workflow are directly proportional to the engineer's technical depth — and the implementation loop itself becomes an active engine for continuous learning and repertoire expansion.
-                    </p>
-                </div>
+                <p>
+                    <strong>Workflow Summary:</strong> AI-assisted software development does not mean blindly delegating solutions. It means operating as a critical architect and pilot through an iterative 4-stage lifecycle: <strong>Understand the Problem &rarr; Evaluate Candidate Architectures &rarr; Loop (Implement &amp; Learn &rarr; Validate) &rarr; Deliver</strong>. The velocity and efficacy of this workflow are directly proportional to the engineer's technical depth — and the implementation loop itself becomes an active engine for continuous learning and repertoire expansion.
+                </p>
 
                 <div class="diagram-container">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 270" width="100%" height="auto" role="img" aria-label="AI-Assisted Methodology Cycle Diagram">
@@ -438,78 +444,75 @@
                     </li>
                 </ul>
 
-                <div class="box">
-                    <p>
-                        <strong>The Engineering Shift: From Reading Code to Imposing Extreme Constraints.</strong> This shift isn't about adopting cooler tools; it is a fundamental break in how engineering discipline is enforced, echoed by veteran voices across the industry:
-                    </p>
-                    
-                    <p>
-                        In July 2026, <strong>Uncle Bob (Robert C. Martin)</strong> — author of <em>Clean Code</em>, whose entire career championed readability and meticulous human review — sparked a massive debate across the community (surpassing 5 million impressions and triggering extensive discussion on <a href="https://alt-hn.vercel.app/item/49074693" target="_blank" rel="noopener">Hacker News</a>) by declaring:
-                    </p>
-                    <blockquote>
-                        “My current strategy is to not read any of the code written by my agents.”
-                        <br />
-                        <small>— Uncle Bob (<a href="https://x.com/unclebobmartin/status/2080257779395154409" target="_blank" rel="noopener">July 23, 2026, on X</a>)</small>
-                    </blockquote>
-                    <p>
-                        When questioned on how he ensured system integrity without reading code or tests line by line, he doubled down:
-                    </p>
-                    <blockquote>
-                        “Neither. I don't read the code AI produces, and I test and constrain it so thoroughly that I don't have to pray.”
-                        <br />
-                        <small>— Uncle Bob (<a href="https://x.com/unclebobmartin/status/2080257779395154409" target="_blank" rel="noopener">July 22, 2026, on X</a>; analysis on <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>)</small>
-                    </blockquote>
-                    <p>
-                        Instead of manually inspecting character by character, Uncle Bob substituted manual review with <em>extreme constraints</em>: dense test suites written and validated by agents, Gherkin behavioral specs, mutation testing, coverage analysis, and targeted spot-checks on QA procedures.
-                    </p>
-                    <p>
-                        Faced with continued bewilderment over how the father of <em>Clean Code</em> no longer read code, he dismantled the apparent contradiction:
-                    </p>
-                    <blockquote>
-                        “People seem shocked that the author of Clean Code doesn't read code anymore. But that should not be surprising. Why did I write Clean Code? What is the goal of keeping code clean? To get it out of the way of the real job — thinking.”
-                        <br />
-                        <small>— Uncle Bob (<a href="https://x.com/unclebobmartin/status/2105647907705868659" target="_blank" rel="noopener">on X</a>)</small>
-                    </blockquote>
-                    <p>
-                        Clean code was never about fetishizing lines of text; it was always about <strong>removing syntax noise to clear cognitive bandwidth for the real work of engineering: thinking and making decisions</strong>.
-                    </p>
+                <h3>The Engineering Shift: From Reading Code to Imposing Extreme Constraints</h3>
+                <p>
+                    This shift isn't about adopting cooler tools; it is a fundamental break in how engineering discipline is enforced, echoed by veteran voices across the industry:
+                </p>
+                
+                <p>
+                    In July 2026, <strong>Uncle Bob (Robert C. Martin)</strong> — author of <em>Clean Code</em>, whose entire career championed readability and meticulous human review — sparked a massive debate across the community (surpassing 5 million impressions and triggering extensive discussion on <a href="https://alt-hn.vercel.app/item/49074693" target="_blank" rel="noopener">Hacker News</a>) by declaring:
+                </p>
+                <blockquote>
+                    “My current strategy is to not read any of the code written by my agents.”
+                    <br />
+                    <small>— Uncle Bob (<a href="https://x.com/unclebobmartin/status/2080257779395154409" target="_blank" rel="noopener">July 23, 2026, on X</a>)</small>
+                </blockquote>
+                <p>
+                    When questioned on how he ensured system integrity without reading code or tests line by line, he doubled down:
+                </p>
+                <blockquote>
+                    “Neither. I don't read the code AI produces, and I test and constrain it so thoroughly that I don't have to pray.”
+                    <br />
+                    <small>— Uncle Bob (<a href="https://x.com/unclebobmartin/status/2080257779395154409" target="_blank" rel="noopener">July 22, 2026, on X</a>; analysis on <a href="https://gradientrage.com/ml/2026/09/01/read-the-code.html" target="_blank" rel="noopener">Gradient Rage</a>)</small>
+                </blockquote>
+                <p>
+                    Instead of manually inspecting character by character, Uncle Bob substituted manual review with <em>extreme constraints</em>: dense test suites written and validated by agents, Gherkin behavioral specs, mutation testing, coverage analysis, and targeted spot-checks on QA procedures.
+                </p>
+                <p>
+                    Faced with continued bewilderment over how the father of <em>Clean Code</em> no longer read code, he dismantled the apparent contradiction:
+                </p>
+                <blockquote>
+                    “People seem shocked that the author of Clean Code doesn't read code anymore. But that should not be surprising. Why did I write Clean Code? What is the goal of keeping code clean? To get it out of the way of the real job — thinking.”
+                    <br />
+                    <small>— Uncle Bob (<a href="https://x.com/unclebobmartin/status/2105647907705868659" target="_blank" rel="noopener">on X</a>)</small>
+                </blockquote>
+                <p>
+                    Clean code was never about fetishizing lines of text; it was always about <strong>removing syntax noise to clear cognitive bandwidth for the real work of engineering: thinking and making decisions</strong>.
+                </p>
 
-                    <p>
-                        This economic reality was captured by <strong>Fabio Akita</strong> in September 2026:
-                    </p>
-                    <blockquote>
-                        “It's better to deploy faster because fixing it later became fast and cheap.”
-                        <br />
-                        <small>— Fabio Akita (<a href="https://x.com/AkitaOnRails" target="_blank" rel="noopener">September 22, 2026, on X</a>; essay on <a href="https://akitaonrails.com" target="_blank" rel="noopener">AkitaOnRails</a>)</small>
-                    </blockquote>
-                    <p>
-                        Akita's argument dismantles the classic bottleneck: because agents dramatically collapsed the cost and time of implementing and patching bugs, dragging out slow, bureaucratic review processes has become the most expensive and irrational friction in modern engineering.
-                    </p>
+                <p>
+                    This economic reality was captured by <strong>Fabio Akita</strong> in September 2026:
+                </p>
+                <blockquote>
+                    “It's better to deploy faster because fixing it later became fast and cheap.”
+                    <br />
+                    <small>— Fabio Akita (<a href="https://x.com/AkitaOnRails" target="_blank" rel="noopener">September 22, 2026, on X</a>; essay on <a href="https://akitaonrails.com" target="_blank" rel="noopener">AkitaOnRails</a>)</small>
+                </blockquote>
+                <p>
+                    Akita's argument dismantles the classic bottleneck: because agents dramatically collapsed the cost and time of implementing and patching bugs, dragging out slow, bureaucratic review processes has become the most expensive and irrational friction in modern engineering.
+                </p>
 
-                    <p>
-                        Just three days later, <strong>DHH (David Heinemeier Hansson)</strong> completed the equation: to deploy frequently without jeopardizing critical systems, the answer is not human sluggishness, but automated auditing:
-                    </p>
-                    <blockquote>
-                        “It'll soon be seen as deeply irresponsible to have critical code reviewed by human eyes alone.”
-                        <br />
-                        <small>— DHH (<a href="https://x.com/dhh/status/2104542267281146357" target="_blank" rel="noopener">September 25, 2026, on X</a>)</small>
-                    </blockquote>
-                    <p>
-                        The convergence between Uncle Bob's extreme constraints, Akita's economic pragmatism, and DHH's warning points to a single truth: <strong>engineering with AI is not about typing or reading faster; it is about designing an uncompromising harness</strong>. If fixing code is cheap, if human eyes tire, and if critical code demands safety, the engineer's role is to draw architectural boundaries, enforce constraints, and let agents execute rapidly within that protected perimeter.
-                    </p>
-                </div>
+                <p>
+                    Just three days later, <strong>DHH (David Heinemeier Hansson)</strong> completed the equation: to deploy frequently without jeopardizing critical systems, the answer is not human sluggishness, but automated auditing:
+                </p>
+                <blockquote>
+                    “It'll soon be seen as deeply irresponsible to have critical code reviewed by human eyes alone.”
+                    <br />
+                    <small>— DHH (<a href="https://x.com/dhh/status/2104542267281146357" target="_blank" rel="noopener">September 25, 2026, on X</a>)</small>
+                </blockquote>
+                <p>
+                    The convergence between Uncle Bob's extreme constraints, Akita's economic pragmatism, and DHH's warning points to a single truth: <strong>engineering with AI is not about typing or reading faster; it is about designing an uncompromising harness</strong>. If fixing code is cheap, if human eyes tire, and if critical code demands safety, the engineer's role is to draw architectural boundaries, enforce constraints, and let agents execute rapidly within that protected perimeter.
+                </p>
 
-                <div class="box">
-                    <p>
-                        To operate this lifecycle frictionlessly without relying on manual memory every single session, the repository itself must supply the stable foundation. This is where the three core pillars of this article enter: the <strong>Constitution</strong>, <strong>AGENTS.md</strong>, and <strong>OpenSpec</strong>.
-                    </p>
-                </div>
+                <p>
+                    To operate this lifecycle frictionlessly without relying on manual memory every single session, the repository itself must supply the stable foundation. This is where the three core pillars of this article enter: the <strong>Constitution</strong>, <strong>AGENTS.md</strong>, and <strong>OpenSpec</strong>.
+                </p>
             </section>
 
             <section>
                 <h2>1. Constitution Before Features</h2>
                 <p>
-                    In Spec-Driven Development, the idea of a
+                    In <a href="https://www.youtube.com/watch?v=hy8UstR2NEg&amp;t=455s" target="_blank" rel="noopener">Spec-Driven Development (SDD)</a>, the idea of a
                     <strong>project constitution</strong> is straightforward: three stable
                     documents that are not the feature spec of the week. In our repository,
                     they live in <span class="path">docs/constitution/</span>. The table below
@@ -587,21 +590,23 @@ Not users of this repo: judges, plaintiffs, lawyers…
                     <li><strong>Do Not Use</strong> — the single section that most effectively suppresses unwanted agent creativity.</li>
                     <li><strong>Process</strong> — OpenSpec defaults, natural language conventions, and where constitution vs. change specs reside.</li>
                 </ul>
+                <p>
+                    Why are coding agents so relentlessly addicted to <span class="path">npm install</span> or <span class="path">pip install</span> at the slightest sign of friction? LLMs are probabilistically trained to solve problems along the path of highest statistical likelihood across their vast pre-training corpuses. If parsing a date, structuring an HTTP call, or transforming an array requires 15 lines of standard library logic, the model's reflex is to hallucinate or import third-party bloat (<span class="path">requests</span>, <span class="path">axios</span>, <span class="path">date-fns</span>, <span class="path">lodash</span>). The <strong>Do Not Use</strong> table is not pedantic micromanagement; it is a vital psychological firewall against <strong>Dependency Bloatware</strong>. Explicitly forbidding specific libraries forces the agent's attention back into modern, native language primitives and the repository's curated toolchain, preserving operational hygiene.
+                </p>
 
-                <div class="box">
-                    <p>
-                        <strong>The Death of Stack Dogma: Choosing by Constraints, Not Faith.</strong> In 2026, the industry finally confronted an open secret: tech stacks aren't corporate totems, but pragmatic responses to real-world limits and trade-offs.
-                    </p>
-                    <p>
-                        In March 2026, <strong>Yaniv Bernstein</strong> published <a href="https://ivibeco.de/blog/your-favourite-framework-doesnt-matter-anymore" target="_blank" rel="noopener"><em>“Your Favourite Framework Doesn't Matter Anymore”</em></a>, arguing that framework wars (React vs. Vue vs. Svelte) have lost relevance because core abstractions converged; true value lies in understanding the domain and making solid architectural choices. In August 2026, <strong>Himanshu Mistry</strong> framed the same reality from a business perspective in <a href="https://www.linkedin.com/pulse/your-tech-stack-doesnt-matter-users-have-never-once-asked-mistry-rfeif" target="_blank" rel="noopener"><em>“Your Tech Stack Doesn't Matter. Your Users Have Never Once Asked”</em></a>: end users never ask if a backend runs on Node, Go, or Python — they care about whether the product solves their problem with proper latency and maintainability.
-                    </p>
-                    <p>
-                        The most iconic demonstration of this mindset came from <strong>DHH</strong> at Rails World 2026: the creator of Ruby on Rails revealed that HEY's new high-throughput backend was being rewritten in <strong>Rust</strong>. The decision shattered the dogmatic inertia of <em>“we are a Rails shop, therefore everything must be Rails.”</em> The real engineering question became: <em>“which tool best satisfies this specific set of concurrency, memory, and latency constraints?”</em>.
-                    </p>
-                    <p>
-                        AI has accelerated this transition. Previously, dogmatically standardizing on a single company stack was necessary to amortize steep human learning curves and hiring friction. With coding agents capable of seamlessly switching between ecosystems, standardization is only justified when backed by tangible operational reasons (shared infrastructure, JVM observability, reduced production risk). This is why <span class="path">tech-stack.md</span> in our constitution is so essential: it is not a declaration of love for a framework, but an <strong>explicit contract of engineering constraints</strong> that keeps the agent grounded and prevents stochastic stack churn across conversations.
-                    </p>
-                </div>
+                <h3>The Death of Stack Dogma: Choosing by Constraints, Not Faith</h3>
+                <p>
+                    In 2026, the industry finally confronted an open secret: tech stacks aren't corporate totems, but pragmatic responses to real-world limits and trade-offs.
+                </p>
+                <p>
+                    In March 2026, <strong>Yaniv Bernstein</strong> published <a href="https://ivibeco.de/blog/your-favourite-framework-doesnt-matter-anymore" target="_blank" rel="noopener"><em>“Your Favourite Framework Doesn't Matter Anymore”</em></a>, arguing that framework wars (React vs. Vue vs. Svelte) have lost relevance because core abstractions converged; true value lies in understanding the domain and making solid architectural choices. In August 2026, <strong>Himanshu Mistry</strong> framed the same reality from a business perspective in <a href="https://www.linkedin.com/pulse/your-tech-stack-doesnt-matter-users-have-never-once-asked-mistry-rfeif" target="_blank" rel="noopener"><em>“Your Tech Stack Doesn't Matter. Your Users Have Never Once Asked”</em></a>: end users never ask if a backend runs on Node, Go, or Python — they care about whether the product solves their problem with proper latency and maintainability.
+                </p>
+                <p>
+                    The most iconic demonstration of this mindset came from <strong>DHH</strong> at Rails World 2026: the creator of Ruby on Rails revealed that HEY's new high-throughput backend was being rewritten in <strong>Rust</strong>. The decision shattered the dogmatic inertia of <em>“we are a Rails shop, therefore everything must be Rails.”</em> The real engineering question became: <em>“which tool best satisfies this specific set of concurrency, memory, and latency constraints?”</em>.
+                </p>
+                <p>
+                    AI has accelerated this transition. Previously, dogmatically standardizing on a single company stack was necessary to amortize steep human learning curves and hiring friction. With coding agents capable of seamlessly switching between ecosystems, standardization is only justified when backed by tangible operational reasons (shared infrastructure, JVM observability, reduced production risk). This is why <span class="path">tech-stack.md</span> in our constitution is so essential: it is not a declaration of love for a framework, but an <strong>explicit contract of engineering constraints</strong> that keeps the agent grounded and prevents stochastic stack churn across conversations.
+                </p>
 
                 <h3>What Must Be in the Roadmap</h3>
                 <p>
@@ -627,13 +632,11 @@ Not users of this repo: judges, plaintiffs, lawyers…
                     <li>Every material deliverable becomes an OpenSpec change; the roadmap merely tracks the phase.</li>
                 </ul>
 
-                <div class="box">
-                    <p>
-                        The constitution does not replace a feature specification. It is the bedrock. A feature spec
-                        describes <em>one</em> discrete change. If that change alters the mission, stack, or phase,
-                        we update the constitution document immediately — we do not wait for change archival.
-                    </p>
-                </div>
+                <p>
+                    The constitution does not replace a feature specification. It is the bedrock. A feature spec
+                    describes <em>one</em> discrete change. If that change alters the mission, stack, or phase,
+                    we update the constitution document immediately — we do not wait for change archival.
+                </p>
             </section>
 
             <section>
@@ -687,6 +690,14 @@ Write **only** within the root of this repository…</code></pre>
                     Material changes (code, dependencies, Docker, API contracts, runtime behavior, docs impacting deployment)
                     &rarr; OpenSpec. Conceptual questions without modifying files, trivial typos, or explicitly stating
                     "no OpenSpec / just answer" &rarr; skip. This filter keeps trivial chats from generating overhead.
+                </p>
+
+                <h3>Context Decay &amp; The Economics of Delta Specs</h3>
+                <p>
+                    The root cause of agent degradation across long sessions is a well-documented phenomenon: <strong>Context Decay</strong>. As chat history swells with conversational back-and-forth, sprawling diffs, and redundant stack traces, transformer attention degrades across long token spans (the "needle-in-a-haystack" failure mode). The model begins silently dropping architectural constraints and hallucinating agreements made earlier in the session.
+                </p>
+                <p>
+                    On-disk specifications solve this by serving as an immutable, persistent memory anchor outside the volatile chat window. But how specifications are packaged is equally critical. Monolithic specification systems (such as the GitHub Spec Kit) dump 800 to 2,000 lines of exhaustive documentation into the prompt on every turn, overwhelming context and degrading reasoning performance. OpenSpec bypasses this through <strong>delta economy</strong>: its change artifacts (<span class="path">proposal.md</span>, <span class="path">specs/&lt;cap&gt;/spec.md</span> deltas) average around <strong>~250 focused lines</strong>. By injecting only the active change contract alongside the three constitutional documents, the agent operates in the highest-fidelity attention zone of its context window.
                 </p>
 
                 <h3>One Request = Complete Lifecycle</h3>
@@ -747,11 +758,9 @@ When the user asks to commit, invoke the commit-semantico skill
 (safe staging, ignoring `.env`, messages passed via HEREDOC).</code></pre>
                 <p class="caption">Excerpt from AGENTS.md — mandatory format + dedicated commit procedure.</p>
 
-                <div class="box">
-                    <p>
-                        Orchestration summarized: I state my intent; <span class="path">AGENTS.md</span> determines whether to open a change, in what sequence to trigger OpenSpec skills, whether to execute in the same conversation, how to branch in git, and when to archive. OpenSpec is the artifact engine; AGENTS is the conductor.
-                    </p>
-                </div>
+                <p>
+                    Orchestration summarized: I state my intent; <span class="path">AGENTS.md</span> determines whether to open a change, in what sequence to trigger OpenSpec skills, whether to execute in the same conversation, how to branch in git, and when to archive. OpenSpec is the artifact engine; AGENTS is the conductor.
+                </p>
             </section>
 
             <section>
@@ -762,6 +771,13 @@ When the user asks to commit, invoke the commit-semantico skill
                     delta requirements, design, tasks, and archived specs. The constitution is the permanent ground.
                     A change does not accidentally rewrite the project's mission — unless the change genuinely invalidates
                     that foundation, in which case <span class="path">AGENTS.md</span> mandates updating the constitution immediately.
+                </p>
+                <h3>The Greenfield vs. Brownfield Dilemma (OpenSpec’s Real Superpower)</h3>
+                <p>
+                    Most tutorials on Spec-Driven Development assume a sanitized, fictional reality: a brand-new <em>greenfield</em> repository where an engineer sits down and drafts pristine constitutional docs and complete formal specifications before typing the first <span class="path">git commit</span>. The real enterprise world is overwhelmingly <strong>brownfield</strong>: massive, undocumented legacy codebases with hundreds of thousands of lines running in production. If SDD required mapping every legacy edge case before you could instruct an agent to fix a bug or add an endpoint, the barrier to entry would be economically dead on arrival.
+                </p>
+                <p>
+                    This is where OpenSpec reveals its true pragmatic genius as a <strong>Brownfield-First</strong> architecture. You do not need to document the past all at once. OpenSpec operates strictly on <strong>delta specifications</strong> (<span class="path">ADDED</span>, <span class="path">MODIFIED</span>, <span class="path">REMOVED</span> requirements). You only specify the discrete delta of the active task at hand. As each change completes and merges, the <span class="path">archive</span> step automatically incorporates those delta requirements into the repository's permanent, living core specifications under <span class="path">openspec/specs/</span>. Through this organic, incremental ratchet, your legacy system's formal architectural specification is built piece by piece, sprint by sprint, solely from the territory your team actually touches.
                 </p>
                 <p>
                     Note: this article itself is documentation without an OpenSpec change. The filter in
@@ -840,6 +856,7 @@ When the user asks to commit, invoke the commit-semantico skill
                     <li>Bernstein, Y. (2026). <a href="https://ivibeco.de/blog/your-favourite-framework-doesnt-matter-anymore" target="_blank" rel="noopener"><em>“Your Favourite Framework Doesn't Matter Anymore”</em></a>.</li>
                     <li>Mistry, H. (2026). <a href="https://www.linkedin.com/pulse/your-tech-stack-doesnt-matter-users-have-never-once-asked-mistry-rfeif" target="_blank" rel="noopener"><em>“Your Tech Stack Doesn't Matter. Your Users Have Never Once Asked”</em></a>.</li>
                     <li>Hansson, D. H. (DHH, 2026). <a href="https://badarau.net/blog/dhh-rails-world-2026-keynote/" target="_blank" rel="noopener"><em>Keynote Rails World 2026: Rewriting critical backend systems in Rust and pragmatic stack choices</em></a>.</li>
+                    <li>Everett, P., &amp; Ng, A. (2026). <a href="https://www.youtube.com/watch?v=hy8UstR2NEg&amp;t=455s" target="_blank" rel="noopener"><em>Full Course: Spec-Driven Development with Coding Agents</em></a>. DeepLearning.AI &amp; JetBrains. (Foundations of Spec-Driven Development, Project Constitution at 7:35, and human-in-the-loop task orchestration).</li>
                     <li>Software Engineering in the Era of AI: Decision-Making, Architecture, and T-Shaped Depth.</li>
                     <li>AI Engineering Workflows: Skills, Rules, MCP, and Process Automation.</li>
                     <li>Software Engineering and Systems Design: Trade-offs in Practice.</li>
