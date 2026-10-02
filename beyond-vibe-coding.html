@@ -260,10 +260,22 @@
                     <li><strong>The Triad Architecture:</strong> Systemic stability is enforced by separating concerns across three decoupled layers: a permanent <strong>Project Constitution</strong> (mission, stack, roadmap), an operational conductor (<strong>AGENTS.md</strong>), and task-scoped delta contracts (<strong>OpenSpec</strong>).</li>
                     <li><strong>The Reading Spectrum:</strong> The engineer does not waste cognitive bandwidth manually reading repetitive boilerplate; manual scrutiny is concentrated strictly on core domain invariants and state contracts, while automated harnesses (strict typing, mutation tests, and negative constraints) bound the execution perimeter.</li>
                     <li><strong>Brownfield-First Pragmatism:</strong> Rather than demanding an impossible upfront audit of massive legacy systems, OpenSpec operates strictly via incremental delta specifications (<span class="path">ADDED</span>, <span class="path">MODIFIED</span>, <span class="path">REMOVED</span>) that organically map system architecture sprint by sprint upon archival.</li>
+                    <li><strong>Scope &amp; Pragmatic Adoption:</strong> What follows is an account of what has worked for me in my specific operating circumstances (a solo engineer maintaining mission-critical services). I do not dogmatically use every tool or ceremony across every project; I continuously assess each codebase to adopt only what genuinely adds value and justifies the overhead.</li>
                 </ul>
             </section>
 
             <section>
+                <p>
+                    <strong>Two upfront considerations on context and applicability:</strong>
+                </p>
+                <ul>
+                    <li>
+                        <strong>Context-specific experience:</strong> This article documents what has worked for me and what I actively use in my specific circumstances — primarily as a solo engineer maintaining production machine-learning and backend services with strict reliability boundaries. It is an empirical field report, not a universal dogma or a one-size-fits-all prescription for every engineering organization.
+                    </li>
+                    <li>
+                        <strong>Selective, pragmatic adoption:</strong> I do not necessarily use all of these practices or artifacts in every project. Imposing the full triad (constitution, <span class="path">AGENTS.md</span>, and OpenSpec) onto an exploratory spike, a simple script, or a low-risk internal tool would be pure over-engineering. In practice, I deliberately evaluate each codebase's lifespan, complexity, and blast radius to decide which controls are genuinely worth their operational weight.
+                    </li>
+                </ul>
                 <p>
                     <strong>What is original in this article:</strong> not a new tool or a new specification language, but a concrete operating model that binds a
                     project constitution to <span class="path">AGENTS.md</span> as the orchestration layer for an OpenSpec change lifecycle, with a deliberate
