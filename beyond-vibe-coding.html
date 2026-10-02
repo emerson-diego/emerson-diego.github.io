@@ -90,6 +90,68 @@
             border-radius: 3px;
         }
 
+        .reading-progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--accent);
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.08s ease-out;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        section[id],
+        nav[id] {
+            scroll-margin-top: 1.5rem;
+        }
+
+        .toc-container {
+            margin: 2rem 0;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--accent);
+            border-radius: 6px;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .toc-header {
+            font-family: ui-sans-serif, system-ui, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .toc-list {
+            margin: 0;
+            padding-left: 1.2rem;
+            font-family: ui-sans-serif, system-ui, sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .toc-list li {
+            margin-bottom: 0.4rem;
+        }
+
+        .toc-list a {
+            color: var(--fg);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .toc-list a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
         h2 {
             font-size: 1.35rem;
             margin: 2.5rem 0 0.85rem;
@@ -269,18 +331,20 @@
 </head>
 
 <body>
+    <div class="reading-progress-bar" id="readingProgressBar"></div>
     <div class="wrap">
         <header>
             <h1>Beyond Vibe Coding</h1>
             <p class="dek">
-                How I started directing coding agents using a project constitution,
-                <span class="path">AGENTS.md</span>, OpenSpec, and skills — instead of
-                hoping the model would magically guess what I meant.
+                How I learned to direct coding agents through project context, explicit
+                change contracts, layered validation, and human judgment.
             </p>
             <div class="meta-bar">
                 <span class="author">By Emerson Araújo</span>
                 <span class="separator">•</span>
                 <span class="date">October 2026</span>
+                <span class="separator">•</span>
+                <span class="reading-time">⏱️ 15 min read</span>
                 <span class="separator">•</span>
                 <span class="views-badge" title="Page views">
                     <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Femerson-diego.github.io%2Fbeyond-vibe-coding.html&label=views&labelColor=%23555555&countColor=%230b3d2e" alt="Page views" />
@@ -299,6 +363,23 @@
                     <li><strong>Scope &amp; Pragmatic Adoption:</strong> What follows is an account of what has worked for me in my specific operating circumstances (a solo engineer maintaining mission-critical services). I do not dogmatically use every tool or ceremony across every project; I continuously assess each codebase to adopt only what genuinely adds value and justifies the overhead.</li>
                 </ul>
             </section>
+
+            <nav id="toc" class="toc-container" aria-label="Table of Contents">
+                <div class="toc-header">Table of Contents</div>
+                <ol class="toc-list">
+                    <li><a href="#ai-development-workflow">The Methodology Cycle &amp; The Reading Spectrum</a></li>
+                    <li><a href="#constitution">1. Constitution Before Features</a></li>
+                    <li><a href="#agents-md">2. AGENTS.md: Standing Orders</a></li>
+                    <li><a href="#orchestration">3. How AGENTS.md Orchestrates OpenSpec</a></li>
+                    <li><a href="#openspec">4. OpenSpec: The Change, Not the Entire Project</a></li>
+                    <li><a href="#skills">5. Skills Worth Their Weight in Gold</a></li>
+                    <li><a href="#security">6. Security: Policy Is Not Enforcement</a></li>
+                    <li><a href="#limitations">7. Limitations, Costs, and Observed Failure Modes</a></li>
+                    <li><a href="#practice">8. What This Changed in Practice</a></li>
+                    <li><a href="#method-evidence">9. Method and Evidence</a></li>
+                    <li><a href="#references">References &amp; Connections</a></li>
+                </ol>
+            </nav>
 
             <section>
                 <p>
@@ -587,7 +668,7 @@
                 </p>
             </section>
 
-            <section>
+            <section id="constitution">
                 <h2>1. Constitution Before Features</h2>
                 <p>
                     In <a href="https://www.youtube.com/watch?v=hy8UstR2NEg&amp;t=455s" target="_blank" rel="noopener">Spec-Driven Development (SDD)</a>, the idea of a
@@ -717,7 +798,7 @@ Not users of this repo: judges, plaintiffs, lawyers…
                 </p>
             </section>
 
-            <section>
+            <section id="agents-md">
                 <h2>2. AGENTS.md: Standing Orders</h2>
                 <p>
                     In agentic IDEs that support the convention, <span class="path">AGENTS.md</span> acts as repository-level
@@ -750,7 +831,7 @@ Write **only** within the root of this repository…</code></pre>
                 </p>
             </section>
 
-            <section>
+            <section id="orchestration">
                 <h2>3. How AGENTS.md Orchestrates OpenSpec</h2>
                 <p>
                     OpenSpec, by itself, is just a CLI and a schema of artifacts. What
@@ -908,7 +989,7 @@ When the user asks to commit, invoke the semantic-commit skill
          change OpenSpec ──► core specifications (archive)</code></pre>
             </section>
 
-            <section>
+            <section id="openspec">
                 <h2>4. OpenSpec: The Change, Not the Entire Project</h2>
                 <p>
                     A confession before diving into mechanics: if you are anything like me, your engineering instincts probably rebel against the premise that <em>"truth belongs in the specification, not in the code."</em> Every seasoned developer has been burned by stale design documents, aspirational UML diagrams, and bureaucratic waterfall specs that drifted into fiction the second code touched production. For decades, our cardinal rule was simple: code is the only source of truth. If you share that prejudice, welcome to the club — I felt the exact same skepticism.
@@ -947,7 +1028,7 @@ When the user asks to commit, invoke the semantic-commit skill
                 </p>
             </section>
 
-            <section>
+            <section id="skills">
                 <h2>5. Skills Worth Their Weight in Gold</h2>
                 <p>
                     Two skills I use without thinking: semantic commit (status review, diff audit, <span class="path">.env</span> denylist,
@@ -967,7 +1048,7 @@ When the user asks to commit, invoke the semantic-commit skill
                 </blockquote>
             </section>
 
-            <section>
+            <section id="security">
                 <h2>6. Security: Policy Is Not Enforcement</h2>
                 <p>
                     Everything in <span class="path">AGENTS.md</span>, skills, and repository rules is guidance that the agent may follow;
@@ -1005,7 +1086,7 @@ When the user asks to commit, invoke the semantic-commit skill
                 </ul>
             </section>
 
-            <section>
+            <section id="limitations">
                 <h2>7. Limitations, Costs, and Observed Failure Modes</h2>
                 <p>
                     No engineering methodology is free of trade-offs. This harness can reduce the disorder and context loss associated with chaotic vibe coding,
@@ -1027,7 +1108,7 @@ When the user asks to commit, invoke the semantic-commit skill
                 </ul>
             </section>
 
-            <section>
+            <section id="practice">
                 <h2>8. What This Changed in Practice</h2>
                 <p>
                     In our typed classifier (System One HTTP gateway, GPU-backed decider, automated test battery, idle unload),
@@ -1039,7 +1120,7 @@ When the user asks to commit, invoke the semantic-commit skill
                 </p>
             </section>
 
-            <section>
+            <section id="method-evidence">
                 <h2>9. Method and Evidence</h2>
                 <p>
                     My preferred way of working is deliberately <strong>spiral</strong>: plan enough to make the next decision responsibly, implement a coherent slice,
@@ -1083,7 +1164,7 @@ When the user asks to commit, invoke the semantic-commit skill
                 </p>
             </section>
 
-            <section>
+            <section id="references">
                 <h2>References &amp; Connections</h2>
                 <ul>
                     <li>Brooks, F. P. (1987). <em>No Silver Bullet: Essence and Accidents of Software Engineering</em>. IEEE Computer, 20(4), 10–19.</li>
@@ -1122,6 +1203,17 @@ When the user asks to commit, invoke the semantic-commit skill
             </p>
         </footer>
     </div>
+    <script>
+        window.addEventListener('scroll', function() {
+            var winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            var bar = document.getElementById('readingProgressBar');
+            if (bar) {
+                bar.style.width = scrolled + '%';
+            }
+        }, { passive: true });
+    </script>
 </body>
 
 </html>
