@@ -63,6 +63,33 @@
             -webkit-hyphens: auto;
         }
 
+        .meta-bar {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-top: 1.15rem;
+            font-family: ui-sans-serif, system-ui, sans-serif;
+            font-size: 0.88rem;
+            color: var(--muted);
+        }
+
+        .meta-bar .author {
+            font-weight: 600;
+            color: var(--fg);
+        }
+
+        .meta-bar .views-badge {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .meta-bar .views-badge img {
+            height: 20px;
+            vertical-align: middle;
+            border-radius: 3px;
+        }
+
         h2 {
             font-size: 1.35rem;
             margin: 2.5rem 0 0.85rem;
@@ -250,6 +277,15 @@
                 <span class="path">AGENTS.md</span>, OpenSpec, and skills — instead of
                 hoping the model would magically guess what I meant.
             </p>
+            <div class="meta-bar">
+                <span class="author">By Emerson Araújo</span>
+                <span class="separator">•</span>
+                <span class="date">October 2026</span>
+                <span class="separator">•</span>
+                <span class="views-badge" title="Page views">
+                    <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Femerson-diego.github.io%2Fbeyond-vibe-coding.html&label=views&labelColor=%23555555&countColor=%230b3d2e" alt="Page views" />
+                </span>
+            </div>
         </header>
 
         <article>
